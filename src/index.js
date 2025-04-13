@@ -1,3 +1,3 @@
-export function test(){
-    console.log('hello world')
-}
+import {test,n} from './test'
+
+test(n)

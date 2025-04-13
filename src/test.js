@@ -1,3 +1,5 @@
-export {test} from './index'
+export function test(n){
+    console.log(n)
+}
 
-test()
+export const n = 10
