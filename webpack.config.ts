@@ -11,7 +11,7 @@ export default (env:ENV): webpack.Configuration => {
     const options:BuildOptions = {
         paths:{
             build: path.resolve(__dirname, 'build'),
-            entry: path.resolve(__dirname, 'src', 'index.ts'),
+            entry: path.resolve(__dirname, 'src', 'index.tsx'),
             html:path.resolve(__dirname, 'public', 'index.html')
         },
         isDev:env.mode === 'development',
@@ -19,9 +19,12 @@ export default (env:ENV): webpack.Configuration => {
 
     const {paths: {build, entry, html}, isDev = true} = options
 
+    console.log('isDev',isDev)
+    console.log('env',env)
+
     return {
-        devtool: isDev ? 'inline-source-map': null,
-        mode: env.mode,
+        devtool: isDev && 'inline-source-map',
+        mode:env.mode,
         entry: entry,
         module: {
             rules: buildLoaders(),
@@ -36,6 +39,6 @@ export default (env:ENV): webpack.Configuration => {
         stats: {
             children: true,
         },
-        devServer:isDev ? buildDevServer(options,env) : null
+        devServer:isDev && buildDevServer(options,env)
     }
 }
