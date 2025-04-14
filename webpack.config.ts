@@ -27,7 +27,7 @@ export default (env:ENV): webpack.Configuration => {
         mode:env.mode,
         entry: entry,
         module: {
-            rules: buildLoaders(),
+            rules: buildLoaders(options),
         },
         resolve: buildResolvers(),
         output: {

@@ -1,13 +1,6 @@
 import {render} from "react-dom";
-import {Counter} from "./components/Counter";
+import {App} from "./App";
 
-export const App = () => {
-    return (<div>hello world
-    <Counter/>
-    </div>)
-}
-
-const domNode = document.getElementById('root');
-render(<App />, domNode);
+render(<App />, document.getElementById('root'));
 
 
