@@ -19,9 +19,6 @@ export default (env:ENV): webpack.Configuration => {
 
     const {paths: {build, entry, html}, isDev = true} = options
 
-    console.log('isDev',isDev)
-    console.log('env',env)
-
     return {
         devtool: isDev && 'inline-source-map',
         mode:env.mode,

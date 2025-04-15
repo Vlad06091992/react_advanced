@@ -5,13 +5,13 @@ import React, {Suspense, useContext, useState} from "react";
 import {HomePageLazy} from "./pages/HomePage/HomePage.lazy";
 import {AboutPageLazy} from "./pages/AboutPage/AboutPage.lazy";
 import {useTheme} from "./theme/useTheme";
-
-
+import {classnames} from "./helpers/classnames";
 
 export const App = () => {
     const {theme,toggleTheme} = useTheme()
 
-    return (<div className={`app ${theme}`}>hello world
+    return(
+        <div className={classnames('app',[theme])}>hello world
         <button onClick={toggleTheme}>setTheme</button>
         <Link to={'/'}>Главная страница</Link>
         <Link to={'/about'}>О сайте</Link>
