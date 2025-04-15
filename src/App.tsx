@@ -1,12 +1,18 @@
-import './index.scss'
+import '../src/styles/index.scss'
+import '../src/styles/reset.scss'
 import {Link, Route, Routes} from "react-router-dom";
-import React, {Suspense} from "react";
+import React, {Suspense, useContext, useState} from "react";
 import {HomePageLazy} from "./pages/HomePage/HomePage.lazy";
 import {AboutPageLazy} from "./pages/AboutPage/AboutPage.lazy";
+import {useTheme} from "./theme/useTheme";
+
 
 
 export const App = () => {
-    return (<div className='app'>hello world
+    const {theme,toggleTheme} = useTheme()
+
+    return (<div className={`app ${theme}`}>hello world
+        <button onClick={toggleTheme}>setTheme</button>
         <Link to={'/'}>Главная страница</Link>
         <Link to={'/about'}>О сайте</Link>
         <Suspense fallback={<div>loading...</div>}>
@@ -15,6 +21,5 @@ export const App = () => {
                 <Route path="/about" element={<AboutPageLazy/>}/>
             </Routes>
         </Suspense>
-
     </div>)
 }
