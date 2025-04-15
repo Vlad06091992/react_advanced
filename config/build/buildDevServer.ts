@@ -4,6 +4,7 @@ import {Configuration as DevServerConfiguration} from "webpack-dev-server"
 export function buildDevServer (options:BuildOptions,env:ENV):DevServerConfiguration{
     return {
         port:env.port,
-        open:true
+        open:true,
+        historyApiFallback:true
   }
 }
