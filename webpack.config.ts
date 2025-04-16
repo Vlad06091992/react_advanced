@@ -12,7 +12,8 @@ export default (env:ENV): webpack.Configuration => {
         paths:{
             build: path.resolve(__dirname, 'build'),
             entry: path.resolve(__dirname, 'src', 'index.tsx'),
-            html:path.resolve(__dirname, 'public', 'index.html')
+            html:path.resolve(__dirname, 'public', 'index.html'),
+            src:path.resolve(__dirname, 'src')
         },
         isDev:env.mode === 'development',
     }
@@ -26,7 +27,7 @@ export default (env:ENV): webpack.Configuration => {
         module: {
             rules: buildLoaders(options),
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         output: {
             filename: "[name].[contenthash].js",
             path: build,

@@ -1,6 +1,7 @@
-import React, {createContext, useState, ReactElement, useMemo} from "react";
-import {Theme, ThemeContext} from "./ThemeContext";
-import {LOCAL_STORAGE_THEME_KEY} from "../theme/useTheme";
+import {ReactElement, useMemo, useState} from "react";
+import {LOCAL_STORAGE_THEME_KEY} from "../index";
+import {Theme, ThemeContext} from "app/providers/ThemeProvider/lib/ThemeContext";
+
 
 
 export const ThemeProvider = ({children}: { children: ReactElement }) => {

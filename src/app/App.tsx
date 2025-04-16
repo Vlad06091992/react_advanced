@@ -1,12 +1,11 @@
-import '../src/styles/index.scss'
-import '../src/styles/reset.scss'
+import './styles/index.scss'
+import './styles/reset.scss'
 import {Link, Route, Routes} from "react-router-dom";
 import React, {Suspense, useContext, useState} from "react";
-import {HomePageLazy} from "./pages/HomePage/HomePage.lazy";
-import {AboutPageLazy} from "./pages/AboutPage/AboutPage.lazy";
-import {useTheme} from "./theme/useTheme";
-import {classnames} from "./helpers/classnames";
-
+import {classnames} from "shared/lib/classnames";
+import {useTheme} from "app/providers/ThemeProvider";
+import {HomePage} from "pages/HomePage";
+import {AboutPage} from "pages/AboutPage";
 export const App = () => {
     const {theme,toggleTheme} = useTheme()
 
@@ -17,8 +16,8 @@ export const App = () => {
         <Link to={'/about'}>О сайте</Link>
         <Suspense fallback={<div>loading...</div>}>
             <Routes>
-                <Route path="/" element={<HomePageLazy/>}/>
-                <Route path="/about" element={<AboutPageLazy/>}/>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/about" element={<AboutPage/>}/>
             </Routes>
         </Suspense>
     </div>)
