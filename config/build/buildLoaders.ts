@@ -4,7 +4,22 @@ import {BuildOptions} from "../build/types/BuildOptions";
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const {isDev} = options
-    let typescriptLoader = {
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    }
+
+    const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
@@ -18,7 +33,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 options: {
                     modules: {
                         auto: /\.module\.\w+$/i,
-                        localIdentName:isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+                        localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
                     },
 
                 }
@@ -27,6 +42,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
     return [
+        fileLoader, svgLoader,
         typescriptLoader, scssLoader
     ]
 }
