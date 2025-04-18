@@ -33,7 +33,7 @@ export default (env:ENV): webpack.Configuration => {
             path: build,
             clean: true
         },
-        plugins: buildPlugins(html),
+        plugins: buildPlugins(html,options),
         stats: {
             children: true,
         },
