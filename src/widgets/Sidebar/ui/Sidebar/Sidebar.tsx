@@ -12,7 +12,6 @@ interface SidebarProps {
 export const Sidebar:FC<SidebarProps> = ({className}) => {
 const [collapsed,setCollapsed] = useState(false)
     const onToggle = ()=>setCollapsed(!collapsed);
-debugger
     return (
         <div className={classnames(styles.Sidebar, [],{[styles.collapsed]:collapsed})}>
             <button onClick={onToggle}>toggle</button>
