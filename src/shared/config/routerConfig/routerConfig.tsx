@@ -1,21 +1,19 @@
 // import {RouteProps} from "react-router-dom";
-import {AboutPage} from "pages/AboutPage";
-import {RouteProps} from "react-router-dom";
-import {MainPage} from "pages/MainPage";
+import { AboutPage } from 'pages/AboutPage';
+import { RouteProps } from 'react-router-dom';
+import { MainPage } from 'pages/MainPage';
 
-enum RouterConfig  {
+enum RouterConfig {
     MAIN = 'main',
     ABOUT = 'about',
 }
 
 export const routerPaths = {
-    [RouterConfig.MAIN] : '/',
-    [RouterConfig.ABOUT] : '/about',
-}
+    [RouterConfig.MAIN]: '/',
+    [RouterConfig.ABOUT]: '/about',
+};
 
 export const routerConfig:RouteProps[] = [
-    {element: <AboutPage />,path:routerPaths[RouterConfig.ABOUT]},
-    {element: <MainPage />,path:routerPaths[RouterConfig.MAIN]},
-]
-
-
+    { element: <AboutPage />, path: routerPaths[RouterConfig.ABOUT] },
+    { element: <MainPage />, path: routerPaths[RouterConfig.MAIN] },
+];
