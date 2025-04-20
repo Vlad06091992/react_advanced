@@ -39,6 +39,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'react/no-unused-prop-types': 'off',
+        'no-unused-expressions': 'off',
         'i18next/no-literal-string': [
             'error',
             { markupOnly: true },

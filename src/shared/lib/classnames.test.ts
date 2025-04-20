@@ -1,5 +1,8 @@
+// import { classnames } from 'shared/lib/classnames';
+import { classnames } from './classnames';
+
 describe('init', () => {
     it('should ', () => {
-        expect(1).toBe(11);
+        expect(classnames('hz')).toBe('hz');
     });
 });
