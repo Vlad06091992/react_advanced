@@ -1,13 +1,13 @@
-import htmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/BuildOptions';
 
 export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.WebpackPluginInstance[] {
     const { isDev } = options;
     return [
-        new htmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             template: htmlPath,
         }),
         new webpack.ProgressPlugin(),
@@ -19,5 +19,9 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
             __IS_DEV__: isDev,
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new BundleAnalyzerPlugin({
+            // автоматический запуск
+            openAnalyzer: false,
+        }),
     ];
 }
