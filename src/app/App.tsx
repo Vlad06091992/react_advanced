@@ -9,11 +9,6 @@ import { Sidebar } from 'widgets/Sidebar';
 import { useTranslation } from 'react-i18next';
 
 export const App = () => {
-    useEffect(() => {
-        // if (Math.random() > 0.7)
-            throw new Error('err');
-    }, []);
-
     const { theme } = useTheme();
     return (
         <div className={classnames('app', [theme])}>
