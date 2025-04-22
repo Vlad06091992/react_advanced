@@ -28,8 +28,10 @@ const config: Config = {
     ],
     rootDir: '../../',
 
-    // TODO возможно придется редактировать
-    testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
+    testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
+    modulePaths: [
+        '<rootDir>src',
+    ],
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
