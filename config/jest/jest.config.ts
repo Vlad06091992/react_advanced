@@ -32,7 +32,10 @@ const config: Config = {
     modulePaths: [
         '<rootDir>src',
     ],
-
+ moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        // '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
 
