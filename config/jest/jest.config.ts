@@ -32,10 +32,11 @@ const config: Config = {
     modulePaths: [
         '<rootDir>src',
     ],
- moduleNameMapper: {
+    moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         // '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
 
