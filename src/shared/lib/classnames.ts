@@ -4,7 +4,7 @@ interface Mods {
 
 export function classnames(cls: string, additional?: string[], mods?: Mods): string {
     let res = '';
-    res += cls;
+    cls && (res += cls);
 
     mods && Object.keys(mods).forEach((c) => {
         if (mods[c]) {
