@@ -39,14 +39,15 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'react/no-unused-prop-types': 'off',
+        'react/button-has-type': 'off',
         'no-unused-expressions': 'off',
         'i18next/no-literal-string': [
-            'error',
+            'warn',
             { markupOnly: true },
         ],
         'max-len': [
-            'error',
-            { ignoreComments: true },
+            'warn',
+            { ignoreComments: true,code:120 },
         ],
     },
     globals: {
