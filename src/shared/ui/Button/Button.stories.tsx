@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
 import { Button, ThemeButton } from './Button';
-import '../../../app/styles/index.scss';
-// import 'src/app/styles/index.scss';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
