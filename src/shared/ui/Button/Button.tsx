@@ -4,6 +4,7 @@ import styles from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',
+    OUTLINE = 'outline',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,7 +13,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
     const {
-        className, children, theme = ThemeButton.CLEAR, ...restProps
+        className, children, theme, ...restProps
     } = props;
-    return <button className={classnames(className, [styles.Button, styles[theme]], {})} {...restProps}>{children}</button>;
+    return (
+        <button
+            className={classnames(className, [styles.Button, styles[theme]], {})}
+            {...restProps}
+        >
+            {children}
+        </button>
+    );
 };
