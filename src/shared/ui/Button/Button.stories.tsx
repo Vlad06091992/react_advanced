@@ -9,6 +9,16 @@ import '../../../app/styles/index.scss';
 const meta = {
     title: 'shared/Button',
     component: Button,
+
+    decorators: [
+        (Story) => (
+            <div style={{ color: 'red' }}>
+                {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                <Story />
+            </div>
+        ),
+    ],
+
     parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
