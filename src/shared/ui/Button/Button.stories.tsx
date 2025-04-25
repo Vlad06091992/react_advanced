@@ -2,13 +2,21 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
 import { Button, ThemeButton } from './Button';
-import '../../../app/styles/index.scss';
-// import 'src/app/styles/index.scss';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
     title: 'shared/Button',
     component: Button,
+
+    decorators: [
+        (Story) => (
+            <div style={{ color: 'red' }}>
+                {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                <Story />
+            </div>
+        ),
+    ],
+
     parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
