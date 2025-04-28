@@ -1,71 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
 import { Button, ThemeButton } from './Button';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+export default {
     title: 'shared/Button',
     component: Button,
-
-    decorators: [
-        (Story) => (
-            <div style={{ color: 'red' }}>
-                {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                <Story />
-            </div>
-        ),
-    ],
-
-    parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-        layout: 'centered',
-    },
-    // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-    tags: ['autodocs'],
-    // More on argTypes: https://storybook.js.org/docs/api/argtypes
     argTypes: {
-
-        // backgroundColor: { control: 'color' },
+        backgroundColor: { control: 'color' },
     },
-    // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-    args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} as ComponentMeta<typeof Button>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-    args: {
-        children: 'TEXT',
-    },
+export const Primary = Template.bind({});
+Primary.args = {
+    children: 'Text',
 };
 
-export const Clear: Story = {
-    args: {
-        children: 'CLEAR',
-        theme: ThemeButton.CLEAR,
-    },
+export const Clear = Template.bind({});
+Clear.args = {
+    children: 'Text',
+    theme: ThemeButton.CLEAR,
 };
 
-export const Outline: Story = {
-    args: {
-        children: 'CLEAR',
-        theme: ThemeButton.OUTLINE,
-    },
+export const Outline = Template.bind({});
+Outline.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
 };
-//
-// export const Large: Story = {
-//     args: {
-//         size: 'large',
-//         label: 'Button',
-//     },
-// };
-//
-// export const Small: Story = {
-//     args: {
-//         size: 'small',
-//         label: 'Button',
-//     },
-// };
+
+export const OutlineDark = Template.bind({});
+OutlineDark.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
+};
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];

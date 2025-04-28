@@ -1,6 +1,6 @@
 import React from 'react';
 import { classnames } from 'shared/lib/classnames';
-import { AppLink, Theme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -10,8 +10,8 @@ interface NavbarProps {
 export const Navbar = ({ classname }: NavbarProps) => (
     <div className={classnames(styles.navbar, [classname])}>
         <div className={styles.links}>
-            <AppLink theme={Theme.PRIMARY} className={styles.links} to="/">Главная страница</AppLink>
-            <AppLink theme={Theme.PRIMARY} to="/about">О сайте</AppLink>
+            <AppLink theme={AppLinkTheme.SECONDARY} className={styles.links} to="/">Главная страница</AppLink>
+            <AppLink theme={AppLinkTheme.SECONDARY} to="/about">О сайте</AppLink>
         </div>
 
     </div>
