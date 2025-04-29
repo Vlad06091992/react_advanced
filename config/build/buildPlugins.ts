@@ -6,7 +6,7 @@ import { BuildOptions } from './types/BuildOptions';
 
 export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.WebpackPluginInstance[] {
     const { isDev } = options;
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
             template: htmlPath,
         }),
@@ -19,9 +19,12 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
             __IS_DEV__: isDev,
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
-            // автоматический запуск
-            openAnalyzer: false,
-        }),
     ];
+
+    isDev && plugins.push(new BundleAnalyzerPlugin({
+        // автоматический запуск
+        openAnalyzer: false,
+    }));
+
+    return plugins;
 }
