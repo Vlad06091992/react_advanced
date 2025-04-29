@@ -1,14 +1,10 @@
-.lds-ring {
-  /* change color here */
-  color: var(--primary-color);
-}
-
 .lds-ring,
 .lds-ring div {
   box-sizing: border-box;
 }
 
 .lds-ring {
+  color: var(--primary-color);
   display: inline-block;
   position: relative;
   width: 80px;
