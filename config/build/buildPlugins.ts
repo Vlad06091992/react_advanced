@@ -18,13 +18,15 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
         new webpack.DefinePlugin({
             __IS_DEV__: isDev,
         }),
-        new webpack.HotModuleReplacementPlugin(),
+
     ];
 
     isDev && plugins.push(new BundleAnalyzerPlugin({
         // автоматический запуск
         openAnalyzer: false,
     }));
+
+    isDev && plugins.push(new webpack.HotModuleReplacementPlugin());
 
     return plugins;
 }
