@@ -6,14 +6,14 @@ on:
      branches: [pipeline_setup]
 jobs:
   pipeline:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-       node-version: [20.19.0]
+        node-version: [ 17.x ]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Starting Node.js ${{ matrix.node-version }}
+      - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
