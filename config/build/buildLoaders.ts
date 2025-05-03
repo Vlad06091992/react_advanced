@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from '../build/types/BuildOptions';
-import {buildCssLoader} from "./loaders/buildCssLoader";
+import { buildCssLoader } from './loaders/buildCssLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const { isDev } = options;
@@ -46,7 +46,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     };
 
-    const scssLoader = buildCssLoader(isDev)
+    const scssLoader = buildCssLoader(isDev);
 
     // порядок лоадеров важен!
 
