@@ -19,6 +19,5 @@ export function classnames(cls: string, additional?: string[], mods?: Mods, isDe
     const ad = additional ? additional.join(' ') : '';
 
     res += ` ${ad}`;
-    let s = res.trim();
-    return s;
+    return res.trim();
 }
