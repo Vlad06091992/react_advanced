@@ -42,7 +42,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
                 </AppLink>
                 <AppLink className={styles.link} theme={AppLinkTheme.SECONDARY} to={RouterPaths.about}>
                     <Main className={styles.icon} />
-               <span className={styles.linkText}>{t('О сайте')}</span>
+                    <span className={styles.linkText}>{t('О сайте')}</span>
                 </AppLink>
             </div>
             <div className={styles.switchers}>
