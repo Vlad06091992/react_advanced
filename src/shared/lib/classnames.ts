@@ -2,7 +2,7 @@ interface Mods {
     [key: string]: boolean
 }
 
-export function classnames(cls: string, additional?: string[], mods?: Mods): string {
+export function classnames(cls: string, additional?: string[], mods?: Mods, isDebug = false): string {
     let res = '';
     cls && (res += cls);
 
