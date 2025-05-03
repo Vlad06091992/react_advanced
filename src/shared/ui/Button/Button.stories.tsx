@@ -46,7 +46,6 @@ OutlineSizeL.args = {
     theme: ThemeButton.OUTLINE,
 };
 
-
 export const OutlineSizeXL = Template.bind({});
 OutlineSizeXL.args = {
     children: 'Text',
