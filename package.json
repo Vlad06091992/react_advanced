@@ -88,6 +88,9 @@
   },
   "loki": {
     "configurations": {
+      "diffingEngine": "looks-same",
+      "chromeTolerance": 20,
+      "chromeLoadTimeout": 120000,
       "chrome.laptop": {
         "target": "chrome.docker",
         "width": 1366,
