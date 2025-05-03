@@ -5,5 +5,5 @@ export const MainPageLazy = lazy(() => new Promise((res, rej) => {
     // @ts-ignore
 
         res(import('./MainPage'));
-    }, 15000);
+    }, 1500);
 }));

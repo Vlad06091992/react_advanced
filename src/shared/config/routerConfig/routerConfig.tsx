@@ -9,14 +9,14 @@ enum RouterConfig {
     ABOUT = 'about',
     NOT_FOUND = 'not_found'
 }
-export const routerPaths = {
+export const RouterPaths = {
     [RouterConfig.MAIN]: '/',
     [RouterConfig.ABOUT]: '/about',
     [RouterConfig.NOT_FOUND]: '*',
 };
 
 export const routerConfig:RouteProps[] = [
-    { element: <AboutPage />, path: routerPaths[RouterConfig.ABOUT] },
-    { element: <MainPage />, path: routerPaths[RouterConfig.MAIN] },
-    { element: <NotFoundPage />, path: routerPaths[RouterConfig.NOT_FOUND] },
+    { element: <AboutPage />, path: RouterPaths[RouterConfig.ABOUT] },
+    { element: <MainPage />, path: RouterPaths[RouterConfig.MAIN] },
+    { element: <NotFoundPage />, path: RouterPaths[RouterConfig.NOT_FOUND] },
 ];

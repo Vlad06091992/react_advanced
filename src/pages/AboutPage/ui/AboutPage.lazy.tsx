@@ -5,5 +5,5 @@ export const AboutPageLazy = lazy(() => new Promise((res, rej) => {
     // @ts-ignore
 
         res(import('../ui/AboutPage'));
-    }, 15000);
+    }, 1500);
 }));
