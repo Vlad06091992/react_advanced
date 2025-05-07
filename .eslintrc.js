@@ -37,6 +37,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/no-unused-prop-types': 'off',
         'react/button-has-type': 'off',
+        'no-param-reassign': 'off',
         'no-unused-expressions': 'off',
         'i18next/no-literal-string': [
             'warn',
