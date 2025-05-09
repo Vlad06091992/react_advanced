@@ -1,9 +1,9 @@
 name: linting, testing, building
 on:
    push:
-     branches: [three]
+     branches: [four]
    pull_request:
-     branches: [three]
+     branches: [four]
 jobs:
   pipeline:
     runs-on: ubuntu-22.04
