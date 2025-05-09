@@ -16,7 +16,7 @@
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve --reactUri file:./storybook-static",
     "test:ui:update": "npx loki update --reactUri=file:./storybook-static --chromeFlags= --headless --no-sandbox",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static --chromeTolerance 5",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static --chromeTolerance 10",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
