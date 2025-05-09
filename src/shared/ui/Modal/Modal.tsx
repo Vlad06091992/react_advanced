@@ -1,5 +1,6 @@
 import { classnames } from 'shared/lib/classnames';
 import React, {
+    ReactNode,
     useCallback, useEffect, useRef, useState,
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
@@ -8,7 +9,8 @@ import styles from './Modal.module.scss';
 
 interface ModalProps {
     className?: string
-    children?: string
+    lazy?: boolean
+    children?: ReactNode
     isOpen?: boolean
     onClose?: () => void
 }
@@ -16,13 +18,14 @@ interface ModalProps {
 const ANUIMATION_DELAY = 300;
 
 export const Modal = ({
-    className, isOpen, onClose, children,
+    className, isOpen, onClose, children, lazy,
 }: ModalProps) => {
     const mods = {
         [styles.opened]: isOpen,
     };
     const { theme } = useTheme();
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
 
     const closeHandler = useCallback(() => {
@@ -39,6 +42,12 @@ export const Modal = ({
     const onKeyDown = useCallback((e:any) => {
         if (e.key === 'Escape') closeHandler();
     }, [closeHandler]);
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
 
     useEffect(() => {
         if (isOpen) {
@@ -59,6 +68,8 @@ export const Modal = ({
     const onClickContent = (e:React.MouseEvent) => {
         e.stopPropagation();
     };
+
+    if (lazy && !isMounted) return null;
 
     return (
         <Portal>
