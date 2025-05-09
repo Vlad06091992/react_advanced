@@ -39,6 +39,8 @@ module.exports = {
         'react/button-has-type': 'off',
         'no-param-reassign': 'off',
         'no-unused-expressions': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
         'i18next/no-literal-string': [
             'warn',
             { markupOnly: true },

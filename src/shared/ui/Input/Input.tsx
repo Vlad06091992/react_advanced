@@ -1,8 +1,8 @@
 import React, {
     ChangeEvent, FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
-import styles from 'features/AuthByUsername/ui/LoginForm/loginForm.module.scss';
 import { classnames } from 'shared/lib/classnames';
+import styles from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
@@ -15,19 +15,19 @@ export interface InputProps extends HTMLInputProps{
     onChange?:(value:string)=>void
 }
 
-export const Input:FC<InputProps> = memo((props) => {
+export const Input = memo((props:InputProps) => {
     const {
         className, onChange, placeholder, value, children, type = 'text', autofocus, ...restProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(null);
     const [caretPosition, setCaretPosition] = useState(null);
-    const inputRef = useRef<HTMLInputElement>()
+    const inputRef = useRef<HTMLInputElement>();
 
     useEffect(() => {
         if (autofocus) {
             setIsFocused(true);
-            inputRef.current.focus()
+            inputRef.current.focus();
         }
     }, [autofocus]);
 

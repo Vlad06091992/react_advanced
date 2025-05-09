@@ -10,8 +10,6 @@ const MainPage = (props:any) => {
     return (
         <div>
             <div>{t('Главная страница')}</div>
-            <Counter />
-            <Input autofocus={true} placeholder='Введите текст' value={value} onChange={setValue} />
         </div>
     );
 };
