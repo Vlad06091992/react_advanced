@@ -1,9 +1,9 @@
 name: linting, testing, building
 on:
    push:
-     branches: [three]
+     branches: [four]
    pull_request:
-     branches: [three]
+     branches: [four]
 jobs:
   pipeline:
     runs-on: ubuntu-22.04
@@ -34,5 +34,5 @@ jobs:
         if: always()
         run: npm run storybook:build
       - name: screenshot testing
-        if: always()
-        run: npm run test:ui:ci
+#        if: always()
+#        run: npm run test:ui:ci

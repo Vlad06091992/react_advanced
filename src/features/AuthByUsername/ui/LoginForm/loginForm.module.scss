@@ -1,0 +1,24 @@
+.loginForm {
+  margin: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: transparent;
+  text-shadow: 0 0 0 var(--primary-color);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn {
+  margin-top: 10px;
+  margin-left: auto;
+}

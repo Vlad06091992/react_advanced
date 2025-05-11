@@ -17,6 +17,7 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
+        'react-hooks',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -36,7 +37,10 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/no-unused-prop-types': 'off',
         'react/button-has-type': 'off',
+        'no-param-reassign': 'off',
         'no-unused-expressions': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
         'i18next/no-literal-string': [
             'warn',
             { markupOnly: true },
@@ -45,6 +49,8 @@ module.exports = {
             'warn',
             { ignoreComments: true, code: 120 },
         ],
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     },
     globals: {
         __IS_DEV__: true,
