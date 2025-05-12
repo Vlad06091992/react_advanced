@@ -1,12 +1,16 @@
 import { classnames } from 'shared/lib/classnames';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { loginActions } from '../../model/slice/loginSlice';
-import { getLoginState } from '../../model/selectors/getLoginState';
+import { ReduxStoreWithManager } from 'app/providers/StoreProvider/config/StateSchema';
+import { getLoginUsername } from 'features/AuthByUsername/model/selectors/getLoginUsername';
+import { getLoginPassword } from 'features/AuthByUsername/model/selectors/getLoginPassword';
+import { getLoginIsLoading } from 'features/AuthByUsername/model/selectors/getLoginIsLoading';
+import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './loginForm.module.scss';
 import { loginByUsername } from '../../model/services/loginByUsername';
 
@@ -14,12 +18,24 @@ export interface LoginFormProps {
     className?:string
 }
 
-export const LoginForm = memo(({ className }:LoginFormProps) => {
+const LoginForm = memo(({ className }:LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const {
-        username, password, isLoading, error,
-    } = useSelector(getLoginState);
+    const store:ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
+
+    useEffect(() => {
+        store.reducerManager.add('loginData', loginReducer);
+        dispatch({ type: '@INIT loginform reducer' });
+        return () => {
+            dispatch({ type: '@DESTROY loginform reducer' });
+            store.reducerManager.remove('loginData');
+        };
+    }, []);
+
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
 
     const onChangeUsername = useCallback((val:string) => {
         dispatch(loginActions.setUsername(val));
@@ -42,3 +58,5 @@ export const LoginForm = memo(({ className }:LoginFormProps) => {
         </div>
     );
 });
+
+export default LoginForm;

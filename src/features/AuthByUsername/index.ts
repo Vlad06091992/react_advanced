@@ -1,5 +1,4 @@
 export { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
-export { loginReducer } from './model/slice/loginSlice';
 export { LoginModal } from './ui/LoginModal/loginModal';
 
 // наружу через index.ts экспортируется только то что используется в приложении
