@@ -8,8 +8,7 @@ import styles from './loginForm.module.scss';
 export interface LoginFormProps {
     className?:string
 }
-
-export const LoginForm:FC<LoginFormProps> = ({ className }) => {
+const LoginForm:FC<LoginFormProps> = ({ className }) => {
     const { t } = useTranslation();
 
     const [value, setValue] = useState('');
@@ -22,3 +21,5 @@ export const LoginForm:FC<LoginFormProps> = ({ className }) => {
         </div>
     );
 };
+
+export default LoginForm;

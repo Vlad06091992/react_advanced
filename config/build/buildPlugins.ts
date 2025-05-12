@@ -21,9 +21,9 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
 
     ];
 
-    isDev && plugins.push(new BundleAnalyzerPlugin({
+    plugins.push(new BundleAnalyzerPlugin({
         // автоматический запуск
-        openAnalyzer: false,
+        openAnalyzer: true,
     }));
 
     isDev && plugins.push(new webpack.HotModuleReplacementPlugin());
