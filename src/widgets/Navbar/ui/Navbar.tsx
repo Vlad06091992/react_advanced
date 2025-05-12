@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { classnames } from 'shared/lib/classnames';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
