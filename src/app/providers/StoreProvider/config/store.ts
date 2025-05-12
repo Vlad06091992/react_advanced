@@ -6,8 +6,9 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 
 // ...
 
-export function createReduxStore(initialState:StateSchema) {
+export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
     };
