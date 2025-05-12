@@ -35,7 +35,7 @@ export const Navbar = ({ classname }: NavbarProps) => {
     return (
         <div className={classnames(styles.navbar, [classname])}>
             <Button onClick={onShowModal} theme={ThemeButton.INVERTED_CLEAR}>Войти</Button>
-            <LoginModal onClose={onCloseModal} isOpen={open} />
+            { open && <LoginModal onClose={onCloseModal} isOpen={open} /> }
         </div>
     );
 };
