@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
@@ -10,7 +10,7 @@ interface NavbarProps {
     classname?: string
 }
 
-export const Navbar = ({ classname }: NavbarProps) => {
+export const Navbar = memo(({ classname }: NavbarProps) => {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
 
@@ -37,4 +37,4 @@ export const Navbar = ({ classname }: NavbarProps) => {
             { open && <LoginModal onClose={onCloseModal} isOpen={open} /> }
         </div>
     );
-};
+});

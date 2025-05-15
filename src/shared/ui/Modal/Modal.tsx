@@ -17,6 +17,7 @@ interface ModalProps {
 
 const ANUIMATION_DELAY = 300;
 
+// здесь мемоизация - это плохая идея так как children содержит в себе древовидную структуру компонентов 37 урок 26.18
 export const Modal = ({
     className, isOpen, onClose, children, lazy,
 }: ModalProps) => {

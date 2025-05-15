@@ -1,5 +1,5 @@
 import React, {
-    ChangeEvent, FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
+    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import styles from './Input.module.scss';

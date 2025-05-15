@@ -6,5 +6,5 @@ export const LoginFormLazy = lazy<FC<LoginFormProps>>(() => new Promise((res, re
     // @ts-ignore
 
         res(import('./LoginForm'));
-    }, 1500);
+    }, 500);
 }));
