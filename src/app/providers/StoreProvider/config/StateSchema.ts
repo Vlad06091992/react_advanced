@@ -4,6 +4,8 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { ReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { profileReducer, ProfileSchema } from 'entities/Profile';
+import { AxiosInstance } from 'axios';
+import { NavigateFunction } from 'react-router/dist/lib/hooks';
 
 export interface StateSchema {
     counter:CounterSchema,
@@ -19,3 +21,10 @@ export type StateSchemaKey = keyof StateSchema
 export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
     reducerManager:ReducerManager
 }
+
+export interface ThunkExtraArg {
+    api:AxiosInstance,
+    navigate:NavigateFunction,
+}
+
+export interface ThunkConfig<T> { rejectValue: T, extra: ThunkExtraArg }
