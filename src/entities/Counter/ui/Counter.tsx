@@ -2,6 +2,7 @@ import { classnames } from 'shared/lib/classnames';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getCounterValue } from '../model/selectors/getCounterValue';
 import { counterActions } from '../model/slice/CounterSlice';
 
@@ -10,7 +11,7 @@ export interface CounterProps {
 }
 
 export const Counter:FC<CounterProps> = ({ className }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const value = useSelector<StateSchema>(getCounterValue);
 
     const inc = () => {

@@ -2,8 +2,9 @@ import React, { memo, useCallback, useState } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -12,7 +13,7 @@ interface NavbarProps {
 
 export const Navbar = memo(({ classname }: NavbarProps) => {
     const [open, setOpen] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const authData = useSelector(getUserAuthData);
 

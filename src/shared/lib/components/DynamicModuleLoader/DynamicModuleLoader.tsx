@@ -4,6 +4,7 @@ import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 // export type ReducerList = {
 //     [name in StateSchemaKey]? : Reducer
@@ -21,7 +22,7 @@ export interface DynamicModuleLoaderProps {
 export const DynamicModuleLoader = ({
     children, reducers, removeAfterUnmount,
 }:DynamicModuleLoaderProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const store:ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
 
