@@ -1,30 +1,38 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
 import { User, userActions } from 'entities/User';
-import i18n from 'i18next';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import {loginActions} from "features/AuthByUsername/model/slice/loginSlice";
 
-export interface LoginByUsernameProps {
-    username:string
-    password:string
+interface LoginByUsernameProps {
+    username: string;
+    password: string;
 }
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
+export const loginByUsername = createAsyncThunk<
+    User,
+    LoginByUsernameProps,
+    ThunkConfig<string>
+>(
     'login/loginByUsername',
-    async ({ password, username }, { extra, dispatch, rejectWithValue }) => {
+    async (authData, thunkApi) => {
+        const { extra, dispatch, rejectWithValue } = thunkApi;
+
         try {
-            const response = await extra.api.post<User>('/login', { password, username });
+            const response = await extra.api.post('/login', authData);
 
             if (!response.data) {
                 throw new Error();
             }
+
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             dispatch(userActions.setAuthData(response.data));
-            extra.navigate('/about');
             return response.data;
         } catch (e) {
-            console.error(e);
-            return rejectWithValue(i18n.t('Вы ввели неправильынй логин или пароль'));
+            console.log(e);
+            debugger
+            return rejectWithValue('Не удалось авторизоваться');
         }
     },
 );

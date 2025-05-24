@@ -11,7 +11,7 @@ export const Portal = (props: PortalProps) => {
         children,
     } = props;
 
-    const [container, setContainer] = useState(null);
+    const [container, setContainer] = useState<Element | null>(null);
 
     useEffect(() => {
         const element = document.body.querySelector('.app');

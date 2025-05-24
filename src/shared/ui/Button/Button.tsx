@@ -23,12 +23,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean
 }
 
+type Mods = Record<string, boolean | undefined>;
+
 // использовать memo где есть children не очень хорошая идея иногда, в 37 уроке это объясняется на 23 минуте
 export const Button: FC<ButtonProps> = memo((props) => {
     const {
-        className, size = ButtonSize.M, square, children, theme, disabled = false, ...restProps
+        className, size = ButtonSize.M, square, children, theme = ThemeButton.OUTLINE, disabled = false, ...restProps
     } = props;
-    const mods:Record<string, boolean> = {
+    const mods:Mods = {
         [styles.square]: square,
         [styles[size]]: true,
         [styles.disabled]: disabled,
@@ -37,7 +39,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
     return (
         <button
             disabled={disabled}
-            className={classnames(className, [styles.Button, styles[theme]], mods, true)}
+            className={classnames(className, [styles.Button, styles[theme]], mods)}
             {...restProps}
         >
             {children}

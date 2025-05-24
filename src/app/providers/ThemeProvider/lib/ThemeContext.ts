@@ -5,7 +5,7 @@ export enum Theme {
 }
 
 interface ThemeProps {
-    theme?:string,
+    theme?:Theme,
     setTheme? : (theme:Theme)=>void
 }
 

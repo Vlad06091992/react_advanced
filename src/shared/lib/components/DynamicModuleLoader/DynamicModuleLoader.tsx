@@ -27,15 +27,13 @@ export const DynamicModuleLoader = ({
     const store:ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {
-        Object.entries(reducers).forEach((el:ReducersListEntry) => {
-            const [reducerKey, reducer] = el;
-
-            store.reducerManager.add(reducerKey, reducer);
+        Object.entries(reducers).forEach(([reducerKey, reducer]) => {
+            store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
             dispatch({ type: `@INIT ${reducerKey} reducer` });
             return () => {
                 if (removeAfterUnmount) {
                     dispatch({ type: `@DESTROY ${reducerKey} reducer` });
-                    store.reducerManager.remove(reducerKey);
+                    store.reducerManager.remove(reducerKey as StateSchemaKey);
                 }
             };
         });

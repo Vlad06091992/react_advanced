@@ -16,12 +16,12 @@ export interface TextProps {
 }
 
 export const Text: FC<TextProps> = memo(({
-    className, title, text, theme,
+    className, title, text, theme = 'primary',
 }) => {
     const { t } = useTranslation();
 
     return (
-        <div className={classnames(classnames(className, [styles[theme]]))}>
+        <div className={(classnames(className, [styles[theme]]))}>
             {title && <p className={styles.title}>{title}</p>}
             <p className={styles.text}>{text}</p>
         </div>

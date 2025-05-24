@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginIsLoading } from './getLoginIsLoading';
 
@@ -8,7 +7,7 @@ describe('getLoginIsLoading.test', () => {
             loginData: {
                 isLoading: true,
             },
-        };
+        } as StateSchema;
         expect(getLoginIsLoading(state as StateSchema)).toEqual(true);
     });
     test('should work with empty state', () => {

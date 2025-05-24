@@ -12,7 +12,7 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "test:unit": "jest --config config/jest/jest.config.ts",
+    "test:unit": "jest --config config/jest/jest.config.ts --verbose --coverage --coverageReporters=",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve --reactUri file:./storybook-static",
     "test:ui:update": "npx loki update --reactUri=file:./storybook-static --chromeFlags= --headless --no-sandbox",

@@ -1,8 +1,8 @@
 interface Mods {
-    [key: string]: boolean
+    [key: string]: boolean | undefined
 }
 
-export function classnames(cls: string, additional?: string[], mods?: Mods, isDebug = false): string {
+export function classnames(cls: string | undefined, additional?: Array<string | undefined>, mods?: Mods): string {
     let res = '';
     cls && (res += cls);
 
