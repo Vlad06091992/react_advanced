@@ -18,6 +18,7 @@ import { loginByUsername } from '../../model/services/loginByUsername';
 
 export interface LoginFormProps {
     className?:string
+    onSuccess?:()=>void
 }
 
 // вынос за пределы компонента чтобы ссылка на объект была постоянной
@@ -25,7 +26,7 @@ const initialReducers:ReducerList = {
     loginData: loginReducer,
 };
 
-const LoginForm = memo(({ className }:LoginFormProps) => {
+const LoginForm = memo(({ className,onSuccess }:LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -42,8 +43,13 @@ const LoginForm = memo(({ className }:LoginFormProps) => {
         dispatch(loginActions.setPassword(val));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+
+        if(result.meta.requestStatus === 'fulfilled'){
+            onSuccess?.()
+        }
+
     }, [dispatch, username, password]);
     return (
         <DynamicModuleLoader reducers={initialReducers}>
