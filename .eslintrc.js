@@ -41,6 +41,7 @@ module.exports = {
         'no-unused-expressions': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
+        'comma-dangle': 'off',
         'i18next/no-literal-string': [
             'warn',
             { markupOnly: true },
