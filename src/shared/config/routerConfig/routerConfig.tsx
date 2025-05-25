@@ -1,22 +1,25 @@
-// import {RouteProps} from "react-router-dom";
 import { AboutPage } from 'pages/AboutPage';
+import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 
 enum RouterConfig {
     MAIN = 'main',
+    PROFILE = 'profile',
     ABOUT = 'about',
     NOT_FOUND = 'not_found'
 }
 export const RouterPaths = {
     [RouterConfig.MAIN]: '/',
+    [RouterConfig.PROFILE]: '/profile',
     [RouterConfig.ABOUT]: '/about',
     [RouterConfig.NOT_FOUND]: '*',
 };
 
 export const routerConfig:RouteProps[] = [
     { element: <AboutPage />, path: RouterPaths[RouterConfig.ABOUT] },
+    { element: <ProfilePage />, path: RouterPaths[RouterConfig.PROFILE] },
     { element: <MainPage />, path: RouterPaths[RouterConfig.MAIN] },
     { element: <NotFoundPage />, path: RouterPaths[RouterConfig.NOT_FOUND] },
 ];

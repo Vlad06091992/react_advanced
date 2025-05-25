@@ -1,5 +1,5 @@
 import React, {
-    ChangeEvent, FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
+    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import styles from './Input.module.scss';
@@ -20,14 +20,14 @@ export const Input = memo((props:InputProps) => {
         className, onChange, placeholder, value, children, type = 'text', autofocus, ...restProps
     } = props;
 
-    const [isFocused, setIsFocused] = useState(null);
-    const [caretPosition, setCaretPosition] = useState(null);
-    const inputRef = useRef<HTMLInputElement>();
+    const [isFocused, setIsFocused] = useState(false);
+    const [caretPosition, setCaretPosition] = useState(0);
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
         if (autofocus) {
             setIsFocused(true);
-            inputRef.current.focus();
+            inputRef.current?.focus();
         }
     }, [autofocus]);
 

@@ -11,7 +11,7 @@ describe('Sidebar', () => {
             </RenderWithBrowserRouter>,
         );
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
-        screen.debug();
+        //screen.debug();
     });
 
     it('renders Button component', () => {
@@ -24,6 +24,6 @@ describe('Sidebar', () => {
         expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
         fireEvent.click(screen.getByTestId('sidebar_toggle_button'));
         expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed');
-        screen.debug();
+        //screen.debug();
     });
 });

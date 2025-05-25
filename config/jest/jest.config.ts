@@ -36,10 +36,13 @@ const config: Config = {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
+        "~src/(.*)": "<rootDir>/src/$1",
+        "^src/(.*)$": "<rootDir>/../src/$1"
     },
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     globals: {
         __IS_DEV__: true,
+        __API_URL__: '',
     },
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected

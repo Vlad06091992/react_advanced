@@ -1,19 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { classnames } from 'shared/lib/classnames';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
     classname?: string
 }
 
-export const Navbar = ({ classname }: NavbarProps) => {
+export const Navbar = memo(({ classname }: NavbarProps) => {
     const [open, setOpen] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const authData = useSelector(getUserAuthData);
 
@@ -35,7 +35,7 @@ export const Navbar = ({ classname }: NavbarProps) => {
     return (
         <div className={classnames(styles.navbar, [classname])}>
             <Button onClick={onShowModal} theme={ThemeButton.INVERTED_CLEAR}>Войти</Button>
-            <LoginModal onClose={onCloseModal} isOpen={open} />
+            { open && <LoginModal onClose={onCloseModal} isOpen={open} /> }
         </div>
     );
-};
+});
