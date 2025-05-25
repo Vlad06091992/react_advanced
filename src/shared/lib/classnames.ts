@@ -1,4 +1,4 @@
-interface Mods {
+export interface Mods {
     [key: string]: boolean | undefined
 }
 

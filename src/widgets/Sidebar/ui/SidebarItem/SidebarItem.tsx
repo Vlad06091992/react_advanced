@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
-import { AppLink, AppLinkTheme } from 'shared';
 import React, { memo } from 'react';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import styles from './SidebarItem.module.scss';
 import { SidebarItemTypes } from '../../model/items';
 
@@ -9,6 +9,7 @@ interface SidebarItemProps {
     classname?:string
     item:SidebarItemTypes
     collapsed:boolean
+    authOnly?:boolean
 
 }
 
