@@ -28,4 +28,4 @@ export interface ThunkExtraArg {
     navigate:NavigateFunction,
 }
 
-export interface ThunkConfig<T> { rejectValue: string; dispatch: AppDispatch; extra: ThunkExtraArg; state: StateSchema}
+export interface ThunkConfig<T> { rejectValue: T; dispatch: AppDispatch; extra: ThunkExtraArg; state: StateSchema}

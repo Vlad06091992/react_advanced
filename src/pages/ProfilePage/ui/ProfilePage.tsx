@@ -3,9 +3,11 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import {
     fetchProfileData,
     getProfileData,
-    getProfileError, getProfileFormData,
+    getProfileError,
+    getProfileFormData,
     getProfileIsLoading,
     getProfileReadOnly,
+    getProfileValidateErrors,
     profileActions,
     profileReducer,
 } from 'entities/Profile';
@@ -15,6 +17,8 @@ import { ProfileCard } from 'entities/Profile/ui/ProfileCard';
 import { useSelector } from 'react-redux';
 import { Currency } from 'shared/const/common';
 import { Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageprops {
@@ -27,12 +31,22 @@ const initialReducers: ReducerList = {
 };
 
 const ProfilePage = ({ classname }: ProfilePageprops) => {
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const data = useSelector(getProfileData);
     const formData = useSelector(getProfileFormData);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validationTranslates:Record<ValidateProfileError, string> = {
+        [ValidateProfileError.INCORRECT_AGE]: t('Некоректный возраст'),
+        [ValidateProfileError.NO_DATA]: t('Нет даных'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некоректная страна'),
+        [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорретные данные пользователя'),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -71,10 +85,11 @@ const ProfilePage = ({ classname }: ProfilePageprops) => {
         dispatch(profileActions.updateProfile({ city: value }));
     };
 
-    const { t } = useTranslation('about');
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <ProfilePageHeader readonly={readonly} />
+            {validateErrors.length > 0 && validateErrors!.map((error) => <Text key={error} title={validationTranslates[error]} theme={TextTheme.ERROR} />)}
+
             <ProfileCard onChangeCountry={onChangeCountry} onChangeCurrency={onChangeCurrency} onChangeUsername={onChangeUsername} onChangeAvatar={onChangeAvatar} onChangeAge={onChangeAge} onChangeCity={onChangeCity} readonly={readonly} onChangeFirstname={onChangeFirstname} onChangeLastname={onChangeLastname} data={formData} isLoading={isLoading} error={error} />
         </DynamicModuleLoader>
     );
