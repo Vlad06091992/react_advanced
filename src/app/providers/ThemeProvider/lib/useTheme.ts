@@ -13,14 +13,14 @@ export const useTheme = ():UseThemeResult => {
     const toggleTheme = () => {
         let mode = Theme.LIGHT;
 
-        switch (true) {
-        case theme === Theme.DARK:
+        switch (theme) {
+        case Theme.DARK:
             mode = Theme.ORANGE;
             break;
-        case theme === Theme.ORANGE:
+        case Theme.ORANGE:
             mode = Theme.LIGHT;
             break;
-        case theme === Theme.LIGHT:
+        case Theme.LIGHT:
             mode = Theme.DARK;
             break;
         default:
