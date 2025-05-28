@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/BuildOptions';
 
 export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.WebpackPluginInstance[] {
@@ -28,6 +29,7 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
     }));
 
     isDev && plugins.push(new webpack.HotModuleReplacementPlugin());
+    isDev && plugins.push(new ReactRefreshWebpackPlugin());
 
     return plugins;
 }

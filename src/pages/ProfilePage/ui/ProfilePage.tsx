@@ -89,7 +89,6 @@ const ProfilePage = ({ classname }: ProfilePageprops) => {
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <ProfilePageHeader readonly={readonly} />
             {validateErrors.length > 0 && validateErrors!.map((error) => <Text key={error} title={validationTranslates[error]} theme={TextTheme.ERROR} />)}
-
             <ProfileCard onChangeCountry={onChangeCountry} onChangeCurrency={onChangeCurrency} onChangeUsername={onChangeUsername} onChangeAvatar={onChangeAvatar} onChangeAge={onChangeAge} onChangeCity={onChangeCity} readonly={readonly} onChangeFirstname={onChangeFirstname} onChangeLastname={onChangeLastname} data={formData} isLoading={isLoading} error={error} />
         </DynamicModuleLoader>
     );

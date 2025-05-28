@@ -6,7 +6,7 @@ const MainPage = (props:any) => {
 
     const [value, setValue] = useState('');
     return (
-        <div>
+        <div style={{ color: 'green' }}>
             <div>{t('Главная страница')}</div>
         </div>
     );
