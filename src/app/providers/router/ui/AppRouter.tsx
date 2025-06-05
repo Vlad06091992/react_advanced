@@ -4,17 +4,11 @@ import { routerConfig } from 'shared/config/routerConfig/routerConfig';
 import { PageLoader } from 'widgets/PageLoader/PageLoader';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
 
 export const AppRouter = memo(() => {
-    const isAuth = useSelector(getUserAuthData);
+    const routes = routerConfig.map((r) => <Route key={r.path} path={r.path} element={r.authOnly ? <RequireAuth>{r.element}</RequireAuth> : r.element} />);
 
-    // <Suspense fallback={<div>loading...</div>}>
-    const routes = routerConfig.filter((r) => {
-        if (r.authOnly && !isAuth) return false;
-        return true;
-    }).map((r) => (
-        <Route key={r.path} path={r.path} element={r.element} />
-    ));
     return (
         <Suspense fallback={<PageLoader />}>
             <div className="page-wrapper">
