@@ -1,32 +1,95 @@
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
-import { fetchProfileData, profileReducer } from 'entities/Profile';
+import {
+    fetchProfileData,
+    getProfileData,
+    getProfileError,
+    getProfileFormData,
+    getProfileIsLoading,
+    getProfileReadOnly,
+    getProfileValidateErrors,
+    profileActions,
+    profileReducer,
+} from 'entities/Profile';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard';
+import { useSelector } from 'react-redux';
+import { Currency } from 'shared/const/common';
+import { Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ValidateProfileError } from 'entities/Profile/model/types/profile';
+import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageprops {
-    classname?:string
+    classname?: string
 
 }
 
-const initialReducers:ReducerList = {
+const initialReducers: ReducerList = {
     profileData: profileReducer,
 };
 
-const ProfilePage = ({}:ProfilePageprops) => {
+const ProfilePage = ({ classname }: ProfilePageprops) => {
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const data = useSelector(getProfileData);
+    const formData = useSelector(getProfileFormData);
+    const isLoading = useSelector(getProfileIsLoading);
+    const error = useSelector(getProfileError);
+    const readonly = useSelector(getProfileReadOnly);
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validationTranslates:Record<ValidateProfileError, string> = {
+        [ValidateProfileError.INCORRECT_AGE]: t('Некоректный возраст'),
+        [ValidateProfileError.NO_DATA]: t('Нет даных'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некоректная страна'),
+        [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорретные данные пользователя'),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
     }, [dispatch]);
 
-    const { t } = useTranslation('about');
+    const onChangeFirstname = (value:string) => {
+        dispatch(profileActions.updateProfile({ first: value }));
+    };
+    const onChangeLastname = (value:string) => {
+        dispatch(profileActions.updateProfile({ lastname: value }));
+    };
+
+    const onChangeAge = (value:string) => {
+        if (!(Number.isNaN(+value))) {
+            dispatch(profileActions.updateProfile({ age: +value.trim() }));
+        }
+    };
+
+    const onChangeUsername = (value:string) => {
+        dispatch(profileActions.updateProfile({ username: value }));
+    };
+
+    const onChangeAvatar = (value:string) => {
+        dispatch(profileActions.updateProfile({ avatar: value }));
+    };
+
+    const onChangeCurrency = (value:Currency) => {
+        dispatch(profileActions.updateProfile({ currency: value }));
+    };
+
+    const onChangeCountry = (value:Country) => {
+        dispatch(profileActions.updateProfile({ country: value }));
+    };
+
+    const onChangeCity = (value:string) => {
+        dispatch(profileActions.updateProfile({ city: value }));
+    };
+
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div>{t('Страница профиля')}</div>
-            <ProfileCard />
+            <ProfilePageHeader readonly={readonly} />
+            {validateErrors.length > 0 && validateErrors!.map((error) => <Text key={error} title={validationTranslates[error]} theme={TextTheme.ERROR} />)}
+            <ProfileCard onChangeCountry={onChangeCountry} onChangeCurrency={onChangeCurrency} onChangeUsername={onChangeUsername} onChangeAvatar={onChangeAvatar} onChangeAge={onChangeAge} onChangeCity={onChangeCity} readonly={readonly} onChangeFirstname={onChangeFirstname} onChangeLastname={onChangeLastname} data={formData} isLoading={isLoading} error={error} />
         </DynamicModuleLoader>
     );
 };

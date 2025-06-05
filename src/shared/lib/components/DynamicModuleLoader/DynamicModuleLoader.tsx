@@ -29,6 +29,7 @@ export const DynamicModuleLoader = ({
     useEffect(() => {
         Object.entries(reducers).forEach(([reducerKey, reducer]) => {
             store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
+            // диспатч ниже чисто для информативности о том, что редьюсер был добавлен
             dispatch({ type: `@INIT ${reducerKey} reducer` });
             return () => {
                 if (removeAfterUnmount) {

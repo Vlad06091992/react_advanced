@@ -5,8 +5,8 @@ import { userReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
-import { ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
 import { CombinedState } from 'redux';
+// import { api } from '../../../../shared/api/api';
 
 // ...
 
