@@ -32,6 +32,7 @@ export default (env:ENV): webpack.Configuration => {
             filename: '[name].[contenthash].js',
             path: build,
             clean: true,
+            publicPath: '/'
         },
         plugins: buildPlugins(html, options),
         stats: {
