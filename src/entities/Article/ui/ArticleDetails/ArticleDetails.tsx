@@ -4,14 +4,15 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById';
 import { useSelector } from 'react-redux';
-import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading
 } from '../../model/selectors/getArticleDetails';
 import { articleDetailsReducer } from '../../model/slice/ArticleDetailsSlice';
+import cls from './ArticleDetails.module.scss';
 
 export interface ArticleDetailsProps {
     className?: string
@@ -37,7 +38,15 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
     let content;
 
     if (isLoading) {
-        content = (<div><Loader /></div>);
+        content = (
+            <div>
+                <Skeleton classname={cls.avatar} width={200} height={200} border="50%" />
+                <Skeleton classname={cls.title} width={300} height={32} />
+                <Skeleton classname={cls.skeleton} width={600} height={24} />
+                <Skeleton classname={cls.skeleton} width="100%" height={200} />
+                <Skeleton classname={cls.skeleton} width="100%" height={200} />
+            </div>
+        );
     } else if (error) {
         content = (<Text align={TextAlign.CENTER} theme={TextTheme.ERROR} title="Произошла ошибка при загрузке статьи" />);
     } else {
