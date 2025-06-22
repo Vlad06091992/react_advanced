@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import cls from './Skeleton.module.scss';
 
 interface SkeletonProps {
-    classname?:string
+    className?:string
     height?:string | number
     width?:string | number
     border ?:string | number
@@ -11,10 +11,10 @@ interface SkeletonProps {
 
 export const Skeleton = (props:SkeletonProps) => {
     const {
-        height, width, border, classname
+        height, width, border, className
     } = props;
     const styles:CSSProperties = { height, width, borderRadius: border };
 
-    return (<div style={styles} className={classnames(cls.Skeleton, [classname])} />
+    return (<div style={styles} className={classnames(cls.Skeleton, [className])} />
     );
 };

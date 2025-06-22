@@ -1,19 +1,27 @@
-import { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { memo } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classnames } from 'shared/lib/classnames';
+import { Text } from 'shared/ui/Text/Text';
+import { ArticleTextBlock } from '../../model/types/Article';
+import cls from './ArticleTextBlockComponent.module.scss';
 
 export interface ArticleTextBlockComponentProps {
-    className?:string
+    className?: string
+    block: ArticleTextBlock
 }
 
-export const ArticleTextBlockComponent:FC<ArticleTextBlockComponentProps> = ({ className }) =>
-// const dispatch = useAppDispatch();
-// const value = useSelector<StateSchema>(getCounterValue);
+export const ArticleTextBlockComponent = memo(({ className, block }: ArticleTextBlockComponentProps) => {
+    const {
+        title, paragraphs, type, id
+    } = block;
 
-    (
+    return (
         <div className={classnames(className)}>
-            ArticleTextBlockComponent
+
+            {title && <Text title={title} className={cls.title} />}
+            {paragraphs.length && paragraphs.map((p, i) => (
+                <Text text={p} key={i} className={cls.paragraph} />
+            ))}
         </div>
     );
+});

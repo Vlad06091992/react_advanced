@@ -6,9 +6,6 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { CombinedState } from 'redux';
-// import { api } from '../../../../shared/api/api';
-
-// ...
 
 export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>, navigate: NavigateFunction) {
     const rootReducer: ReducersMapObject<StateSchema> = {

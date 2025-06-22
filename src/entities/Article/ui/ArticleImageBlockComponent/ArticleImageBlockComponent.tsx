@@ -1,16 +1,23 @@
-import { FC } from 'react';
+import { memo } from 'react';
 import { classnames } from 'shared/lib/classnames';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { ArticleImageBlock } from '../../model/types/Article';
+import cls from './ArticleImageBlockComponent.module.scss';
 
 export interface ArticleImageBlockComponentProps {
-    className?:string
+    className?: string
+    block: ArticleImageBlock
 }
 
-export const ArticleImageBlockComponent:FC<ArticleImageBlockComponentProps> = ({ className }) =>
-// const dispatch = useAppDispatch();
-// const value = useSelector<StateSchema>(getCounterValue);
+export const ArticleImageBlockComponent = memo(({ className, block }: ArticleImageBlockComponentProps) => {
+    const {
+        title, src, type, id
+    } = block;
 
-    (
+    return (
         <div className={classnames(className)}>
-            ArticleImageBlockComponent
+            <img alt={block.title} src={src} className={cls.img} />
+            {title && <Text text={title} align={TextAlign.CENTER} />}
         </div>
     );
+});
