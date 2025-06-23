@@ -4,6 +4,7 @@ import { User, UserSchema } from '../types/user';
 
 const initialState = {
     authData: null,
+    isInit: false
 } as UserSchema;
 
 export const userSlice = createSlice({
@@ -19,6 +20,8 @@ export const userSlice = createSlice({
             if (user) {
                 state.authData = JSON.parse(user);
             }
+
+            state.isInit = true;
         },
 
         logout: (state) => {

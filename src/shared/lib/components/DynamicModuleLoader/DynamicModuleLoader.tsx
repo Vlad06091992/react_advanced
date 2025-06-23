@@ -14,17 +14,17 @@ export type ReducerList = Partial<Record<StateSchemaKey, Reducer>>
 type ReducersListEntry = [StateSchemaKey, Reducer]
 
 export interface DynamicModuleLoaderProps {
-    reducers:ReducerList
-    children:ReactNode
-    removeAfterUnmount?:boolean
+    reducers: ReducerList
+    children: ReactNode
+    removeAfterUnmount?: boolean
 }
 
 export const DynamicModuleLoader = ({
     children, reducers, removeAfterUnmount,
-}:DynamicModuleLoaderProps) => {
+}: DynamicModuleLoaderProps) => {
     const dispatch = useAppDispatch();
 
-    const store:ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
+    const store: ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {
         Object.entries(reducers).forEach(([reducerKey, reducer]) => {
