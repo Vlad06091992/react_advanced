@@ -1,15 +1,9 @@
-import {
-    createEntityAdapter,
-    createSlice, PayloadAction
-} from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Comment } from 'entities/Comments';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById';
-import { Article } from 'entities/Article';
 import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/services/fetchCommentsByArticleId';
 import { ArticleDetailsCommentSchema } from '../types/ArticleDetailsCommentSchema';
-
-type Book = { bookId: string; title: string }
 
 const commentsAdapter = createEntityAdapter<Comment>({
     // Assume IDs are stored in a field other than `book.id`
@@ -28,7 +22,7 @@ const ArticleDetailsCommentsSlice = createSlice({
         ids: [],
         entities: {},
         error: null,
-        isLoading: false,
+        isLoading: true,
     }),
     reducers: {
         // Can pass adapter functions directly as case reducers.  Because we're passing this
@@ -44,6 +38,7 @@ const ArticleDetailsCommentsSlice = createSlice({
             .addCase(fetchCommentsByArticleId.pending, (state, action) => {
                 state.error = null;
                 state.isLoading = true;
+                debugger;
             })
             .addCase(fetchCommentsByArticleId.fulfilled, (state, action:PayloadAction<Comment[]>) => {
                 state.isLoading = false;

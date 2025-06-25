@@ -1,9 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import {loginActions} from "features/AuthByUsername/model/slice/loginSlice";
 
 interface LoginByUsernameProps {
     username: string;
@@ -30,8 +28,6 @@ export const loginByUsername = createAsyncThunk<
             dispatch(userActions.setAuthData(response.data));
             return response.data;
         } catch (e) {
-            console.log(e);
-            debugger
             return rejectWithValue('Не удалось авторизоваться');
         }
     },

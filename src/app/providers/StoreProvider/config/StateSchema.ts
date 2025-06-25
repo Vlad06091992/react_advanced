@@ -9,6 +9,7 @@ import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { AppDispatch } from 'app/providers/StoreProvider';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
 
 export interface StateSchema {
     counter:CounterSchema,
@@ -19,6 +20,7 @@ export interface StateSchema {
     profileData?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,
     articleDetailsComments?: ArticleDetailsCommentSchema,
+    addCommentForm?: AddCommentFormSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema

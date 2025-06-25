@@ -57,7 +57,6 @@ export const profileSlice = createSlice({
             })
             .addCase(updateProfileData.rejected, (state, action:PayloadAction<ValidateProfileError[] | undefined >) => {
                 state.isLoading = false;
-                debugger;
                 state.validateError = action.payload;
             });
     },

@@ -9,16 +9,26 @@ import cls from './CommentsList.module.scss';
 
 export interface CommentsListProps {
     className?:string
-    isLoading:boolean;
+    isLoading?:boolean | null;
     comments:Comment[]
 }
 
 export const CommentsList = memo(({ className, comments, isLoading } : CommentsListProps) => {
-    const dispatch = useAppDispatch();
     const { t, i18n } = useTranslation();
+
+    if (isLoading) {
+        return (
+            <div className={classnames(cls.CommentList, [className], {})}>
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+            </div>
+        );
+    }
+
     return (
         <div className={classnames(className)}>
-            {comments?.length ? comments.map((comment) => <CommentCard isLoading={false} className={cls.comment} comment={comment} />) : <Text text={t('Комментариев отсутствуют')} />}
+            {comments?.length ? comments.map((comment) => <CommentCard isLoading={isLoading} className={cls.comment} comment={comment} />) : <Text text={t('Комментариев отсутствуют')} />}
         </div>
     );
 });

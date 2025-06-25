@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -96,10 +98,28 @@
       "userId": "1"
     },
     {
-      "id": "3",
-      "text": "some comment 3",
       "articleId": "1",
-      "userId": "1"
+      "userId": "1",
+      "text": "привет",
+      "id": "xHWq2DX"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "аааа",
+      "id": "-U6_J_W"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "fdfdfd",
+      "id": "6SkOsSu"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "fsdfdsfsd",
+      "id": "kZ2Spsq"
     }
   ],
   "users": [
@@ -108,7 +128,7 @@
       "username": "admin",
       "password": "123",
       "role": "ADMIN",
-      "avatar": "https://teknotower.com/wp-content/uploads/2020/11/js.png"
+      "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200"
     },
     {
       "id": "2",
@@ -118,14 +138,28 @@
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
-  "profile": {
-    "first": "vladislav",
-    "lastname": "Смирнов",
-    "age": 32,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Ekaterinburg",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Владислав",
+      "lastname": "Смирнов",
+      "age": 32,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Ekaterinburg",
+      "username": "admin",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Владислав",
+      "lastname": "Суетин",
+      "age": 33,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Gelendzhik",
+      "username": "sueta",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    }
+  ]
 }
