@@ -9,6 +9,9 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { useNavigate } from 'react-router';
+import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
 import { addCommentForArticle } from '../services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId';
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../model/selectors/comments';
@@ -31,6 +34,7 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const commentsError = useSelector(getArticleCommentsError);
+    const navigate = useNavigate();
 
     if (commentsIsLoading) {
         debugger;
@@ -39,6 +43,10 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
     const onSendComment = useCallback((text:string) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
+
+    const onBackToList = useCallback(() => {
+        navigate(RouterPaths.articles);
+    }, [navigate]);
 
     useEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -53,7 +61,10 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classnames(classname)}>
+            <div className={classnames(cls.articleDetailsPage, [classname])}>
+                <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
+                    {t('Назад к списку')}
+                </Button>
                 <ArticleDetails articleId={id} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendComment} />
