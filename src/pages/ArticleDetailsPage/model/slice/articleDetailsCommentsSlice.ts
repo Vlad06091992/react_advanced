@@ -6,10 +6,7 @@ import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/services/fetc
 import { ArticleDetailsCommentSchema } from '../types/ArticleDetailsCommentSchema';
 
 const commentsAdapter = createEntityAdapter<Comment>({
-    // Assume IDs are stored in a field other than `book.id`
     selectId: (comment: Comment) => comment.id,
-    // Keep the "all IDs" array sorted based on book titles
-    // sortComparer: (a, b) => a.title.localeCompare(b.title),
 });
 
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
@@ -22,7 +19,7 @@ const ArticleDetailsCommentsSlice = createSlice({
         ids: [],
         entities: {},
         error: null,
-        isLoading: true,
+        isLoading: false,
     }),
     reducers: {
         // Can pass adapter functions directly as case reducers.  Because we're passing this
@@ -38,7 +35,6 @@ const ArticleDetailsCommentsSlice = createSlice({
             .addCase(fetchCommentsByArticleId.pending, (state, action) => {
                 state.error = null;
                 state.isLoading = true;
-                debugger;
             })
             .addCase(fetchCommentsByArticleId.fulfilled, (state, action:PayloadAction<Comment[]>) => {
                 state.isLoading = false;
