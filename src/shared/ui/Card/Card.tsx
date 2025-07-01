@@ -19,8 +19,6 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card: FC<CardProps> = memo(({ className, children, ...otherProps }) => {
     const [isHover, useHoverFuncs] = useHover();
 
-    console.debug(isHover);
-
     return (
         <div
             {...useHoverFuncs}

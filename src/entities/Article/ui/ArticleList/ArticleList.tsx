@@ -20,19 +20,12 @@ export const ArticleList = ({
 }: ArticleListProps) => {
     const { t, i18n } = useTranslation('about');
 
-    if (isLoading) {
-        return (
-            <div className={classnames(className, [cls[viewMode]], {})}>
-                {getSkeletons(viewMode)}
-            </div>
-        );
-    }
-
     const renderArticle = (article:Article) => <ArticleListItem key={article.id} className={cls.card} viewMode={viewMode} article={article} />;
 
     return (
         <div className={classnames(className, [cls[viewMode]], {})}>
             {articles?.length > 0 ? articles.map(renderArticle) : null}
+            {isLoading && getSkeletons(viewMode)}
         </div>
     );
 };

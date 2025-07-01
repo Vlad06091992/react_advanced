@@ -16,10 +16,3 @@
   display: flex;
 }
 
-.page-wrapper {
-  overflow-y: auto;
-  height: calc(100vh - var(--navbar-height));
-  flex-grow: 1;
-  padding: 20px 20px 20px 40px;
-  width: 100%
-}

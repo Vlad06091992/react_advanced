@@ -9,11 +9,9 @@ export const AppRouter = memo(() => {
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <div className="page-wrapper">
-                <Routes>
-                    {routes}
-                </Routes>
-            </div>
+            <Routes>
+                {routes}
+            </Routes>
         </Suspense>
     );
 });

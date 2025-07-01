@@ -38,10 +38,6 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
     const article = useSelector(getArticleDetailsData);
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
-    debugger;
-    if (isLoading) {
-        debugger;
-    }
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {

@@ -12,6 +12,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { addCommentForArticle } from '../services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId';
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../model/selectors/comments';
@@ -36,10 +37,6 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
     const commentsError = useSelector(getArticleCommentsError);
     const navigate = useNavigate();
 
-    if (commentsIsLoading) {
-        debugger;
-    }
-
     const onSendComment = useCallback((text:string) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
@@ -61,7 +58,7 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classnames(cls.articleDetailsPage, [classname])}>
+            <Page className={classnames(cls.articleDetailsPage, [classname])}>
                 <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
                     {t('Назад к списку')}
                 </Button>
@@ -72,7 +69,7 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
                     comments={comments}
                     isLoading={commentsIsLoading}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

@@ -17,7 +17,6 @@ export const sendComment = createAsyncThunk<
         } = thunkApi;
 
         try {
-            debugger;
             const userAuthData = getUserAuthData(getState());
             const commentText = getAddCommentFormText(getState());
             const article = getArticleDetailsData(getState());
@@ -33,7 +32,6 @@ export const sendComment = createAsyncThunk<
                 text: commentText,
             };
 
-            debugger;
             const response = await extra.api.post<Comment>('/comments', data);
 
             dispatch(addCommentFormActions.setText(''));

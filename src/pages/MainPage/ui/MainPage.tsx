@@ -1,14 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { Page } from 'shared/ui/Page/Page';
 
 const MainPage = (props:any) => {
     const { t, i18n } = useTranslation();
 
     const [value, setValue] = useState('');
     return (
-        <div style={{ color: 'green' }}>
+        <Page>
             <div>{t('Главная страница')}</div>
-        </div>
+        </Page>
     );
 };
 
