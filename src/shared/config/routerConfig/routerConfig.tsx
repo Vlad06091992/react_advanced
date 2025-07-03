@@ -20,9 +20,9 @@ enum RouterConfig {
 }
 export const RouterPaths = {
     [RouterConfig.MAIN]: '/',
-    [RouterConfig.PROFILE]: '/profile',
+    [RouterConfig.PROFILE]: '/profile/', // +id
     [RouterConfig.ARTICLES]: '/articles',
-    [RouterConfig.ARTICLE_DETAILS]: '/articles/:id', // +id
+    [RouterConfig.ARTICLE_DETAILS]: '/articles/', // +id
     [RouterConfig.ABOUT]: '/about',
     [RouterConfig.NOT_FOUND]: '*',
 };
@@ -30,8 +30,8 @@ export const RouterPaths = {
 export const routerConfig:AppRoutesProps[] = [
     { element: <AboutPage />, path: RouterPaths[RouterConfig.ABOUT] },
     { element: <ArticlesPage />, path: `${RouterPaths[RouterConfig.ARTICLES]}`, authOnly: true },
-    { element: <ArticleDetailsPage />, path: RouterPaths[RouterConfig.ARTICLE_DETAILS], authOnly: true },
-    { element: <ProfilePage />, path: RouterPaths[RouterConfig.PROFILE], authOnly: true },
+    { element: <ArticleDetailsPage />, path: `${RouterPaths[RouterConfig.ARTICLE_DETAILS]}:id`, authOnly: true },
+    { element: <ProfilePage />, path: `${RouterPaths[RouterConfig.PROFILE]}:id`, authOnly: true },
     { element: <MainPage />, path: RouterPaths[RouterConfig.MAIN] },
     { element: <NotFoundPage />, path: RouterPaths[RouterConfig.NOT_FOUND] },
 ];

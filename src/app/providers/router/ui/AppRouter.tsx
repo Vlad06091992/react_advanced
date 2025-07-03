@@ -2,8 +2,6 @@ import React, { memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routerConfig } from 'shared/config/routerConfig/routerConfig';
 import { PageLoader } from 'widgets/PageLoader/PageLoader';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
 import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
 
 export const AppRouter = memo(() => {
@@ -11,11 +9,9 @@ export const AppRouter = memo(() => {
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <div className="page-wrapper">
-                <Routes>
-                    {routes}
-                </Routes>
-            </div>
+            <Routes>
+                {routes}
+            </Routes>
         </Suspense>
     );
 });

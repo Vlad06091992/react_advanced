@@ -3,7 +3,7 @@ import { classnames } from 'shared/lib/classnames';
 import React, { memo } from 'react';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import styles from './SidebarItem.module.scss';
-import { SidebarItemTypes } from '../../model/items';
+import { SidebarItemTypes } from '../../types/sidebar';
 
 interface SidebarItemProps {
     classname?:string

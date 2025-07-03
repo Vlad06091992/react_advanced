@@ -3,10 +3,10 @@ import { classnames } from 'shared/lib/classnames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
-import { sidebarItemsList } from 'widgets/Sidebar/model/items';
 import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { getSidebarItemsList } from '../../model/selector/getSidebarItems';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -16,9 +16,10 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
     const [collapsed, setCollapsed] = useState(false);
     const isAuth = useSelector(getUserAuthData);
+    const sidebarItemsList = useSelector(getSidebarItemsList);
     const onToggle = () => setCollapsed(!collapsed);
     return (
-        <div
+        <menu
             data-testid="sidebar"
             className={classnames(styles.Sidebar, [], { [styles.collapsed]: collapsed })}
         >
@@ -43,6 +44,6 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} className={styles.langSwitcher} />
             </div>
-        </div>
+        </menu>
     );
 });

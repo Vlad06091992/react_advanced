@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
+import cls from './c.module.scss';
 
 interface CProps {
     classname?:string
