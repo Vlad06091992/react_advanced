@@ -7,4 +7,5 @@ export const getArticlesPageIsLoading = (state:StateSchema) => state.articlesPag
 export const getArticlesPageViewMode = (state:StateSchema) => state.articlesPage?.viewMode || ArticlesViewMode.SMALL;
 export const getArticlesPageNumber = (state:StateSchema) => state.articlesPage?.pageNumber || 1;
 export const getArticlesPageSize = (state:StateSchema) => state.articlesPage?.pageSize || 9;
+export const getArticlesPageIsInited = (state:StateSchema) => state.articlesPage?._inited || false;
 export const getArticlesPageHasMore = (state:StateSchema) => state.articlesPage?.hasMore || false;

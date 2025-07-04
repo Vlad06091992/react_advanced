@@ -9,10 +9,12 @@ export interface ReducerManager {
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>
     add: (key:StateSchemaKey, reducer:Reducer)=>void,
     remove: (key:StateSchemaKey)=>void,
+    getMountedreducers:() => Set<StateSchemaKey>,
 }
 
 export function createReducerManager(initialReducers:ReducersMapObject<StateSchema>):ReducerManager {
     const reducers = { ...initialReducers };
+    const mountedReducers:Set<StateSchemaKey> = new Set();
     let combinedReducer = combineReducers(reducers);
 
     let keysToRemove:StateSchemaKey[] = [];
@@ -35,15 +37,18 @@ export function createReducerManager(initialReducers:ReducersMapObject<StateSche
                 return;
             }
             reducers[key] = reducer;
+            mountedReducers.add(key);
             combinedReducer = combineReducers(reducers);
         },
         remove: (key:StateSchemaKey) => {
             if (!key || !reducers[key]) {
                 return;
             }
+            mountedReducers.delete(key);
             delete reducers[key];
             keysToRemove.push(key);
             combinedReducer = combineReducers(reducers);
         },
+        getMountedreducers: () => mountedReducers
     };
 }

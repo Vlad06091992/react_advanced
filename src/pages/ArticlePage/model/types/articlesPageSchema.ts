@@ -8,5 +8,6 @@ export interface ArticlesPageSchema extends EntityState<Article> {
     // pagination settings
     pageNumber:number
     pageSize:number
-    hasMore:boolean
+    hasMore:boolean,
+    _inited:boolean
 }

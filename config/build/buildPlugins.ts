@@ -23,10 +23,10 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
 
     ];
 
-    isDev && plugins.push(new BundleAnalyzerPlugin({
-        // автоматический запуск
-        openAnalyzer: false,
-    }));
+    // isDev && plugins.push(new BundleAnalyzerPlugin({
+    //     // автоматический запуск
+    //     openAnalyzer: false,
+    // }));
 
     isDev && plugins.push(new webpack.HotModuleReplacementPlugin());
     isDev && plugins.push(new ReactRefreshWebpackPlugin());

@@ -8,7 +8,12 @@ import { fetchArticlesList } from 'pages/ArticlePage/model/services/fetchArticle
 import { useSelector } from 'react-redux';
 import { Page } from 'shared/ui/Page/Page';
 import { fetchNextArticlePage } from 'pages/ArticlePage/model/services/fetchNextArticlePage/fetchNextArticlePage';
-import { getArticlesPageIsLoading, getArticlesPageViewMode } from '../model/selectors/articlePageSelectors';
+import { initArticlePage } from 'pages/ArticlePage/model/services/initArticlePage/initArticlePage';
+import {
+    getArticlesPageIsInited,
+    getArticlesPageIsLoading,
+    getArticlesPageViewMode
+} from '../model/selectors/articlePageSelectors';
 
 const initialReducer = {
     articlesPage: articlesPageReducer
@@ -30,18 +35,18 @@ const ArticlePage = () => {
     };
 
     useEffect(() => {
-        dispatch(articlePageActions.initState());
-        dispatch(fetchArticlesList({ pageNumber: 1 }));
+        dispatch(initArticlePage());
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount>
-            <Page onScrollEnd={onLoadNextPart}>
-                <ArticleViewSelector viewMode={viewMode} onViewClick={onViewClick} />
-                <ArticleList isLoading={isLoading} viewMode={viewMode} articles={articles} />
-
-            </Page>
-        </DynamicModuleLoader>
+        <div>
+            <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount={false}>
+                <Page onScrollEnd={onLoadNextPart}>
+                    <ArticleViewSelector viewMode={viewMode} onViewClick={onViewClick} />
+                    <ArticleList isLoading={isLoading} viewMode={viewMode} articles={articles} />
+                </Page>
+            </DynamicModuleLoader>
+        </div>
     );
 };
 

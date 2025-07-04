@@ -7,7 +7,7 @@ import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { CombinedState } from 'redux';
 
-export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>, navigate: NavigateFunction) {
+export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
@@ -18,7 +18,6 @@ export function createReduxStore(initialState:StateSchema, asyncReducers:Reducer
 
     const ExtraArg = {
         api,
-        navigate,
     };
     const store = configureStore({
         // reducer: rootReducer,

@@ -25,7 +25,8 @@ export const articlePageSlice = createSlice({
         viewMode: ArticlesViewMode.SMALL,
         pageNumber: 1,
         pageSize: 5,
-        hasMore: true
+        hasMore: true,
+        _inited: false
 
     }) || [],
     reducers: {
@@ -45,6 +46,7 @@ export const articlePageSlice = createSlice({
         initState: (state) => {
             state.viewMode = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticlesViewMode;
             state.pageSize = state.viewMode === ArticlesViewMode.BIG ? 4 : 9;
+            state._inited = true;
         },
     },
     extraReducers: (builder) => {
@@ -54,7 +56,6 @@ export const articlePageSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchArticlesList.fulfilled, (state, action:AnyAction) => {
-                debugger;
                 state.isLoading = false;
                 articleAdapter.addMany(state, action.payload);
                 state.hasMore = action.payload.length > 0;
