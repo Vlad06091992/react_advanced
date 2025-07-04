@@ -6,12 +6,14 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { CombinedState } from 'redux';
+import { scrollSaveReducer } from 'features/ScrollSave';
 
 export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        scrollSave: scrollSaveReducer
     };
 
     const reducerManager = createReducerManager(rootReducer);

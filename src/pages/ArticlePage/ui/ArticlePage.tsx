@@ -6,7 +6,7 @@ import { articlePageActions, articlesPageReducer, getArticles } from 'pages/Arti
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlePage/model/services/fetchArticlesList/fetchArticlesList';
 import { useSelector } from 'react-redux';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlePage } from 'pages/ArticlePage/model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { initArticlePage } from 'pages/ArticlePage/model/services/initArticlePage/initArticlePage';
 import {

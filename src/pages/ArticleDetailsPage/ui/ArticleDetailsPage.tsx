@@ -12,7 +12,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { addCommentForArticle } from '../services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId';
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../model/selectors/comments';
