@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
-import { articlePageActions } from '../../slices/articlePageSlice';
+import { articlesPageActions } from '../../slices/articlePageSlice';
 import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageHasMore,
@@ -18,8 +18,8 @@ export const fetchNextArticlePage = createAsyncThunk<void, void, ThunkConfig<str
         const pageNumber = getArticlesPageNumber(getState());
         const isLoading = getArticlesPageIsLoading(getState());
         if (hasMore && !isLoading) {
-            dispatch(articlePageActions.setPage(pageNumber + 1));
-            dispatch(fetchArticlesList({ pageNumber: pageNumber + 1 }));
+            dispatch(articlesPageActions.setPage(pageNumber + 1));
+            dispatch(fetchArticlesList({ replace: false }));
         }
     },
 );

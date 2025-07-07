@@ -10,7 +10,7 @@ import { AppDispatch } from 'app/providers/StoreProvider';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
-import { ArticlesPageSchema } from 'pages/ArticlePage/model/types/articlesPageSchema';
+import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { ScrollSaveSchema } from 'features/ScrollSave/model/types/ScrollSaveSchema';
 
 export interface StateSchema {

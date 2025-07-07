@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
 import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Article, ArticlesViewMode } from '../../model/types/Article';
 import cls from './ArticleList.module.scss';
 
@@ -22,6 +23,13 @@ export const ArticleList = ({
 
     const renderArticle = (article:Article) => <ArticleListItem key={article.id} className={cls.card} viewMode={viewMode} article={article} />;
 
+    if (!isLoading && !articles?.length) {
+        return (
+            <div className={classnames(className, [cls[viewMode]], {})}>
+                <Text size={TextSize.L} title={t('Статьи не найдены')} />
+            </div>
+        );
+    }
     return (
         <div className={classnames(className, [cls[viewMode]], {})}>
             {articles?.length > 0 ? articles.map(renderArticle) : null}
@@ -29,5 +37,3 @@ export const ArticleList = ({
         </div>
     );
 };
-
-// t('Редактировать')
