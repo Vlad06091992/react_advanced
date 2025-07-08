@@ -7,10 +7,11 @@ import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, useCallback } from 'react';
 
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
 import { useNavigate } from 'react-router';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticlesViewMode, ArticleTextBlock } from '../../model/types/Article';
 
@@ -18,16 +19,15 @@ interface ArticleListItemProps {
     className?: string
     article: Article
     viewMode?: ArticlesViewMode
+    target?: HTMLAttributeAnchorTarget
 
 }
 
-export const ArticleListItem = ({ className, article, viewMode = ArticlesViewMode.SMALL }: ArticleListItemProps) => {
+export const ArticleListItem = ({
+    className, article, viewMode = ArticlesViewMode.SMALL, target
+}: ArticleListItemProps) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-
-    const onOpenArticle = useCallback(() => {
-        navigate(RouterPaths.article_details + article.id);
-    }, [article.id, navigate]);
 
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (
@@ -53,10 +53,13 @@ export const ArticleListItem = ({ className, article, viewMode = ArticlesViewMod
                     <img src={article.img} className={cls.img} alt={article.title} />
                     {textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} /> }
                     <div className={cls.footer}>
-                        <Button onClick={onOpenArticle} theme={ThemeButton.OUTLINE}>
-                            {t(' Читать далее...')}
-                        </Button>
+                        <AppLink target={target} to={RouterPaths.article_details + article.id}>
+                            <Button theme={ThemeButton.OUTLINE}>
+                                {t(' Читать далее...')}
+                            </Button>
+                        </AppLink>
                         {views}
+
                     </div>
                 </Card>
             </div>
@@ -64,20 +67,22 @@ export const ArticleListItem = ({ className, article, viewMode = ArticlesViewMod
     }
 
     return (
-        <div className={classnames(className, [cls[viewMode]], {})}>
+        <AppLink target={target} to={RouterPaths.article_details + article.id}>
+            <div className={classnames(className, [cls[viewMode]], {})}>
 
-            <Card onClick={onOpenArticle} className={cls.card}>
-                <div className={cls.imageWrapper}>
-                    <img src={article.img} alt={article.title} className={cls.img} />
-                    <Text text={article.createdAt} className={cls.date} />
-                </div>
-                <div className={cls.infoWrapper}>
-                    {types}
-                    {views}
-                </div>
-                <Text text={article.title} className={cls.title} />
-            </Card>
-        </div>
+                <Card className={cls.card}>
+                    <div className={cls.imageWrapper}>
+                        <img src={article.img} alt={article.title} className={cls.img} />
+                        <Text text={article.createdAt} className={cls.date} />
+                    </div>
+                    <div className={cls.infoWrapper}>
+                        {types}
+                        {views}
+                    </div>
+                    <Text text={article.title} className={cls.title} />
+                </Card>
+            </div>
+        </AppLink>
     );
 };
 

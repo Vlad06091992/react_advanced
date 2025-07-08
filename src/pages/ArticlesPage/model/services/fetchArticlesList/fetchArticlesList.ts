@@ -11,11 +11,11 @@ import {
     getArticlesPageSortOrder, getArticlesPageType
 } from '../../selectors/articlePageSelectors';
 
-interface fetchArticlelistProps {
+interface FetchArticlelistProps {
     replace?:boolean
 }
 
-export const fetchArticlesList = createAsyncThunk<Article[], fetchArticlelistProps, ThunkConfig<string>>(
+export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlelistProps, ThunkConfig<string>>(
     'articlesPage/fetchArticlesList',
     async (_, { extra, rejectWithValue, getState }) => {
         const pageSize = getArticlesPageSize(getState());

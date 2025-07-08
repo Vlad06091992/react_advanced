@@ -62,7 +62,7 @@
 // export const Normal = Template.bind({});
 // Normal.args = {};
 // Normal.decorators = [StoreDecorator({
-//     articleDetails: {
+//     articleDetailsPage: {
 //         data: article,
 //     },
 // })];
@@ -70,7 +70,7 @@
 // export const Loading = Template.bind({});
 // Loading.args = {};
 // Loading.decorators = [StoreDecorator({
-//     articleDetails: {
+//     articleDetailsPage: {
 //         isLoading: true,
 //     },
 // })];
@@ -78,7 +78,7 @@
 // export const Error = Template.bind({});
 // Error.args = {};
 // Error.decorators = [StoreDecorator({
-//     articleDetails: {
+//     articleDetailsPage: {
 //         error: 'error',
 //     },
 // })];
