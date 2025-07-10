@@ -5,9 +5,13 @@ import { Article } from '../types/Article';
 
 export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(
     'articleDetailsPage/fetchArticleById.ts',
-    async (articleId, { extra, rejectWithValue, getState }) => {
+    async (articleId, { extra, rejectWithValue }) => {
         try {
-            const response = await extra.api.get<Article>(`/articles/${articleId}`);
+            const response = await extra.api.get<Article>(`/articles/${articleId}`, {
+                params: {
+                    _expand: 'user'
+                }
+            });
             return response.data;
         } catch (e) {
             console.log(e);
