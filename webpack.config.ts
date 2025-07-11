@@ -13,6 +13,8 @@ export default (env:ENV): webpack.Configuration => {
             entry: path.resolve(__dirname, 'src', 'index.tsx'),
             html: path.resolve(__dirname, 'public', 'index.html'),
             src: path.resolve(__dirname, 'src'),
+            locales: path.resolve(__dirname, 'public', 'locales'),
+            buildLocales: path.resolve(__dirname, 'build', 'locales'),
         },
         isDev: env.mode === 'development',
         apiUrl: 'http://localhost:8001',

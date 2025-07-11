@@ -3,18 +3,20 @@ import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/BuildOptions';
 
-export default ({ config }: {config: webpack.Configuration}) => {
+export default ({ config }: { config: webpack.Configuration }) => {
     const paths: BuildPaths = {
         build: '',
         html: '',
         entry: '',
+        locales: '',
+        buildLocales: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
     config!.resolve!.modules!.push(paths.src);
     config!.resolve!.extensions!.push('.ts', '.tsx');
 
     // eslint-disable-next-line no-param-reassign
-    //@ts-ignore
+    // @ts-ignore
     config.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
