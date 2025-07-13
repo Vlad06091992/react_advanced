@@ -17,7 +17,7 @@ export default (env:ENV): webpack.Configuration => {
             buildLocales: path.resolve(__dirname, 'build', 'locales'),
         },
         isDev: env.mode === 'development',
-        apiUrl: 'http://localhost:8001',
+        apiUrl: env.apiUrl || 'http://localhost:8001',
     };
 
     const { paths: { build, entry, html }, isDev = true } = options;
