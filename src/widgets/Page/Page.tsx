@@ -19,6 +19,8 @@ interface PageProps {
 
 }
 
+export const PAGE_ID = 'PAGE_ID';
+
 export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -43,7 +45,7 @@ export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const throttledOnScroll = useThrottle(onScroll, 500);
 
     return (
-        <section ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
+        <section id={PAGE_ID} ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
             {children}
             { onScrollEnd && <div className={cls.scrollTrigger} ref={triggerRef} />}
         </section>
