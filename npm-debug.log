@@ -13,7 +13,7 @@
 7 verbose unsafe-perm in lifecycle true
 8 info react_advanced@1.0.0 Failed to exec start:dev:server script
 9 verbose stack Error: react_advanced@1.0.0 start:dev:server: `node ./json-server/index.js`
-9 verbose stack Exit status 3221225786
+9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (C:\Users\Admin\Desktop\ulbi\react_advanced\node_modules\npm\lib\utils\lifecycle.js:217:16)
 9 verbose stack     at EventEmitter.emit (node:events:514:28)
 9 verbose stack     at ChildProcess.<anonymous> (C:\Users\Admin\Desktop\ulbi\react_advanced\node_modules\npm\lib\utils\spawn.js:24:14)
@@ -28,7 +28,7 @@
 15 error npm  v2.15.12
 16 error code ELIFECYCLE
 17 error react_advanced@1.0.0 start:dev:server: `node ./json-server/index.js`
-17 error Exit status 3221225786
+17 error Exit status 1
 18 error Failed at the react_advanced@1.0.0 start:dev:server script 'node ./json-server/index.js'.
 18 error This is most likely a problem with the react_advanced package,
 18 error not with npm itself.

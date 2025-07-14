@@ -4,7 +4,7 @@
   background: var(--inverted-bg-color);
   display: flex;
   align-items: center;
-  justify-content: end;
+  //justify-content: end;
   padding: 20px;
 }
 
@@ -15,4 +15,12 @@
 
 .mainLink {
   margin-right: 10px;
+}
+
+.exitBtn{
+  margin-left: auto;
+}
+
+.createBtn{
+  margin-left: 120px;
 }

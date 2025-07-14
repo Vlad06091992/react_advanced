@@ -37,7 +37,8 @@ export type ArticleBlock = ArticleTextBlock | ArticleImageBlock | ArticleCodeBlo
 export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
+    ECONOMICS = 'ECONOMICS',
+    ALL = 'ALL'
 }
 
 export interface Article {
@@ -51,3 +52,11 @@ export interface Article {
     type: ArticleType[];
     blocks: ArticleBlock[];
 }
+
+export enum ArticleSortFields {
+    VIEWS = 'views',
+    TITLE = 'title',
+    CREATED = 'createdAt',
+}
+
+export type SortOrder = 'asc' | 'desc'
