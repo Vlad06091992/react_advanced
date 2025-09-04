@@ -36,8 +36,8 @@ const config: Config = {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
-        "~src/(.*)": "<rootDir>/src/$1",
-        "^src/(.*)$": "<rootDir>/../src/$1"
+        '~src/(.*)': '<rootDir>/src/$1',
+        '^src/(.*)$': '<rootDir>/../src/$1'
     },
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     globals: {

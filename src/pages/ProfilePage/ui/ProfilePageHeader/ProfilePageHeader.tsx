@@ -9,13 +9,13 @@ import { getUserAuthData } from 'entities/User';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
-    classname?:string
+    className?:string
     readonly?:boolean
 
 }
 
-export const ProfilePageHeader = ({ classname, readonly }:ProfilePageHeaderProps) => {
-    const { t, i18n } = useTranslation('about');
+export const ProfilePageHeader = ({ className, readonly }:ProfilePageHeaderProps) => {
+    const { t } = useTranslation('about');
     const dispatch = useAppDispatch();
 
     // можно объединить функционал в reselect, либо в кастомный хук
@@ -35,7 +35,7 @@ export const ProfilePageHeader = ({ classname, readonly }:ProfilePageHeaderProps
     };
 
     return (
-        <div className={classnames(cls.ProfilePageHeader)}>
+        <div className={classnames(cls.ProfilePageHeader, [className])}>
             <Text title={t('Профиль')} />
             {canEdit && (
                 <div className={cls.btnWrapper}>
@@ -67,8 +67,7 @@ export const ProfilePageHeader = ({ classname, readonly }:ProfilePageHeaderProps
 
                     )}
                 </div>
-            )
-                 }
+            )}
         </div>
     );
 };

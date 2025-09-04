@@ -14,7 +14,7 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem = memo(({ classname, item: { Icon, path, text }, collapsed }:SidebarItemProps) => {
-    const { t, i18n } = useTranslation('about');
+    const { t } = useTranslation('about');
     return (
         <AppLink className={classnames(styles.link, [classname], { [styles.collapsed]: collapsed })} theme={AppLinkTheme.SECONDARY} to={path}>
             <Icon className={styles.icon} />

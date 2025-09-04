@@ -1,7 +1,5 @@
-import { Link, LinkProps } from 'react-router-dom';
 import React, {
-    CSSProperties,
-    FC, memo, ReactNode, useMemo
+    CSSProperties, FC, memo, useMemo
 } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import styles from './Avatar.module.scss';

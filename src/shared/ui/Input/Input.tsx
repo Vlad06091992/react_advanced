@@ -18,7 +18,7 @@ export interface InputProps extends HTMLInputProps{
 
 export const Input = memo((props:InputProps) => {
     const {
-        className, onChange, placeholder, value, children, type = 'text', autofocus, readonly = false, ...restProps
+        className, onChange, placeholder, value, type = 'text', autofocus, readonly = false, ...restProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
@@ -55,7 +55,7 @@ export const Input = memo((props:InputProps) => {
     const isCaretVisible = isFocused && !readonly;
 
     return (
-        <div className={classnames(styles.inputWrapper)}>
+        <div className={classnames(styles.inputWrapper, [className])}>
             {placeholder && <div className={styles.placeholder}>{`${placeholder}>`}</div>}
 
             <div className={styles.caretWrapper}>

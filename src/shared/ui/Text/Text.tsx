@@ -30,15 +30,11 @@ export interface TextProps {
     size?: TextSize;
 }
 
-export const Text: FC<TextProps> = memo(({
-    className, size = TextSize.M, title, text, theme = 'primary', align = TextAlign.LEFT
-}) => {
-    const { t } = useTranslation();
-
-    return (
-        <div className={(classnames(className, [styles[theme], styles[align], styles[size]]))}>
-            {title && <p className={styles.title}>{title}</p>}
-            <p className={styles.text}>{text}</p>
-        </div>
-    );
-});
+export const Text = memo(({
+    className, size = TextSize.M, title, text, theme = TextTheme.PRIMARY, align = TextAlign.LEFT
+}: TextProps) => (
+    <div className={(classnames(className, [styles[theme], styles[align], styles[size]]))}>
+        {title && <p className={styles.title}>{title}</p>}
+        <p className={styles.text}>{text}</p>
+    </div>
+));

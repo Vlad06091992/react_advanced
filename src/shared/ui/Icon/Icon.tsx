@@ -1,6 +1,5 @@
 import { classnames } from 'shared/lib/classnames';
-import React, { FC, memo } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { memo } from 'react';
 import styles from './Icon.module.scss';
 
 export interface IconProps {
@@ -8,10 +7,6 @@ export interface IconProps {
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export const Icon = memo(({ className, Svg }: IconProps) => {
-    const { t } = useTranslation();
-
-    return (
-        <Svg className={(classnames(className, [styles.icon]))} />
-    );
-});
+export const Icon = memo(({ className, Svg }: IconProps) => (
+    <Svg className={(classnames(className, [styles.icon]))} />
+));

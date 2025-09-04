@@ -1,4 +1,4 @@
-import {AnyAction, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
 import { loginByUsername } from '../services/loginByUsername';
 
@@ -34,7 +34,7 @@ export const loginSlice = createSlice({
             })
             .addCase(loginByUsername.rejected, (state, action:AnyAction) => {
                 state.isLoading = false;
-                action.payload && (state.error = action.payload)
+                action.payload && (state.error = action.payload);
             });
     },
 });

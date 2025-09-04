@@ -1,11 +1,11 @@
-import React, { FC, memo, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItemsList } from '../../model/selector/getSidebarItems';
 import styles from './Sidebar.module.scss';
 
@@ -13,7 +13,7 @@ interface SidebarProps {
     className?: string
 }
 
-export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
+export const Sidebar = memo(({ className }:SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const isAuth = useSelector(getUserAuthData);
     const sidebarItemsList = useSelector(getSidebarItemsList);
@@ -21,7 +21,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
     return (
         <menu
             data-testid="sidebar"
-            className={classnames(styles.Sidebar, [], { [styles.collapsed]: collapsed })}
+            className={classnames(styles.Sidebar, [className], { [styles.collapsed]: collapsed })}
         >
             <Button
                 size={ButtonSize.L}
