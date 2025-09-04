@@ -13,6 +13,7 @@ import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/Article';
+import { HStack } from 'shared/ui/Stack';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
@@ -70,18 +71,18 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
     } else {
         content = (
             <>
-                <div className={cls.avatarWrapper}>
+                <HStack align="center" max>
                     <Avatar size={200} className={cls.avatar} src={article?.img} />
-                </div>
+                </HStack>
                 <Text size={TextSize.L} className={cls.title} title={article?.title} text={article?.subtitle} />
                 <div className={cls.ArticleInfo}>
                     <Icon Svg={EyeIcon} />
                     <Text text={String(article?.views)} />
                 </div>
-                <div className={cls.ArticleInfo}>
+                <HStack align="center" gap="16">
                     <Icon Svg={CalendarIcon} />
                     <Text text={article?.createdAt} />
-                </div>
+                </HStack>
 
                 {article?.blocks.map(renderBlock)}
 

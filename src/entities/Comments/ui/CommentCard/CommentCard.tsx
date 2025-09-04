@@ -7,6 +7,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 
 export interface CommentCardProps {
@@ -35,14 +36,14 @@ export const CommentCard = memo(({ className, comment, isLoading } : CommentCard
     }
 
     return (
-        <div className={classnames(className, [cls.commentCard])}>
-            <div className={cls.header}>
+        <VStack max gap="8" className={classnames(className, [cls.commentCard])}>
+            <HStack max align="center">
                 <AppLink to={`${RouterPaths.profile}${user.id}`}>
                     {user.avatar && <Avatar size={30} src={user.avatar} />}
                     <Text className={cls.username} title={user.username} />
                 </AppLink>
-            </div>
+            </HStack>
             <Text className={cls.text} text={comment.text} />
-        </div>
+        </VStack>
     );
 });
