@@ -1,4 +1,6 @@
-import React, { HTMLAttributes, memo, ReactNode } from 'react';
+import React, {
+    FC, HTMLAttributes, memo, ReactNode
+} from 'react';
 import { classnames } from 'shared/lib/classnames';
 import { useHover } from 'shared/lib/hooks/useHover/useHover';
 import cls from './Card.module.scss';
@@ -14,10 +16,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     theme?: CardTheme;
 }
 
-export const Card = memo(({
+export const Card: FC<CardProps> = memo(({
     className, children, theme = CardTheme.NORMAL, ...otherProps
 }:CardProps) => {
-    const [useHoverFuncs] = useHover();
+    const [, useHoverFuncs] = useHover();
 
     return (
         <div
