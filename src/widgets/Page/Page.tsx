@@ -44,11 +44,9 @@ export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const throttledOnScroll = useThrottle(onScroll, 500);
 
     return (
-        <section id={PAGE_ID} ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
+        <main id={PAGE_ID} ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
             {children}
             { onScrollEnd && <div className={cls.scrollTrigger} ref={triggerRef} />}
-        </section>
+        </main>
     );
 };
-
-// t('Редактировать')

@@ -20,7 +20,7 @@ export const Sidebar = memo(({ className }:SidebarProps) => {
     const sidebarItemsList = useSelector(getSidebarItemsList);
     const onToggle = () => setCollapsed(!collapsed);
     return (
-        <menu
+        <aside
             data-testid="sidebar"
             className={classnames(styles.Sidebar, [className], { [styles.collapsed]: collapsed })}
         >
@@ -35,7 +35,7 @@ export const Sidebar = memo(({ className }:SidebarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <VStack gap="8" className={classnames(styles.links, [className])}>
+            <VStack role="navigation" gap="8" className={classnames(styles.links, [className])}>
                 {sidebarItemsList.filter((s) => {
                     if (s.authOnly && !isAuth) return false;
                     return true;
@@ -45,6 +45,6 @@ export const Sidebar = memo(({ className }:SidebarProps) => {
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} className={styles.langSwitcher} />
             </div>
-        </menu>
+        </aside>
     );
 });

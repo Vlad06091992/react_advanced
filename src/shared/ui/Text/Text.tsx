@@ -1,6 +1,5 @@
 import { classnames } from 'shared/lib/classnames';
-import React, { FC, memo } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { memo, ReactNode } from 'react';
 import styles from './Text.module.scss';
 
 export enum TextTheme {
@@ -10,6 +9,7 @@ export enum TextTheme {
 }
 
 export enum TextSize {
+    S = 'size_s',
     M = 'size_m',
     L = 'size_l',
     XL = 'size_xl',
@@ -29,12 +29,24 @@ export interface TextProps {
     align?: TextAlign;
     size?: TextSize;
 }
+type HeaderTags = 'h1' | 'h2' | 'h3'
+
+const titleTags:Record<TextSize, HeaderTags> = {
+    [TextSize.S]: 'h3',
+    [TextSize.M]: 'h2',
+    [TextSize.L]: 'h1',
+    [TextSize.XL]: 'h1'
+};
 
 export const Text = memo(({
     className, size = TextSize.M, title, text, theme = TextTheme.PRIMARY, align = TextAlign.LEFT
-}: TextProps) => (
-    <div className={(classnames(className, [styles[theme], styles[align], styles[size]]))}>
-        {title && <p className={styles.title}>{title}</p>}
-        <p className={styles.text}>{text}</p>
-    </div>
-));
+}: TextProps) => {
+    const HeaderTag = titleTags[size];
+
+    return (
+        <div className={(classnames(className, [styles[theme], styles[align], styles[size]]))}>
+            {title && <HeaderTag className={styles.title}>{title}</HeaderTag>}
+            <p className={styles.text}>{text}</p>
+        </div>
+    );
+});
