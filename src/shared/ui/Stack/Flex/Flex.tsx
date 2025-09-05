@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
-import { memo, ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
@@ -33,17 +32,16 @@ const gapClasses: Record<FlexGap, string> = {
     32: cls.gap32,
 };
 
-export interface FlexProps {
-    className?: string
+export interface FlexProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
     children?: ReactNode
     justify?: FlexJustify
     align?: FlexAlign
-    direction: FlexDirection
+    direction?: FlexDirection
     gap?: FlexGap
     max?: boolean
 }
 
-export const Flex = memo((props: FlexProps) => {
+export const Flex = (props: FlexProps) => {
     const {
         justify = 'start', direction = 'row', align = 'center', children, className, gap, max
     } = props;
@@ -61,4 +59,4 @@ export const Flex = memo((props: FlexProps) => {
     ];
 
     return (<div className={classnames(cls.flex, [className, ...classes], mods)}>{children}</div>);
-});
+};
