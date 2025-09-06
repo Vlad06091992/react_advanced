@@ -8,6 +8,9 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import cls from 'entities/Article/ui/ArticleDetails/ArticleDetails.module.scss';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -19,6 +22,7 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
     const dispatch = useAppDispatch();
 
     const authData = useSelector(getUserAuthData);
+    debugger;
 
     const onShowModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -31,8 +35,30 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
         return (
             <header className={classnames(styles.navbar, [classname])}>
                 <Text theme={TextTheme.INVERTED} className={classnames(styles.appName)} title="react project" />
-                <AppLink className={styles.createBtn} theme={AppLinkTheme.SECONDARY} to={RouterPaths.article_create}>Создать статью</AppLink>
-                <Button className={styles.exitBtn} onClick={onLogout} theme={ThemeButton.INVERTED_CLEAR}>Выйти</Button>
+                <AppLink
+                    className={styles.createBtn}
+                    theme={AppLinkTheme.SECONDARY}
+                    to={RouterPaths.article_create}
+                >
+                    Создать статью
+                </AppLink>
+                <Dropdown
+                    dropDownDirection="down-left"
+                    className={cls.dropdown}
+                    items={[
+                        {
+                            content: 'Выйти',
+                            onClick: onLogout
+                        },
+                        {
+                            content: 'Профиль',
+                            href: RouterPaths.profile + authData.id,
+                        }
+                    ]}
+                    trigger={
+                        <Avatar size={30} className={cls.avatar} src={authData?.avatar} />
+                    }
+                />
             </header>
         );
     }

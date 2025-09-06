@@ -10,8 +10,25 @@
   box-shadow: 4px 4px 8px var(--listbox-bg);
 }
 
-.up {
+.upRight {
   bottom: 100%;
+  left:0%
+}
+
+.upLeft {
+  bottom: 100%;
+  right:0%
+}
+
+
+.downRight {
+  top: 100%;
+  left:0%
+}
+
+.downLeft {
+  top: 100%;
+  right:0%
 }
 
 .item {

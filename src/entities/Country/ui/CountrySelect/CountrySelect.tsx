@@ -30,19 +30,13 @@ export const CountrySelect = memo(({
     }, [onChange]);
 
     return (
-    // <Select
-    //     className={classnames('', [className])}
-    //     label={t('Укажите страну')}
-    //     options={options}
-    //     value={value}
-    //     onChange={onChangeHandler}
-    //     readonly={readonly}
-    // />
-
         <ListBox
-            dropDownDirection="up"
+            dropDownDirection="up-right"
+            // dropDownDirection="up-left"
+            // dropDownDirection="down-left"
+            // dropDownDirection="down-right"
             className={classnames(className)}
-            label={t('Укажите валюту')}
+            label={t('Укажите страну')}
             defaultValue={t('Укажите страну')}
             items={options}
             value={value as string}

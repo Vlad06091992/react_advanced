@@ -1,0 +1,50 @@
+.dropdown{
+  position: relative;
+}
+.btn{
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.menu{
+  background: var(--card-bg);
+  position: absolute;
+  z-index: 10000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px var(--listbox-bg);
+  border: 1px solid var(--primary-color);
+}
+.item{
+  padding: 10px 25px;
+  width: 100%;
+  outline: none;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.active{
+  background: var(--inverted-primary-color);
+}
+
+.upRight {
+  bottom: 100%;
+  left:0%
+}
+
+.upLeft {
+  bottom: 100%;
+  right:0%
+}
+
+
+.downRight {
+  top: 100%;
+  left:0%
+}
+
+.downLeft {
+  top: 100%;
+  right:0%
+}
