@@ -14,6 +14,7 @@ const defaultAsyncReducers:ReducerList = {
     addCommentForm: addCommentFormReducer,
 };
 
+// eslint-disable-next-line no-undef
 export const StoreDecorator = (state: DeepPartial<StateSchema>, asyncReducers?:DeepPartial<ReducersMapObject<StateSchema>>) => (StoryComponent: Story) => (
     <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
         <StoryComponent />

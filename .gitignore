@@ -1,6 +1,5 @@
 /node_modules
 /build
-/dev
 /coverage
 /storybook-static
 .idea

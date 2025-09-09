@@ -7,7 +7,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUIScrollByPath, scrollSaveActions } from 'features/ScrollSave';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getUIScroll } from 'features/ScrollSave/model/selectors/getScrollSave';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
@@ -18,6 +17,8 @@ interface PageProps {
     onScrollEnd?: () => void
 
 }
+
+export const PAGE_ID = 'PAGE_ID';
 
 export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -43,11 +44,9 @@ export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const throttledOnScroll = useThrottle(onScroll, 500);
 
     return (
-        <section ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
+        <main id={PAGE_ID} ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
             {children}
             { onScrollEnd && <div className={cls.scrollTrigger} ref={triggerRef} />}
-        </section>
+        </main>
     );
 };
-
-// t('Редактировать')

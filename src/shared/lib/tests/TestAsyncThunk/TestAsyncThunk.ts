@@ -1,6 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { AsyncThunkAction } from '@reduxjs/toolkit';
-import mocked = jest.mocked;
 import axios, { AxiosStatic } from 'axios';
 
 jest.mock('axios');

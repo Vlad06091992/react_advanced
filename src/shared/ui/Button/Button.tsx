@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, FC, memo } from 'react';
+import React, { ButtonHTMLAttributes, memo } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import styles from './Button.module.scss';
 
@@ -27,7 +27,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 type Mods = Record<string, boolean | undefined>;
 
 // использовать memo где есть children не очень хорошая идея иногда, в 37 уроке это объясняется на 23 минуте
-export const Button: FC<ButtonProps> = memo((props) => {
+export const Button = memo((props: ButtonProps) => {
     const {
         className, size = ButtonSize.M, square, children, theme = ThemeButton.OUTLINE, disabled = false, ...restProps
     } = props;

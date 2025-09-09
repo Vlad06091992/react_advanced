@@ -22,25 +22,29 @@ export const DynamicModuleLoader = ({
     const dispatch = useAppDispatch();
     const store: ReduxStoreWithManager = useStore() as ReduxStoreWithManager;
 
-    useEffect(() => {
-        const mountedReducers = store.reducerManager.getMountedreducers();
-        Object.entries(reducers).forEach(([reducerKey, reducer]) => {
-            if (!mountedReducers.has(reducerKey as StateSchemaKey)) {
-                store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
-                // диспатч ниже чисто для информативности о том, что редьюсер был добавлен
-                dispatch({ type: `@INIT ${reducerKey} reducer` });
-            }
-        });
+    useEffect(
+        () => {
+            const mountedReducers = store.reducerManager.getMountedreducers();
+            Object.entries(reducers).forEach(([reducerKey, reducer]) => {
+                if (!mountedReducers.has(reducerKey as StateSchemaKey)) {
+                    store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
+                    // диспатч ниже чисто для информативности о том, что редьюсер был добавлен
+                    dispatch({ type: `@INIT ${reducerKey} reducer` });
+                }
+            });
 
-        return () => {
-            if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name, reducer]) => {
-                    store.reducerManager.remove(name as StateSchemaKey);
-                    dispatch({ type: `@DESTROY ${name} reducer` });
-                });
-            }
-        };
-    }, []);
+            return () => {
+                if (removeAfterUnmount) {
+                    Object.entries(reducers).forEach(([name]) => {
+                        store.reducerManager.remove(name as StateSchemaKey);
+                        dispatch({ type: `@DESTROY ${name} reducer` });
+                    });
+                }
+            };
+        },
+        []
+    );
 
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>;
 };

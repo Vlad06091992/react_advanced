@@ -62,6 +62,8 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
         );
     }
 
+    // TODO переделать на VSTACK эту страницу
+
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <Page className={classnames(cls.articleDetailsPage, [classname])}>

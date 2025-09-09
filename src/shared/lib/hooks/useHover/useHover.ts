@@ -1,6 +1,4 @@
-import {
-    memo, useCallback, useMemo, useState
-} from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 interface UseHoverFuncs {
     onMouseLeave: () => void

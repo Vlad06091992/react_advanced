@@ -1,4 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import { createSelector } from 'reselect';
 import { getUserAuthData } from 'entities/User';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';

@@ -39,6 +39,16 @@
 }
 
 .size {
+  &_s {
+
+    .title {
+      font: var(--font-m);
+    }
+
+    .text {
+      font: var(--font-s);
+    }
+  }
   &_m {
 
     .title {
