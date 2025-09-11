@@ -7,7 +7,6 @@ const ArticleEditPage = () => {
     const { pathname } = useLocation();
     const isEdit = pathname.includes('edit');
 
-    debugger;
     return (
         <Page>
             {isEdit ? 'Редактирование статьи' : 'Создание статьи' }

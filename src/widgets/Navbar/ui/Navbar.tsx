@@ -22,7 +22,6 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
     const dispatch = useAppDispatch();
 
     const authData = useSelector(getUserAuthData);
-    debugger;
 
     const onShowModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);

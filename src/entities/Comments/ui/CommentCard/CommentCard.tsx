@@ -17,12 +17,6 @@ export interface CommentCardProps {
 }
 
 export const CommentCard = memo(({ className, comment, isLoading } : CommentCardProps) => {
-    if (!comment) {
-        return null;
-    }
-
-    const { user, id, text } = comment;
-
     if (isLoading) {
         return (
             <div className={classnames(className, [cls.commentCard, cls.loading])}>
@@ -35,14 +29,18 @@ export const CommentCard = memo(({ className, comment, isLoading } : CommentCard
         );
     }
 
+    if (!comment) {
+        return null;
+    }
+
+    const { user, id, text } = comment;
+
     return (
         <VStack max gap="8" className={classnames(className, [cls.commentCard])}>
-            <HStack max align="center">
-                <AppLink to={`${RouterPaths.profile}${user.id}`}>
-                    {user.avatar && <Avatar size={30} src={user.avatar} />}
-                    <Text className={cls.username} title={user.username} />
-                </AppLink>
-            </HStack>
+            <AppLink className={classnames(cls.header)} to={`${RouterPaths.profile}${user.id}`}>
+                {user.avatar && <Avatar size={30} src={user.avatar} />}
+                <Text className={cls.username} title={user.username} />
+            </AppLink>
             <Text className={cls.text} text={comment.text} />
         </VStack>
     );

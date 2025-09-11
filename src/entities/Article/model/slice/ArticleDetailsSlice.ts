@@ -16,7 +16,7 @@ export const articleDetailsSlice = createSlice({
         // setReadonly: (state, action:PayloadAction<boolean>) => {
         //     state.readonly = action.payload;
         // },
-        // updateProfile: (state, action:PayloadAction<Profile>) => {
+        // updateProfile: (state, action:PayloadAction<Types>) => {
         //     state.formData = { ...state.data, ...action.payload };
         // },
         // cancelEdit: (state) => {

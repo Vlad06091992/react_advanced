@@ -1,19 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
-import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem';
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { HTMLAttributeAnchorTarget } from 'react';
-import {
-    List, AutoSizer, WindowScroller, ListRowProps
-} from 'react-virtualized';
+import { List, ListRowProps, WindowScroller } from 'react-virtualized';
 import { PAGE_ID } from 'widgets/Page/Page';
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticlesViewMode } from '../../model/types/Article';
 import cls from './ArticleList.module.scss';
 
 interface ArticleListProps {
     className?: string
-    articles: Article[]
+    articles: any
     isLoading?: boolean
     viewMode?: ArticlesViewMode
     target?: HTMLAttributeAnchorTarget
@@ -26,7 +24,6 @@ export const ArticleList = ({
     className, isLoading, articles, viewMode = ArticlesViewMode.SMALL, target
 }: ArticleListProps) => {
     const { t, i18n } = useTranslation('about');
-
     const renderArticle = (article:Article) => <ArticleListItem target={target} key={article.id} className={cls.card} viewMode={viewMode} article={article} />;
 
     const isBig = viewMode === ArticlesViewMode.BIG;
@@ -70,6 +67,7 @@ export const ArticleList = ({
             </div>
         );
     }
+
     return (
         <WindowScroller
             onScroll={() => {
@@ -79,24 +77,28 @@ export const ArticleList = ({
         >
             {({
                 width, height, registerChild, onChildScroll, isScrolling, scrollTop
-            }) => (
-                <div ref={registerChild} className={classnames(className, [cls[viewMode]], {})}>
-                    <List
-                        height={height ?? 700}
-                        rowCount={rowCount}
-                        rowHeight={
-                            isBig ? 700 : 330
-                        }
-                        rowRenderer={rowRender}
-                        width={width ? width - 80 : 700}
-                        onScroll={onChildScroll}
-                        autoHeight
-                        isScrolling={isScrolling}
-                        scrollTop={scrollTop}
-                    />
-                    {isLoading && getSkeletons(viewMode)}
-                </div>
-            )}
+            }) => {
+                console.log(height);
+                debugger;
+                return (
+                    <div ref={registerChild} className={classnames(className, [cls[viewMode]], {})}>
+                        <List
+                            height={700}
+                            rowCount={rowCount}
+                            rowHeight={
+                                isBig ? 700 : 330
+                            }
+                            rowRenderer={rowRender}
+                            width={width ? width - 80 : 700}
+                            onScroll={onChildScroll}
+                            autoHeight
+                            isScrolling={isScrolling}
+                            scrollTop={scrollTop}
+                        />
+                        {isLoading && getSkeletons(viewMode)}
+                    </div>
+                );
+            }}
         </WindowScroller>
 
     // <div className={classnames(className, [cls[viewMode]], {})}>

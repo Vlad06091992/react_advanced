@@ -3,23 +3,22 @@ import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { ReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
-import { ProfileSchema } from 'entities/Profile';
+
 import { AxiosInstance } from 'axios';
-import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { AppDispatch } from 'app/providers/StoreProvider';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { ArticleDetailsCommentSchema, ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { ScrollSaveSchema } from 'features/ScrollSave/model/types/ScrollSaveSchema';
-import {
-    ArticleDetailsRecommendationsSchema
-} from 'pages/ArticleDetailsPage/model/types/ArticleDetailsRecommendationsSchema';
+import { rtkApi } from 'shared/api/rtkApi';
+import { ProfileSchema } from 'features/EditableProfileCard/model/types/profile';
 
 export interface StateSchema {
     counter:CounterSchema,
     user:UserSchema,
     scrollSave:ScrollSaveSchema,
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
 
     // Асинхронные редьюсеры
     loginData?:LoginSchema,

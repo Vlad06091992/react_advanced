@@ -17,6 +17,7 @@ export const CommentsList = memo(({ className, comments, isLoading } : CommentsL
     const { t } = useTranslation();
 
     if (isLoading) {
+        debugger;
         return (
             <VStack gap="16" className={classnames(className)}>
                 <CommentCard isLoading />
