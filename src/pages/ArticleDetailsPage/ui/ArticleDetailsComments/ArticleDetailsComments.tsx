@@ -1,6 +1,6 @@
 import { AddCommentForm } from 'features/AddCommentForm';
 import { CommentsList } from 'entities/Comments';
-import { useCallback, useEffect } from 'react';
+import { Suspense, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getArticleComments } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/comments';
@@ -9,11 +9,7 @@ import { addCommentForArticle } from 'pages/ArticleDetailsPage/services/addComme
 import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/services/fetchCommentsByArticleId';
 import { classnames } from 'shared/lib/classnames';
 import { useTranslation } from 'react-i18next';
-import { TextSize, Text } from 'shared/ui/Text/Text';
-import {
-    useGetArticleRecommendationsListQuery
-} from 'features/ArticleRecommendationsList/api/articleRecommendationsListApi';
-import { useGetCommentsByArticleIdQuery } from 'pages/ArticleDetailsPage/api/ArticleDetailsPageApi';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { VStack } from 'shared/ui/Stack';
 
 interface PropsArticleDetailsComments {
@@ -41,7 +37,9 @@ export const ArticleDetailsComments = ({ id, className }:PropsArticleDetailsComm
     return (
         <VStack gap="16" className={classnames(className)}>
             <Text size={TextSize.L} className="" title={t('Комментарии')} />
-            <AddCommentForm onSendComment={onSendComment} />
+            <Suspense fallback="Идет загрузка...">
+                <AddCommentForm onSendComment={onSendComment} />
+            </Suspense>
             <CommentsList
                 comments={comments}
                 isLoading={commentsIsLoading}

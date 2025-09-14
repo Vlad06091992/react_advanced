@@ -2,7 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { classnames } from 'shared/lib/classnames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { HTMLAttributeAnchorTarget } from 'react';
-import { List, ListRowProps, WindowScroller } from 'react-virtualized';
+import { ListRowProps, WindowScroller } from 'react-virtualized';
+import List from 'react-virtualized/dist/commonjs/List';
 import { PAGE_ID } from 'widgets/Page/Page';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
@@ -70,6 +71,7 @@ export const ArticleList = ({
     }
 
     return (
+        // @ts-ignore
         <WindowScroller
             scrollElement={document.getElementById(PAGE_ID) as Element || undefined}
         >
@@ -82,11 +84,13 @@ export const ArticleList = ({
                 scrollTop,
             }) => (
                 <div
+                    // @ts-ignore
                     ref={registerChild}
                     className={classnames(cls.ArticleList, [className, cls[viewMode]])}
                 >
                     {virtualized
                         ? (
+                            // @ts-ignore
                             <List
                                 height={height ?? 700}
                                 rowCount={rowCount}
