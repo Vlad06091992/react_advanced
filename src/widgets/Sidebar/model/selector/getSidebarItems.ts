@@ -20,6 +20,9 @@ export const getSidebarItemsList = createSelector(getUserAuthData, (userData) =>
                 path: RouterPaths.profile + userData.id, text: 'Профиль', Icon: Profile, authOnly: true
             },
             {
+                path: RouterPaths.admin_panel, text: 'Админка', Icon: Profile, authOnly: true
+            },
+            {
                 path: RouterPaths.articles, text: 'Статьи', Icon: Article, authOnly: true
             }
         );
