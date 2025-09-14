@@ -48,6 +48,7 @@ export const EditableProfilePageHeader = ({ className, readonly }:EditableProfil
                             className={cls.editBtn}
                             theme={ThemeButton.OUTLINE}
                             onClick={onEdit}
+                            data-testid="EditableProfileCardHeader.EditButton"
                         >
                             {t('Редактировать')}
                         </Button>
@@ -56,12 +57,14 @@ export const EditableProfilePageHeader = ({ className, readonly }:EditableProfil
                             <Button
                                 theme={ThemeButton.OUTLINE_RED}
                                 onClick={onCancelEdit}
+                                data-testid="EditableProfileCardHeader.CancelButton"
                             >
                                 {t('Отменить')}
                             </Button>
                             <Button
                                 theme={ThemeButton.OUTLINE}
                                 onClick={onSave}
+                                data-testid="EditableProfileCardHeader.SaveButton"
                             >
                                 {t('Сохранить')}
                             </Button>

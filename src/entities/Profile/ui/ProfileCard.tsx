@@ -28,7 +28,13 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({
-    className, data, isLoading, error, readonly, onChangeLastname, onChangeFirstname, onChangeCity, onChangeAge, onChangeUsername, onChangeAvatar, onChangeCountry, onChangeCurrency
+    className,
+    data, isLoading,
+    error, readonly,
+    onChangeLastname, onChangeFirstname,
+    onChangeCity, onChangeAge,
+    onChangeUsername, onChangeAvatar,
+    onChangeCountry, onChangeCurrency
 }: ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
@@ -43,7 +49,11 @@ export const ProfileCard = ({
     if (error) {
         return (
             <HStack className={classnames(cls.ProfileCard, [className, cls.error], {})}>
-                <Text theme={TextTheme.ERROR} text={t('Попробуйте обновить страницу')} title={t('Произошла ошибка при загрузке профиля')} />
+                <Text
+                    theme={TextTheme.ERROR}
+                    text={t('Попробуйте обновить страницу')}
+                    title={t('Произошла ошибка при загрузке профиля')}
+                />
             </HStack>
         );
     }
@@ -51,11 +61,7 @@ export const ProfileCard = ({
     const mods:Mods = {
         [cls.editing]: !readonly
     };
-    const currencyOptions = [
-        { value: Currency.RUB, content: 'рубли' },
-        { value: Currency.EUR, content: 'вро' },
-        { value: Currency.USD, content: 'доллары' }
-    ];
+
     return (
         <VStack gap="16" max className={classnames(cls.ProfileCard, [className], mods)}>
             {data?.avatar && (
@@ -69,6 +75,7 @@ export const ProfileCard = ({
                 value={data?.first}
                 placeholder={t('Ваше имя')}
                 className={cls.input}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 onChange={onChangeLastname}
@@ -76,6 +83,7 @@ export const ProfileCard = ({
                 value={data?.lastname}
                 placeholder={t('Ваша фамилия')}
                 className={cls.input}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 onChange={onChangeAge}
