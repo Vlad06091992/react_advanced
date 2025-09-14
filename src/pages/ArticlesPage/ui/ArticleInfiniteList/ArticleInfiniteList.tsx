@@ -26,6 +26,7 @@ export const ArticleInfiniteList = ({ className }:ArticleInfiniteListProps) => {
         <ArticleList
             className={className}
             isLoading={isLoading}
+            virtualized
             viewMode={viewMode}
             articles={articles}
         />

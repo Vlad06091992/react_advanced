@@ -13,6 +13,7 @@ interface ArticleListProps {
     className?: string
     articles: any
     isLoading?: boolean
+    virtualized?: boolean
     viewMode?: ArticlesViewMode
     target?: HTMLAttributeAnchorTarget
 }
@@ -21,7 +22,7 @@ interface ArticleListProps {
 const getSkeletons = (viewMode:ArticlesViewMode) => new Array(viewMode === 'BIG' ? 3 : 9).fill(0).map((_, index) => <ArticleListItemSkeleton className={cls.card} key={index} viewMode={viewMode} />);
 
 export const ArticleList = ({
-    className, isLoading, articles, viewMode = ArticlesViewMode.SMALL, target
+    className, isLoading, articles, viewMode = ArticlesViewMode.SMALL, target, virtualized = false,
 }: ArticleListProps) => {
     const { t, i18n } = useTranslation('about');
     const renderArticle = (article:Article) => <ArticleListItem target={target} key={article.id} className={cls.card} viewMode={viewMode} article={article} />;
@@ -44,7 +45,7 @@ export const ArticleList = ({
                     article={articles[i]}
                     viewMode={viewMode}
                     target={target}
-                    key={articles[i].id}
+                    key={`str${i}`}
                     className={cls.card}
                 />,
             );
@@ -70,35 +71,48 @@ export const ArticleList = ({
 
     return (
         <WindowScroller
-            onScroll={() => {
-                console.debug('scroll');
-            }}
-            scrollElement={document.getElementById(PAGE_ID) as Element}
+            scrollElement={document.getElementById(PAGE_ID) as Element || undefined}
         >
             {({
-                width, height, registerChild, onChildScroll, isScrolling, scrollTop
-            }) => {
-                console.log(height);
-                debugger;
-                return (
-                    <div ref={registerChild} className={classnames(className, [cls[viewMode]], {})}>
-                        <List
-                            height={700}
-                            rowCount={rowCount}
-                            rowHeight={
-                                isBig ? 700 : 330
-                            }
-                            rowRenderer={rowRender}
-                            width={width ? width - 80 : 700}
-                            onScroll={onChildScroll}
-                            autoHeight
-                            isScrolling={isScrolling}
-                            scrollTop={scrollTop}
-                        />
-                        {isLoading && getSkeletons(viewMode)}
-                    </div>
-                );
-            }}
+                height,
+                width,
+                registerChild,
+                onChildScroll,
+                isScrolling,
+                scrollTop,
+            }) => (
+                <div
+                    ref={registerChild}
+                    className={classnames(cls.ArticleList, [className, cls[viewMode]])}
+                >
+                    {virtualized
+                        ? (
+                            <List
+                                height={height ?? 700}
+                                rowCount={rowCount}
+                                rowHeight={isBig ? 700 : 330}
+                                rowRenderer={rowRender}
+                                width={width ? width - 80 : 700}
+                                autoHeight
+                                onScroll={onChildScroll}
+                                isScrolling={isScrolling}
+                                scrollTop={scrollTop}
+                            />
+                        )
+                        : (
+                            articles.map((item:Article) => (
+                                <ArticleListItem
+                                    article={item}
+                                    viewMode={viewMode}
+                                    target={target}
+                                    key={item.id}
+                                    className={cls.card}
+                                />
+                            ))
+                        )}
+                    {isLoading && getSkeletons(viewMode)}
+                </div>
+            )}
         </WindowScroller>
 
     // <div className={classnames(className, [cls[viewMode]], {})}>
