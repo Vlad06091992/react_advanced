@@ -3,16 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ValidateProfileError } from 'entities/Profile/model/types/profile';
+
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfileCard } from 'entities/Profile';
-import {
-    EditableProfilePageHeader
-} from 'features/EditableProfileCard/ui/EditableProfilePageHeader/EditableProfilePageHeader';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from 'shared/ui/Stack';
+import {
+    EditableProfilePageHeader
+} from '../../ui/EditableProfilePageHeader/EditableProfilePageHeader';
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
@@ -20,6 +20,7 @@ import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/get
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData';
+import { ValidateProfileError } from '../../model/consts/consts';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -40,12 +41,12 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileValidateErrors);
 
-    const validationTranslates:Record<ValidateProfileError, string> = {
-        [ValidateProfileError.INCORRECT_AGE]: t('Некоректный возраст'),
-        [ValidateProfileError.NO_DATA]: t('Нет даных'),
-        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некоректная страна'),
-        [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
-        [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорретные данные пользователя'),
+    const validationTranslates: Record<string, string> = {
+        [ValidateProfileError.INCORRECT_AGE]: 'Некорректный возраст',
+        [ValidateProfileError.NO_DATA]: 'Нет данных',
+        [ValidateProfileError.INCORRECT_COUNTRY]: 'Некорректная страна',
+        [ValidateProfileError.SERVER_ERROR]: 'Ошибка сервера',
+        [ValidateProfileError.INCORRECT_USER_DATA]: 'Некорректные данные пользователя',
     };
 
     useEffect(() => {

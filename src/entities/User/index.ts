@@ -1,4 +1,5 @@
-import { User, UserSchema, UserRole } from './model/types/user';
+import { User, UserSchema } from './model/types/user';
+import { UserRole } from './model/consts/consts';
 import { userReducer, userActions } from './model/slice/userSlice';
 import { getUserAuthData } from './model/selectors/getUserAuthData';
 import { getIsInitUser } from './model/selectors/getIsInitUser';
@@ -13,9 +14,12 @@ export {
     isUserStandard,
     UserRole,
     userReducer,
-    UserSchema,
-    User,
     userActions,
     getUserAuthData,
     getIsInitUser
+};
+
+export type {
+    UserSchema,
+    User,
 };
