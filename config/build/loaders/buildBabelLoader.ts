@@ -1,3 +1,5 @@
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
+
 export const buildBabelLoader = (isDev:boolean, isTsx:boolean) => ({
     test: isTsx ? /\.(js|jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
@@ -15,7 +17,11 @@ export const buildBabelLoader = (isDev:boolean, isTsx:boolean) => ({
                 ],
                 ['@babel/plugin-transform-typescript', { isTsx }],
                 '@babel/plugin-transform-runtime',
-                isDev && require.resolve('react-refresh/babel')
+                isDev && require.resolve('react-refresh/babel'),
+                isTsx && [
+                    babelRemovePropsPlugin,
+                    { props: ['data-testid'] }
+                ]
             ].filter(Boolean),
 
         },
