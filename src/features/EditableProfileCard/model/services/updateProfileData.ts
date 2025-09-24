@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import i18n from 'i18next';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { validateProfileData } from '../../model/services/validateProfile';
-import { Profile, ValidateProfileError } from '../types/profile';
+import { Profile } from 'entities/Profile';
+import { validateProfileData } from './validateProfileData';
 import { getProfileFormData } from '../selectors/getProfileFormData/getProfileFormData';
+import { ValidateProfileError } from '../consts/consts';
 
 export interface LoginByUsernameProps {
  data:Profile

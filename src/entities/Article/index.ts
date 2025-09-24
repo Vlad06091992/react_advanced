@@ -17,14 +17,15 @@ import { getArticleDetailsData } from './model/selectors/getArticleDetails';
 export {
     ArticleDetails,
     ArticleList,
-    Article,
     ArticleBlockType,
     ArticleType,
     ArticlesViewMode,
-    ArticleDetailsSchema,
     ArticleSortSelector,
     ArticleViewSelector,
-    SortOrder,
     ArticleSortFields,
     getArticleDetailsData
+};
+
+export type {
+    SortOrder, ArticleDetailsSchema, Article,
 };

@@ -41,6 +41,18 @@ export enum ArticleType {
     ALL = 'ALL'
 }
 
+// export interface Article {
+//     user:User,
+//     id: string;
+//     title: string;
+//     subtitle: string;
+//     img: string;
+//     views: number;
+//     createdAt: string;
+//     type: ArticleType[];
+//     blocks: ArticleBlock[];
+// }
+
 export interface Article {
     user:User,
     id: string;

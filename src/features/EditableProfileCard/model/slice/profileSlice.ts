@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Profile } from 'entities/Profile';
+import { ValidateProfileError } from 'features/EditableProfileCard';
 import { fetchProfileData } from '../services/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData';
-import { Profile, ProfileSchema, ValidateProfileError } from '../types/profile';
+import { ProfileSchema } from '../../model/types/profile';
 
 const initialState: ProfileSchema = {
     readonly: true,
@@ -30,7 +32,7 @@ export const profileSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProfileData.pending, (state, action) => {
+            .addCase(fetchProfileData.pending, (state) => {
                 state.error = null;
                 state.isLoading = true;
             })
@@ -44,7 +46,7 @@ export const profileSlice = createSlice({
                 state.error = action.payload;
                 // state.validateError = action.payload;
             })
-            .addCase(updateProfileData.pending, (state, action) => {
+            .addCase(updateProfileData.pending, (state) => {
                 state.error = null;
                 state.isLoading = true;
             })
@@ -63,5 +65,4 @@ export const profileSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { actions: profileActions } = profileSlice;
-export const { reducer: profileReducer } = profileSlice;
+export const { actions: profileActions, reducer: profileReducer } = profileSlice;

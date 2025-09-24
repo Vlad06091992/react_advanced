@@ -2,13 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { classnames, Mods } from 'shared/lib/classnames';
-import { Profile } from 'entities/Profile';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Currency } from 'shared/const/common';
-import { CurrencySelect } from 'entities/Currency';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { Profile } from '../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -28,7 +27,13 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({
-    className, data, isLoading, error, readonly, onChangeLastname, onChangeFirstname, onChangeCity, onChangeAge, onChangeUsername, onChangeAvatar, onChangeCountry, onChangeCurrency
+    className,
+    data, isLoading,
+    error, readonly,
+    onChangeLastname, onChangeFirstname,
+    onChangeCity, onChangeAge,
+    onChangeUsername, onChangeAvatar,
+    onChangeCountry, onChangeCurrency
 }: ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
@@ -43,7 +48,11 @@ export const ProfileCard = ({
     if (error) {
         return (
             <HStack className={classnames(cls.ProfileCard, [className, cls.error], {})}>
-                <Text theme={TextTheme.ERROR} text={t('Попробуйте обновить страницу')} title={t('Произошла ошибка при загрузке профиля')} />
+                <Text
+                    theme={TextTheme.ERROR}
+                    text={t('Попробуйте обновить страницу')}
+                    title={t('Произошла ошибка при загрузке профиля')}
+                />
             </HStack>
         );
     }
@@ -51,11 +60,7 @@ export const ProfileCard = ({
     const mods:Mods = {
         [cls.editing]: !readonly
     };
-    const currencyOptions = [
-        { value: Currency.RUB, content: 'рубли' },
-        { value: Currency.EUR, content: 'вро' },
-        { value: Currency.USD, content: 'доллары' }
-    ];
+
     return (
         <VStack gap="16" max className={classnames(cls.ProfileCard, [className], mods)}>
             {data?.avatar && (
@@ -69,6 +74,7 @@ export const ProfileCard = ({
                 value={data?.first}
                 placeholder={t('Ваше имя')}
                 className={cls.input}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 onChange={onChangeLastname}
@@ -76,6 +82,7 @@ export const ProfileCard = ({
                 value={data?.lastname}
                 placeholder={t('Ваша фамилия')}
                 className={cls.input}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 onChange={onChangeAge}

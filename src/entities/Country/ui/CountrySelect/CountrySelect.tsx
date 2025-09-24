@@ -3,7 +3,7 @@ import { Select } from 'shared/ui/Select/Select';
 import { memo, useCallback } from 'react';
 import { classnames } from 'shared/lib/classnames';
 import { ListBox } from 'shared/ui/ListBox/ListBox';
-import { Country } from '../../model/types/country';
+import { Country } from 'entities/Country/model/consts/country';
 
 interface CountrySelectProps {
     className?: string;

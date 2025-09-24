@@ -28,6 +28,7 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
+        'no-undef': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' }
@@ -58,6 +59,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         'vlad_vs-path-checker-plugin/path-checker': 'error', // Checks effect dependencies
+        'linebreak-style': 'off',
     },
     globals: {
         __IS_DEV__: true,

@@ -4,6 +4,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BuildOptions } from './types/BuildOptions';
 
 export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.WebpackPluginInstance[] {
@@ -28,15 +30,36 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
             ],
         }),
 
+        new CircularDependencyPlugin({
+            // exclude detection of files based on a RegExp
+            exclude: /node_modules/,
+            // include specific files based on a RegExp
+            // include: /dir/,
+            // add errors to webpack instead of warnings
+            failOnError: true,
+            // allow import cycles that include an asyncronous import,
+            // e.g. via import(/* webpackMode: "weak" */ './file.js')
+            // allowAsyncCycles: false,
+            // set the current working directory for displaying module paths
+            // cwd: process.cwd(),
+        }),
+        new ForkTsCheckerWebpackPlugin()
+
     ];
 
-    // isDev && plugins.push(new BundleAnalyzerPlugin({
-    //     // автоматический запуск
-    //     openAnalyzer: false,
-    // }));
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new BundleAnalyzerPlugin({
+            // автоматический запуск
+            openAnalyzer: false,
+        }));
+    }
 
-    isDev && plugins.push(new webpack.HotModuleReplacementPlugin());
-    isDev && plugins.push(new ReactRefreshWebpackPlugin());
+    // plugins.push(new BundleAnalyzerPlugin({
+    //     // автоматический запуск
+    //     openAnalyzer: true,
+    // }));
 
     return plugins;
 }

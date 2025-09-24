@@ -7,13 +7,15 @@ import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { CombinedState } from 'redux';
 import { scrollSaveReducer } from 'features/ScrollSave';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
-        scrollSave: scrollSaveReducer
+        scrollSave: scrollSaveReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);
@@ -30,7 +32,7 @@ export function createReduxStore(initialState:StateSchema, asyncReducers:Reducer
             thunk: {
                 extraArgument: ExtraArg,
             },
-        }),
+        }).concat(rtkApi.middleware),
     });
 
     // @ts-ignore

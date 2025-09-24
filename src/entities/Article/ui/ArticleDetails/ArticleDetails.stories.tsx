@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { UserRole } from 'entities/User';
+import { Article, ArticleBlockType, ArticleType } from '../../model/types/Article';
 import { ArticleDetails } from './ArticleDetails';
 
 export default {
@@ -19,7 +20,7 @@ const article: Article = {
     user: {
         id: '1',
         username: 'admin',
-        role: 'aaa',
+        roles: [UserRole.USER],
         avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg'
     },
     title: 'Javascript news',

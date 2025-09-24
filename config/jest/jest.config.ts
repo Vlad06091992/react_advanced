@@ -29,21 +29,30 @@ const config: Config = {
     ],
     rootDir: '../../',
 
-    testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
+    testMatch: ['<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)'],
     modulePaths: [
-        '<rootDir>src',
+        '<rootDir>/src',
     ],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
         '~src/(.*)': '<rootDir>/src/$1',
-        '^src/(.*)$': '<rootDir>/../src/$1'
     },
-    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
     globals: {
         __IS_DEV__: true,
         __API_URL__: '',
     },
+
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            openReport: true,
+            inlineSource: true
+        }]
+    ]
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
