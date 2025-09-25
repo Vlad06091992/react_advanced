@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { classnames } from 'shared/lib/classnames';
-import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/Popups/ListBox/ListBox';
 import { Currency } from 'entities/Currency/model/consts/currency';
 
 interface CurrencySelectProps {
@@ -29,6 +29,7 @@ export const CurrencySelect = memo(({
 
     return (
         <ListBox
+            dropDownDirection="up-right"
             className={classnames(className)}
             label={t('Укажите валюту')}
             defaultValue={t('Укажите валюту')}
