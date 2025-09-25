@@ -10,6 +10,8 @@ import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
 import { HStack } from 'shared/ui/Stack';
 import { NotificationButton } from 'features/NotificationButton/';
 import { AvatarDropdown } from 'features/AvatarDropdown/ui/AvatarDropdown';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { NotificationList } from 'entities/Notification';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -36,6 +38,7 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
                     Создать статью
                 </AppLink>
                 <HStack className={styles.actions}>
+
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>

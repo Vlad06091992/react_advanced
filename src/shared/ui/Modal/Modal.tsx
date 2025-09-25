@@ -4,6 +4,7 @@ import React, {
     useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
+import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
@@ -75,10 +76,9 @@ export const Modal = ({
     return (
         <Portal>
             <div className={classnames(styles.Modal, [className, theme], mods)}>
-                <div onClick={() => closeHandler()} className={styles.overlay}>
-                    <div onClick={onClickContent} className={classnames(styles.content, [], contentMods)}>
-                        {children}
-                    </div>
+                <Overlay onClick={closeHandler} />
+                <div className={classnames(styles.content, [], contentMods)}>
+                    {children}
                 </div>
             </div>
         </Portal>
