@@ -17,14 +17,27 @@
   margin-right: 10px;
 }
 
-.exitBtn{
+.exitBtn {
   margin-left: auto;
 }
 
-.createBtn{
+.createBtn {
   margin-left: 120px;
 }
 
-.loginBtn{
+.loginBtn {
   margin-left: auto;
+}
+
+
+
+.actions {
+  gap: 0 10px;
+  margin-left: auto;
+}
+
+.avatar {
+  border: none;
+  outline: none;
+  margin: 0 auto;
 }
