@@ -4,15 +4,19 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
 import {
-    getUserAuthData, userActions, isUserAdmin, isUserManager
+    getUserAuthData, isUserAdmin, isUserManager, userActions
 } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Dropdown } from 'shared/ui/Popups/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from 'entities/Article/ui/ArticleDetails/ArticleDetails.module.scss';
+import { HStack } from 'shared/ui/Stack';
+import Notification from 'shared/assets/icons/notification-20-20.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { Popover } from 'shared/ui/Popups';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -47,27 +51,41 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
                 >
                     Создать статью
                 </AppLink>
-                <Dropdown
-                    dropDownDirection="down-left"
-                    className={cls.dropdown}
-                    items={[
-                        {
-                            content: 'Выйти',
-                            onClick: onLogout
-                        },
-                        {
-                            content: 'Профиль',
-                            href: RouterPaths.profile + authData.id,
-                        },
-                        ...(isAdminPanelAvailable ? [{
-                            content: 'Админка',
-                            href: RouterPaths.admin_panel,
-                        }] : [])
-                    ]}
-                    trigger={
-                        <Avatar size={30} className={cls.avatar} src={authData?.avatar} />
-                    }
-                />
+                <HStack className={cls.actions}>
+                    <Popover
+                        dropDownDirection="down-left"
+                        trigger={(
+                            <Button theme={ThemeButton.CLEAR}>
+                                <Icon theme="inverted" Svg={Notification} />
+                            </Button>
+                        )}
+                    >
+                        popover
+                    </Popover>
+
+                    <Dropdown
+                        dropDownDirection="down-left"
+                        className={cls.dropdown}
+                        items={[
+                            {
+                                content: 'Выйти',
+                                onClick: onLogout
+                            },
+                            {
+                                content: 'Профиль',
+                                href: RouterPaths.profile + authData.id,
+                            },
+                            ...(isAdminPanelAvailable ? [{
+                                content: 'Админка',
+                                href: RouterPaths.admin_panel,
+                            }] : [])
+                        ]}
+                        trigger={
+                            <Avatar size={30} className={cls.avatar} src={authData?.avatar} />
+                        }
+                    />
+                </HStack>
+
             </header>
         );
     }

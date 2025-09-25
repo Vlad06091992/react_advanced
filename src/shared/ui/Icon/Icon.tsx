@@ -5,8 +5,9 @@ import styles from './Icon.module.scss';
 export interface IconProps {
     className?: string
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
+    theme?: 'primary' | 'inverted';
 }
 
-export const Icon = memo(({ className, Svg }: IconProps) => (
-    <Svg className={(classnames(className, [styles.icon]))} />
+export const Icon = memo(({ className, Svg, theme = 'primary' }: IconProps) => (
+    <Svg className={(classnames(className, [styles.icon], { [styles.inverted]: theme === 'inverted' }))} />
 ));

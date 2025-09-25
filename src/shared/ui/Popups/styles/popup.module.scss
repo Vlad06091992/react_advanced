@@ -1,13 +1,11 @@
-.listBox {
+.popup{
   position: relative;
 }
 
-.options {
-  background: var(--listbox-bg);
-  position: absolute;
-  z-index: var(--dropdown-z-index);
-  border-radius: 12px;
-  box-shadow: 4px 4px 8px var(--listbox-bg);
+.trigger{
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .upRight {
@@ -29,10 +27,6 @@
 .downLeft {
   top: 100%;
   right:0%
-}
-
-.item {
-  padding: 10px 20px;
 }
 
 .active {

@@ -1,6 +1,3 @@
-.dropdown{
-  position: relative;
-}
 .btn{
   background: none;
   padding: 0;
@@ -24,27 +21,4 @@
   cursor: pointer;
 }
 
-.active{
-  background: var(--inverted-primary-color);
-}
 
-.upRight {
-  bottom: 100%;
-  left:0%
-}
-
-.upLeft {
-  bottom: 100%;
-  right:0%
-}
-
-
-.downRight {
-  top: 100%;
-  left:0%
-}
-
-.downLeft {
-  top: 100%;
-  right:0%
-}
