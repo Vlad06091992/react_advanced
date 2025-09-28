@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { classnames } from 'shared/lib/classnames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { classnames } from '@/shared/lib/classnames';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { HTMLAttributeAnchorTarget } from 'react';
 import { ListRowProps, WindowScroller } from 'react-virtualized';
 import List from 'react-virtualized/dist/commonjs/List';
-import { PAGE_ID } from 'widgets/Page/Page';
+import { PAGE_ID } from '@/widgets/Page/Page';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticlesViewMode } from '../../model/types/Article';

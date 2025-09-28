@@ -1,15 +1,15 @@
-import { classnames } from 'shared/lib/classnames';
+import { classnames } from '@/shared/lib/classnames';
 import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { ProfileCard } from 'entities/Profile';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from 'shared/ui/Stack';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { ProfileCard } from '@/entities/Profile';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from '@/shared/ui/Stack';
 import {
     EditableProfilePageHeader
 } from '../../ui/EditableProfilePageHeader/EditableProfilePageHeader';

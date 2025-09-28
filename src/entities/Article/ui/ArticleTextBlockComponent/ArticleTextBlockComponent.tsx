@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classnames } from 'shared/lib/classnames';
-import { Text } from 'shared/ui/Text/Text';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classnames } from '@/shared/lib/classnames';
+import { Text } from '@/shared/ui/Text/Text';
 import { ArticleTextBlock } from '../../model/types/Article';
 import cls from './ArticleTextBlockComponent.module.scss';
 

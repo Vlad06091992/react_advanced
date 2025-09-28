@@ -1,6 +1,6 @@
 import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LoginSchema } from 'features/AuthByUsername/model/types/loginSchema';
-import { AddCommentFormSchema } from 'features/AddCommentForm';
+import { LoginSchema } from '@/features/AuthByUsername/model/types/loginSchema';
+import { AddCommentFormSchema } from '@/features/AddCommentForm';
 
 const initialState:AddCommentFormSchema = {
     text: '',

@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { classnames } from 'shared/lib/classnames';
-import { Text } from 'shared/ui/Text/Text';
+import { classnames } from '@/shared/lib/classnames';
+import { Text } from '@/shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { CommentCard } from 'entities/Comments/ui/CommentCard/CommentCard';
-import { Comment } from 'entities/Comments/model/types/Comment';
-import { VStack } from 'shared/ui/Stack';
+import { CommentCard } from '@/entities/Comments/ui/CommentCard/CommentCard';
+import { Comment } from '@/entities/Comments/model/types/Comment';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './CommentsList.module.scss';
 
 export interface CommentsListProps {

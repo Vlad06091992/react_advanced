@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 
 interface ThemeSwitcherProps {

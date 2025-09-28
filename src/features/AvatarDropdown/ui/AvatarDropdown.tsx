@@ -1,13 +1,13 @@
-import { Dropdown } from 'shared/ui/Popups';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Dropdown } from '@/shared/ui/Popups';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { useSelector } from 'react-redux';
 import {
     getUserAuthData, isUserAdmin, isUserManager, userActions
-} from 'entities/User';
-import styles from 'widgets/Navbar/ui/Navbar.module.scss';
+} from '@/entities/User';
+import styles from '@/widgets/Navbar/ui/Navbar.module.scss';
 import { useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
 
 export const AvatarDropdown = () => {
     const authData = useSelector(getUserAuthData);

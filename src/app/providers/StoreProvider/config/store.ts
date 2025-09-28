@@ -1,13 +1,13 @@
 import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { counterReducer } from 'entities/Counter';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { userReducer } from 'entities/User';
-import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
-import { api } from 'shared/api/api';
+import { counterReducer } from '@/entities/Counter';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { userReducer } from '@/entities/User';
+import { createReducerManager } from '@/app/providers/StoreProvider/config/reducerManager';
+import { api } from '@/shared/api/api';
 import { NavigateFunction } from 'react-router/dist/lib/hooks';
 import { CombinedState } from 'redux';
-import { scrollSaveReducer } from 'features/ScrollSave';
-import { rtkApi } from 'shared/api/rtkApi';
+import { scrollSaveReducer } from '@/features/ScrollSave';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Loader.scss';
-import { classnames } from 'shared/lib/classnames';
+import { classnames } from '@/shared/lib/classnames';
 
 interface LoaderProps {
     className?:string

@@ -22,12 +22,12 @@
 //     document.getElementById('root'),
 // );
 
-import 'shared/config/i18n/i18n';
-import { ErrorBoundary } from 'app/providers/ErrorBoundary';
-import { StoreProvider } from 'app/providers/StoreProvider';
+import '@/shared/config/i18n/i18n';
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'app/providers/ThemeProvider';
-import { App } from 'app/App';
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import { App } from '@/app/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 

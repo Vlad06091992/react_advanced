@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classnames } from 'shared/lib/classnames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classnames } from '@/shared/lib/classnames';
 import { getCounterValue } from '../model/selectors/getCounterValue';
 import { counterActions } from '../model/slice/CounterSlice';
 

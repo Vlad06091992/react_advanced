@@ -1,13 +1,13 @@
 import { memo } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classnames } from 'shared/lib/classnames';
-import { Comment } from 'entities/Comments/model/types/Comment';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Text } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { RouterPaths } from 'shared/config/routerConfig/routerConfig';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classnames } from '@/shared/lib/classnames';
+import { Comment } from '@/entities/Comments/model/types/Comment';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Text } from '@/shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 
 export interface CommentCardProps {

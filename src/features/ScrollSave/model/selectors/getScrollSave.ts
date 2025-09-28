@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { createSelector } from 'reselect';
 
 export const getUIScroll = (state:StateSchema) => state.scrollSave.scroll;

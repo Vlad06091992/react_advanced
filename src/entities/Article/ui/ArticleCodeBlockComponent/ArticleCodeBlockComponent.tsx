@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classnames } from 'shared/lib/classnames';
-import { Code } from 'shared/ui/Code/Code';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classnames } from '@/shared/lib/classnames';
+import { Code } from '@/shared/ui/Code/Code';
 import { ArticleCodeBlock } from '../../model/types/Article';
 
 export interface ArticleCodeBlockComponentProps {

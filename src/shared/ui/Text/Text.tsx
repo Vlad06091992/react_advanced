@@ -1,4 +1,4 @@
-import { classnames } from 'shared/lib/classnames';
+import { classnames } from '@/shared/lib/classnames';
 import React, { memo, ReactNode } from 'react';
 import styles from './Text.module.scss';
 

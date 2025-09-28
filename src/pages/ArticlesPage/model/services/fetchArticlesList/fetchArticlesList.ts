@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18n from 'i18next';
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article, ArticleType } from 'entities/Article';
-import { addQueryParams } from 'shared/lib/url/addQueryParams';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { Article, ArticleType } from '@/entities/Article';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams';
 import {
     getArticlesPageNumber,
     getArticlesPageSearchSubstr,

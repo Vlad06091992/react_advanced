@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Article, ArticlesViewMode } from 'entities/Article';
+import { Article, ArticlesViewMode } from '@/entities/Article';
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
