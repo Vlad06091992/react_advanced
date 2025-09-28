@@ -1,8 +1,6 @@
 import { classnames } from 'shared/lib/classnames';
-import React, {
-    ReactNode,
-    useCallback, useEffect, useRef, useState,
-} from 'react';
+import React, { ReactNode, } from 'react';
+import { useModal } from 'shared/lib/hooks/useModal/useModal';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
@@ -16,59 +14,20 @@ interface ModalProps {
     onClose?: () => void
 }
 
-const ANUIMATION_DELAY = 300;
-
 // здесь мемоизация - это плохая идея так как children содержит в себе древовидную структуру компонентов 37 урок 26.18
 export const Modal = ({
     className, isOpen, onClose, children, lazy,
 }: ModalProps) => {
+    const { theme } = useTheme();
+    const { isClosing, isMounted, closeHandler } = useModal({ onClose, isOpen });
+
     const mods = {
         [styles.opened]: isOpen,
     };
-    const { theme } = useTheme();
-    const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-    const timeRef = useRef<ReturnType<typeof setTimeout>>();
-
-    const closeHandler = useCallback(() => {
-        if (onClose) {
-            setIsClosing(true);
-
-            timeRef.current = setTimeout(() => {
-                onClose();
-                setIsClosing(false);
-            }, ANUIMATION_DELAY);
-        }
-    }, [onClose]);
-
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') closeHandler();
-    }, [closeHandler]);
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-
-        return () => {
-            window.removeEventListener('keydown', onKeyDown);
-            clearTimeout(timeRef.current);
-        };
-    }, [isOpen, onKeyDown]);
 
     const contentMods = {
         [styles.contentOpened]: isOpen,
         [styles.isClosing]: isClosing,
-    };
-
-    const onClickContent = (e:React.MouseEvent) => {
-        e.stopPropagation();
     };
 
     if (lazy && !isMounted) return null;
