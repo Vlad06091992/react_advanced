@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { Popover } from '@/shared/ui/Popups';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { BrowserView, MobileView } from 'react-device-detect';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { NotificationList } from '@/entities/Notification';
 import Notification from '@/shared/assets/icons/notification-20-20.svg';
@@ -38,10 +38,7 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
             </BrowserView>
             <MobileView>
                 {trigger}
-                {/* шаг 4 - оборачиваем контекстом ту часть приложения, куда хотим прокинуть данные */}
-                <AnimationProvider>
-                    <Drawer onClose={onCloseDrawer} isOpen={op}><NotificationList /></Drawer>
-                </AnimationProvider>
+                <Drawer onClose={onCloseDrawer} isOpen={op}><NotificationList /></Drawer>
             </MobileView>
 
         </div>
