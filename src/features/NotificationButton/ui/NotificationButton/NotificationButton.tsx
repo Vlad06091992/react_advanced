@@ -6,6 +6,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { NotificationList } from 'entities/Notification';
 import Notification from 'shared/assets/icons/notification-20-20.svg';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider';
 import styles from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -37,7 +38,10 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
             </BrowserView>
             <MobileView>
                 {trigger}
-                <Drawer onClose={onCloseDrawer} isOpen={op}><NotificationList /></Drawer>
+                {/* шаг 4 - оборачиваем контекстом ту часть приложения, куда хотим прокинуть данные */}
+                <AnimationProvider>
+                    <Drawer onClose={onCloseDrawer} isOpen={op}><NotificationList /></Drawer>
+                </AnimationProvider>
             </MobileView>
 
         </div>
