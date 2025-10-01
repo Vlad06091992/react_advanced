@@ -20,6 +20,7 @@ export enum ButtonSize {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ThemeButton
     square?: boolean
+    fullWidth?: boolean
     size?: ButtonSize
     disabled?: boolean
 }
@@ -29,12 +30,17 @@ type Mods = Record<string, boolean | undefined>;
 // использовать memo где есть children не очень хорошая идея иногда, в 37 уроке это объясняется на 23 минуте
 export const Button = memo((props: ButtonProps) => {
     const {
-        className, size = ButtonSize.M, square, children, theme = ThemeButton.OUTLINE, disabled = false, ...restProps
+        className,
+        size = ButtonSize.M,
+        square,
+        children,
+        theme = ThemeButton.OUTLINE, fullWidth, disabled = false, ...restProps
     } = props;
     const mods:Mods = {
         [styles.square]: square,
         [styles[size]]: true,
         [styles.disabled]: disabled,
+        [styles.fullWidth]: fullWidth,
     };
 
     return (
