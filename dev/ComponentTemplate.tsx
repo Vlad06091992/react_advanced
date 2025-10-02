@@ -1,5 +1,5 @@
 // import { useTranslation } from 'react-i18next';
-// import { classnames } from 'shared/lib/classnames';
+// import { classnames } from '@/shared/lib/classnames';
 // import { memo } from 'react';
 // import cls from './c.module.scss';
 //

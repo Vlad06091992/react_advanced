@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useEffect } from 'react';
-import { ArticleDetails } from '@/entities/Article';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ArticleDetails } from '@/entities/Article';
 import { classnames } from '@/shared/lib/classnames';
 import { CommentsList } from '@/entities/Comments';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { Page } from '@/widgets/Page/Page';
@@ -21,6 +21,7 @@ import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import { getArticleComments } from '../model/slice/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
     classname?: string
@@ -50,6 +51,7 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails articleId={id} />
+                    <ArticleRating articleId={id} />
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>

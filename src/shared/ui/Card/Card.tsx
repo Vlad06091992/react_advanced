@@ -14,17 +14,19 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
     children?: ReactNode,
     theme?: CardTheme;
+    max?: boolean;
 }
 
 export const Card: FC<CardProps> = memo(({
-    className, children, theme = CardTheme.NORMAL, ...otherProps
+    className, children, theme = CardTheme.NORMAL, max = false, ...otherProps
 }:CardProps) => {
     const [, useHoverFuncs] = useHover();
 
+    const mods = { [cls.max]: max };
     return (
         <div
             {...useHoverFuncs}
-            className={classnames(cls.card, [className, cls[theme]])}
+            className={classnames(cls.card, [className, cls[theme]], mods)}
             {...otherProps}
         >
             {children}
