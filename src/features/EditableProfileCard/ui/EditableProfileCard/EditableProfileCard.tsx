@@ -1,8 +1,8 @@
-import { classnames } from '@/shared/lib/classnames';
 import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { classnames } from '@/shared/lib/classnames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
