@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget, useCallback } from 'react';
+import { useNavigate } from 'react-router';
 import { classnames } from '@/shared/lib/classnames';
 import { Text } from '@/shared/ui/Text/Text';
 import { Icon } from '@/shared/ui/Icon/Icon';
@@ -7,10 +9,8 @@ import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { ArticleTextBlockComponent } from '@/entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { HTMLAttributeAnchorTarget, useCallback } from 'react';
 
 import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
-import { useNavigate } from 'react-router';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticlesViewMode, ArticleTextBlock } from '../../model/types/Article';
@@ -55,7 +55,7 @@ export const ArticleListItem = ({
                     <div className={cls.footer}>
                         <AppLink target={target} to={RouterPaths.article_details + article.id}>
                             <Button theme={ThemeButton.OUTLINE}>
-                                {t(' Читать далее...')}
+                                {t('Читать далее...')}
                             </Button>
                         </AppLink>
                         {views}
