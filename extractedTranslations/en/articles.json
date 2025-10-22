@@ -1,5 +1,5 @@
 {
   "ArticleDetailsPage": "ArticleDetailsPage",
-  "Ошибка при загрузке статей": "Ошибка при загрузке статей",
-  "Статья не найдена": "Статья не найдена"
+  "Ошибка при загрузке статей": "Error loading articles",
+  "Статья не найдена": "Article not found"
 }
