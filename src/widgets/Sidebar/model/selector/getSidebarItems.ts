@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { getUserAuthData } from '@/entities/User';
-import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
+import { RouterPaths } from '@/shared/const/paths';
 import Main from '@/shared/assets/icons/main-20-20.svg';
 import About from '@/shared/assets/icons/about-20-20.svg';
 import Profile from '@/shared/assets/icons/profile-20-20.svg';

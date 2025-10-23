@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { classnames } from '@/shared/lib/classnames';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { HTMLAttributeAnchorTarget } from 'react';
 import { ListRowProps, WindowScroller } from 'react-virtualized';
 import List from 'react-virtualized/dist/commonjs/List';
-import { PAGE_ID } from '@/widgets/Page/Page';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { classnames } from '@/shared/lib/classnames';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../../ui/ArticleListItem/ArticleListItem';
 import { Article, ArticlesViewMode } from '../../model/types/Article';
 import cls from './ArticleList.module.scss';
+import { PAGE_ID } from '@/shared/const';
 
 interface ArticleListProps {
     className?: string
@@ -25,8 +25,7 @@ const getSkeletons = (viewMode:ArticlesViewMode) => new Array(viewMode === 'BIG'
 export const ArticleList = ({
     className, isLoading, articles, viewMode = ArticlesViewMode.SMALL, target, virtualized = false,
 }: ArticleListProps) => {
-    const { t, i18n } = useTranslation('about');
-    const renderArticle = (article:Article) => <ArticleListItem target={target} key={article.id} className={cls.card} viewMode={viewMode} article={article} />;
+    const { t } = useTranslation('about');
 
     const isBig = viewMode === ArticlesViewMode.BIG;
 
@@ -34,7 +33,7 @@ export const ArticleList = ({
     const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
 
     const rowRender = ({
-        index, isScrolling, key, style,
+        index, key, style,
     }: ListRowProps) => {
         const items = [];
         const fromIndex = index * itemsPerRow;

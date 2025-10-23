@@ -1,9 +1,9 @@
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
+import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
 import { StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
-import { Reducer } from '@reduxjs/toolkit';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
 
 // export type ReducerList = Partial<Record<StateSchemaKey, Reducer>>
 export type ReducerList = {
@@ -42,6 +42,7 @@ export const DynamicModuleLoader = ({
                 }
             };
         },
+        // eslint-disable-next-line
         []
     );
 

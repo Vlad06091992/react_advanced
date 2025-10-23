@@ -52,6 +52,7 @@ export function Dropdown(props: DropdownProps) {
                     }
 
                     return (
+                        // eslint-disable-next-line react/no-array-index-key
                         <Menu.Item key={index} as={Fragment} disabled={item.disabled}>
                             {content}
                         </Menu.Item>

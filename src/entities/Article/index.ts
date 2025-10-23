@@ -1,31 +1,25 @@
-import { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
-
-import { ArticleList } from './ui/ArticleList/ArticleList';
-import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
-import { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-import {
-    Article,
-    ArticleBlockType,
-    ArticleSortFields,
-    ArticlesViewMode,
-    ArticleType,
-    SortOrder
-} from './model/types/Article';
-import { ArticleDetailsSchema } from './model/types/AtricleDetailsSchema';
-import { getArticleDetailsData } from './model/selectors/getArticleDetails';
-
-export {
-    ArticleDetails,
-    ArticleList,
-    ArticleBlockType,
-    ArticleType,
-    ArticlesViewMode,
-    ArticleSortSelector,
-    ArticleViewSelector,
-    ArticleSortFields,
-    getArticleDetailsData
-};
+// index.ts
+export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
+export { ArticleList } from './ui/ArticleList/ArticleList';
+export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
+export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
+export { ArticleTextBlockComponent } from './ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 export type {
-    SortOrder, ArticleDetailsSchema, Article,
-};
+    Article,
+    SortOrder
+} from './model/types/Article';
+
+export {
+    ArticleBlockType,
+    ArticleSortFields,
+    ArticlesViewMode,
+    ArticleType,
+} from './model/types/Article';
+
+export type { ArticleDetailsSchema } from './model/types/AtricleDetailsSchema';
+
+export { getArticleDetailsData } from './model/selectors/getArticleDetails';
+export { articleDetailsReducer } from './model/slice/ArticleDetailsSlice';
+export { fetchArticleById } from './model/services/fetchArticleById';

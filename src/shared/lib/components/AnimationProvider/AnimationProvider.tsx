@@ -22,7 +22,8 @@ const getAsyncAnimationModules = async () => Promise.all([
 
 export const useAnimationLibs = () =>
 // шаг 3 - удобный хук для использования внутри приложения
-     useContext(AnimationContext) as Required<AnimationContextPayload>;
+// eslint-disable-next-line implicit-arrow-linebreak
+useContext(AnimationContext) as Required<AnimationContextPayload>;
 
 // шаг 2 -  создали провайдер, которым будем оборачивать ту часть приложения, в которую хотим пробросить данные
 export const AnimationProvider = ({ children }: {children: ReactNode}) => {

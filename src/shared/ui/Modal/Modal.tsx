@@ -1,5 +1,5 @@
-import { classnames } from '@/shared/lib/classnames';
 import React, { ReactNode, } from 'react';
+import { classnames } from '@/shared/lib/classnames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { Overlay } from '../Overlay/Overlay';

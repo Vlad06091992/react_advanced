@@ -12,7 +12,7 @@ interface ArticleInfiniteListProps {
 }
 
 export const ArticleInfiniteList = ({ className }:ArticleInfiniteListProps) => {
-    const { t, i18n } = useTranslation('articles');
+    const { t } = useTranslation('articles');
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const viewMode = useSelector(getArticlesPageViewMode);

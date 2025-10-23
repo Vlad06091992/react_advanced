@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { HTMLAttributeAnchorTarget, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { useNavigate } from 'react-router';
 import { classnames } from '@/shared/lib/classnames';
 import { Text } from '@/shared/ui/Text/Text';
@@ -8,12 +8,12 @@ import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { ArticleTextBlockComponent } from '@/entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticlesViewMode, ArticleTextBlock } from '../../model/types/Article';
+import { RouterPaths } from '@/shared/const/paths';
 
 interface ArticleListItemProps {
     className?: string

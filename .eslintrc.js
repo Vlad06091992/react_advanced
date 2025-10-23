@@ -35,7 +35,7 @@ module.exports = {
         ],
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-props-no-spreading': 'warn',
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
@@ -49,8 +49,26 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'comma-dangle': 'off',
         'i18next/no-literal-string': [
-            'warn',
-            { markupOnly: true },
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttribute: [
+                    'dropDownDirection',
+                    'fallback',
+                    'title',
+                    'theme',
+                    'as',
+                    'role',
+                    'data-testid',
+                    'to',
+                    'target',
+                    'justify',
+                    'align',
+                    'border',
+                    'direction',
+                    'gap',
+                ],
+            },
         ],
         'max-len': [
             'warn',
@@ -71,4 +89,13 @@ module.exports = {
         __IS_DEV__: true,
         __API_URL__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+                'max-len': 'off',
+            },
+        },
+    ],
 };

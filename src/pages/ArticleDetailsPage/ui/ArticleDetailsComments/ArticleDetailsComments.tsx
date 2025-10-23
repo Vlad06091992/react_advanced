@@ -1,14 +1,14 @@
-import { AddCommentForm } from '@/features/AddCommentForm';
-import { CommentsList } from '@/entities/Comments';
 import { Suspense, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getArticleComments } from '@/pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
-import { getArticleCommentsIsLoading } from '@/pages/ArticleDetailsPage/model/selectors/comments';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { addCommentForArticle } from '@/pages/ArticleDetailsPage/services/addCommentForArticle';
-import { fetchCommentsByArticleId } from '@/pages/ArticleDetailsPage/services/fetchCommentsByArticleId';
-import { classnames } from '@/shared/lib/classnames';
 import { useTranslation } from 'react-i18next';
+import { AddCommentForm } from '@/features/AddCommentForm';
+import { CommentsList } from '@/entities/Comments';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId';
+import { classnames } from '@/shared/lib/classnames';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { VStack } from '@/shared/ui/Stack';
 

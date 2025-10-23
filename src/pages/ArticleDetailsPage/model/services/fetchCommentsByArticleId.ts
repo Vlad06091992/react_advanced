@@ -19,7 +19,6 @@ export const fetchCommentsByArticleId = createAsyncThunk<Comment[], string | und
             });
             return response.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue(i18n.t('error'));
         }
     },

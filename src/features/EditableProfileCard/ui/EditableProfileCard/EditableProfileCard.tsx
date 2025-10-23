@@ -33,7 +33,6 @@ const initialReducers: ReducerList = {
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const { className, id } = props;
-    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileFormData);
     const isLoading = useSelector(getProfileIsLoading);
@@ -51,6 +50,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     useEffect(() => {
         if (id) dispatch(fetchProfileData(id));
+        // eslint-disable-next-line
     }, []);
 
     const onChangeFirstname = (value:string) => {
