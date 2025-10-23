@@ -62,7 +62,8 @@ module.exports = {
             alias: '@'
         }], // Checks effect dependencies
         'vlad_vs-path-checker-plugin/public-api-imports': ['error', {
-            alias: '@'
+            alias: '@',
+            testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
         }], // Checks effect dependencies
         'linebreak-style': 'off',
     },
