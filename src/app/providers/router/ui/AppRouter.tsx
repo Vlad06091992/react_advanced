@@ -1,7 +1,7 @@
 import React, { memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { routerConfig } from '@/shared/config/routerConfig/routerConfig';
-import { PageLoader } from '@/widgets/PageLoader/PageLoader';
+import { routerConfig } from '../../../config/routerConfig/routerConfig';
+import { PageLoader } from '@/widgets/PageLoader';
 import { RequireAuth } from '@/app/providers/router/ui/RequireAuth';
 
 export const AppRouter = memo(() => {

@@ -9,7 +9,7 @@ import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPage } from '@/pages/AdminPage';
 import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { RouterConfig, RouterPaths } from '../../const/paths';
+import { RouterConfig, RouterPaths } from '@/shared/const';
 
 type AppRoutesProps = RouteProps & {
     authOnly?:boolean
