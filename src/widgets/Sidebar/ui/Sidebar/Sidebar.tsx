@@ -1,8 +1,8 @@
 import React, { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classnames } from '@/shared/lib/classnames';
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
-import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 import { Button, ButtonSize, ThemeButton } from '@/shared/ui/Button/Button';
 import { getUserAuthData } from '@/entities/User';
 import { VStack } from '@/shared/ui/Stack';

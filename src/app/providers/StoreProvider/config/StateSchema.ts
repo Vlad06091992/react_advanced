@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios';
 import { CounterSchema } from '@/entities/Counter';
 import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
-import { ReducerManager } from '@/app/providers/StoreProvider/config/reducerManager';
+import { ReducerManager } from '../config/reducerManager';
 import { AppDispatch } from '@/app/providers/StoreProvider';
 import { ArticleDetailsSchema } from '@/entities/Article';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
@@ -27,8 +27,7 @@ export interface StateSchema {
     addCommentForm?: AddCommentFormSchema,
     articlesPage?: ArticlesPageSchema,
 }
-
-export type StateSchemaKey = keyof StateSchema
+export type StateSchemaKey = keyof StateSchema;
 
 export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
     reducerManager:ReducerManager

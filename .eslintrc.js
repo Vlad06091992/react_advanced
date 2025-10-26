@@ -79,6 +79,12 @@ module.exports = {
         'vlad_vs-path-checker-plugin/path-checker': ['error', {
             alias: '@'
         }], // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            }], // Checks effect dependencies
         'vlad_vs-path-checker-plugin/public-api-imports': ['error', {
             alias: '@',
             testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
