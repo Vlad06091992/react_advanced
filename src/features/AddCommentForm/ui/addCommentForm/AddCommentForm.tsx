@@ -10,12 +10,12 @@ import { HStack } from '@/shared/ui/Stack';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
 // Тест обновленного линтера
 // import { addCommentFormActions, addCommentFormReducer } from '@/features/AddCommentForm/model/slices/addCommentFormSlice';
-import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
+import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
-    className?:string
-    onSendComment:(text:string)=>void
+    className?: string
+    onSendComment: (text: string) => void
 
 }
 
@@ -23,25 +23,29 @@ const initialReducers = {
     addCommentForm: addCommentFormReducer
 };
 
-export const AddCommentForm = ({ className, onSendComment }:AddCommentFormProps) => {
-    const { t, i18n } = useTranslation('about');
+export const AddCommentForm = ({ className, onSendComment }: AddCommentFormProps) => {
+    const { t } = useTranslation('about');
     const dispatch = useAppDispatch();
     const text = useSelector(getAddCommentFormText);
-    const error = useSelector(getAddCommentFormError);
 
-    const onCommentTextChange = useCallback((value:string) => {
+    const onCommentTextChange = useCallback((value: string) => {
         dispatch(addCommentFormActions.setText(value));
     }, [dispatch]);
 
     const onSendCommentForm = useCallback(() => {
         onSendComment(text || '');
         onCommentTextChange('');
-    }, [dispatch, onSendComment, text]);
+    }, [onCommentTextChange, onSendComment, text]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <HStack align="center" justify="between" className={classnames(cls.addCommentForm, [className])}>
-                <Input className={cls.input} value={text} onChange={onCommentTextChange} placeholder={t('Введите текст комментария')} />
+                <Input
+                    className={cls.input}
+                    value={text}
+                    onChange={onCommentTextChange}
+                    placeholder={t('Введите текст комментария')}
+                />
                 <Button onClick={onSendCommentForm} theme={ThemeButton.OUTLINE}>
                     {t('Отправить')}
                 </Button>

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget } from 'react';
-import { useNavigate } from 'react-router';
 import { classnames } from '@/shared/lib/classnames';
 import { Text } from '@/shared/ui/Text/Text';
 import { Icon } from '@/shared/ui/Icon/Icon';
@@ -27,7 +26,6 @@ export const ArticleListItem = ({
     className, article, viewMode = ArticlesViewMode.SMALL, target
 }: ArticleListItemProps) => {
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (

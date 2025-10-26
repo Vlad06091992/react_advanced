@@ -25,7 +25,7 @@ const ArticleDetailsRecommendationsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchArticleRecommendations.pending, (state, action) => {
+            .addCase(fetchArticleRecommendations.pending, (state) => {
                 state.error = null;
                 state.isLoading = true;
             })

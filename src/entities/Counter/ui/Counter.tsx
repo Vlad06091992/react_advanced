@@ -23,7 +23,9 @@ export const Counter:FC<CounterProps> = ({ className }) => {
     return (
         <div className={classnames(className)}>
             <h1 data-testid="value-title">{value}</h1>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <button data-testid="increment-btn" onClick={inc}>inc</button>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <button data-testid="decrement-btn" onClick={dec}>dec</button>
         </div>
     );

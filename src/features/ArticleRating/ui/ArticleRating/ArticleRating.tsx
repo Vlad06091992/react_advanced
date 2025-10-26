@@ -27,6 +27,7 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
                 articleId
             });
         } catch (e) {
+            // eslint-disable-next-line
             console.error(e);
         }
     }, [authData, articleId, rateArticleMutation]);

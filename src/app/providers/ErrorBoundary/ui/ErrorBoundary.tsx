@@ -1,31 +1,31 @@
-import React, {
-    ErrorInfo, FC, ReactNode, Suspense,
-} from 'react';
+import React, { ErrorInfo, ReactNode, Suspense, } from 'react';
 import { PageError } from '@/widgets/PageError';
 
 interface ErrorBoundaryProps {
-    children:ReactNode
+    children: ReactNode
 }
 
 interface ErrorBoundaryState {
-    hasError:boolean
+    hasError: boolean
 }
 
 // eslint-disable-next-line max-len
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-    constructor(props:ErrorBoundaryProps) {
+    constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false } as any;
     }
 
-    static getDerivedStateFromError(error:Error) {
-    // Update state so the next render will show the fallback UI.
+    // eslint-disable-next-line
+    static getDerivedStateFromError(error: Error) {
+        // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
 
-    componentDidCatch(error:Error, errorInfo:ErrorInfo) {
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, errorInfo);
+    // eslint-disable-next-line
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        // You can also log the error to an error reporting service
+        // logErrorToMyService(error, errorInfo);
     }
 
     render() {

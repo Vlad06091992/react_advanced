@@ -1,13 +1,12 @@
 import { memo } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classnames } from '@/shared/lib/classnames';
-import { Comment } from '@/entities/Comments/model/types/Comment';
+import { Comment } from '../../model/types/Comment';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Text } from '@/shared/ui/Text/Text';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { RouterPaths } from '@/shared/const/paths';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 
 export interface CommentCardProps {
@@ -33,7 +32,7 @@ export const CommentCard = memo(({ className, comment, isLoading } : CommentCard
         return null;
     }
 
-    const { user, id, text } = comment;
+    const { user } = comment;
 
     return (
         <VStack max gap="8" className={classnames(className, [cls.commentCard])}>

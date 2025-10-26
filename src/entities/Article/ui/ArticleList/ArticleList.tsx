@@ -20,10 +20,24 @@ interface ArticleListProps {
 }
 
 // eslint-disable-next-line react/no-array-index-key
-const getSkeletons = (viewMode:ArticlesViewMode) => new Array(viewMode === 'BIG' ? 3 : 9).fill(0).map((_, index) => <ArticleListItemSkeleton className={cls.card} key={index} viewMode={viewMode} />);
+const getSkeletons = (viewMode: ArticlesViewMode) => (
+
+    new Array(viewMode === 'BIG' ? 3 : 9).fill(0).map((_, index) => (
+        <ArticleListItemSkeleton
+            className={cls.card}
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            viewMode={viewMode}
+        />
+    )));
 
 export const ArticleList = ({
-    className, isLoading, articles, viewMode = ArticlesViewMode.SMALL, target, virtualized = false,
+    className,
+    isLoading,
+    articles,
+    viewMode = ArticlesViewMode.SMALL,
+    target,
+    virtualized = false,
 }: ArticleListProps) => {
     const { t } = useTranslation('about');
 
@@ -103,7 +117,7 @@ export const ArticleList = ({
                             />
                         )
                         : (
-                            articles.map((item:Article) => (
+                            articles.map((item: Article) => (
                                 <ArticleListItem
                                     article={item}
                                     viewMode={viewMode}

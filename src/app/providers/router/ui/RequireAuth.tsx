@@ -25,5 +25,6 @@ export const RequireAuth = ({ children, roles }: { children: React.ReactNode, ro
         return <Navigate to={RouterPaths.forbidden} state={{ from: location }} replace />;
     }
 
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>;
 };

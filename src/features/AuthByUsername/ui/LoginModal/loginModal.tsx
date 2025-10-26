@@ -1,6 +1,6 @@
 import { FC, Suspense } from 'react';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { LoginFormLazy } from '@/features/AuthByUsername/ui/LoginForm/LoginForm.lazy';
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy';
 import { Loader } from '@/shared/ui/Loader/Loader';
 
 export interface LoginModalProps {
@@ -9,7 +9,7 @@ export interface LoginModalProps {
     onClose?:()=>void
 }
 
-export const LoginModal:FC<LoginModalProps> = ({ className, isOpen, onClose }) => (
+export const LoginModal:FC<LoginModalProps> = ({ isOpen, onClose }) => (
     <Modal onClose={onClose} isOpen={isOpen}>
         <Suspense fallback={<Loader />}>
             <LoginFormLazy onSuccess={onClose} />

@@ -35,7 +35,8 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
                     theme={AppLinkTheme.SECONDARY}
                     to={RouterPaths.article_create}
                 >
-                    Создать статью
+                    {t('Создать статью')}
+
                 </AppLink>
                 <HStack className={styles.actions}>
 

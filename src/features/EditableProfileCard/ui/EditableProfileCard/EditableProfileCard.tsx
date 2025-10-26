@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { classnames } from '@/shared/lib/classnames';
@@ -10,9 +9,7 @@ import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import { ProfileCard } from '@/entities/Profile';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from '@/shared/ui/Stack';
-import {
-    EditableProfilePageHeader
-} from '../../ui/EditableProfilePageHeader/EditableProfilePageHeader';
+import { EditableProfilePageHeader } from '../../ui/EditableProfilePageHeader/EditableProfilePageHeader';
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';

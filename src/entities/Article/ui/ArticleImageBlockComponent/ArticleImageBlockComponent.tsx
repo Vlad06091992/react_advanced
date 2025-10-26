@@ -10,9 +10,7 @@ export interface ArticleImageBlockComponentProps {
 }
 
 export const ArticleImageBlockComponent = memo(({ className, block }: ArticleImageBlockComponentProps) => {
-    const {
-        title, src, type, id
-    } = block;
+    const { title, src } = block;
 
     return (
         <div className={classnames(className)}>

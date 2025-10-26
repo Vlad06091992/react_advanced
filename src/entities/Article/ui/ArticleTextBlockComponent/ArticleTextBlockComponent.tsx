@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classnames } from '@/shared/lib/classnames';
 import { Text } from '@/shared/ui/Text/Text';
 import { ArticleTextBlock } from '../../model/types/Article';
@@ -11,15 +10,14 @@ export interface ArticleTextBlockComponentProps {
 }
 
 export const ArticleTextBlockComponent = memo(({ className, block }: ArticleTextBlockComponentProps) => {
-    const {
-        title, paragraphs, type, id
-    } = block;
+    const { title, paragraphs } = block;
 
     return (
         <div className={classnames(className)}>
 
             {title && <Text title={title} className={cls.title} />}
             {paragraphs.length && paragraphs.map((p, i) => (
+                // eslint-disable-next-line
                 <Text text={p} key={i} className={cls.paragraph} />
             ))}
         </div>
