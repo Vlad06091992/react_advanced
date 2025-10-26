@@ -1,12 +1,15 @@
 import path from 'path';
-import webpack from 'webpack';
+import { Configuration } from 'webpack';
+import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import { BuildOptions, ENV } from './config/build/types/BuildOptions';
 import { buildLoaders } from './config/build/buildLoaders';
 import { buildResolvers } from './config/build/buildResolvers';
 import { buildPlugins } from './config/build/buildPlugins';
 import { buildDevServer } from './config/build/buildDevServer';
 
-export default (env:ENV): webpack.Configuration => {
+type ConfigurationAndDevServer = Configuration & { devServer: DevServerConfiguration }
+
+export default (env:ENV): ConfigurationAndDevServer => {
     const options:BuildOptions = {
         paths: {
             build: path.resolve(__dirname, 'build'),
