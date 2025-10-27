@@ -4,7 +4,13 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+    extends: [
+        'plugin:react/recommended',
+        'airbnb', 'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
+        'eslint:recommended',
+        'plugin:import/recommended'
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -101,7 +107,6 @@ module.exports = {
             testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
         }], // Checks effect dependencies
         'linebreak-style': 'off',
-
     },
     globals: {
         __IS_DEV__: true,
