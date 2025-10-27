@@ -19,6 +19,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'vlad_vs-path-checker-plugin',
+        'unused-imports'
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -32,6 +33,16 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' }
+        ],
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+            'warn',
+            {
+                vars: 'all',
+                varsIgnorePattern: '^_',
+                args: 'after-used',
+                argsIgnorePattern: '^_',
+            },
         ],
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -90,6 +101,7 @@ module.exports = {
             testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
         }], // Checks effect dependencies
         'linebreak-style': 'off',
+
     },
     globals: {
         __IS_DEV__: true,
