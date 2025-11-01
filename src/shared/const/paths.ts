@@ -10,15 +10,14 @@ export const RouterConfig = {
     NOT_FOUND: 'not_found',
     FORBIDDEN: 'forbidden'
 };
-export const RouterPaths = {
-    [RouterConfig.MAIN]: '/',
-    [RouterConfig.PROFILE]: '/profile/', // +id
-    [RouterConfig.ARTICLES]: '/articles',
-    [RouterConfig.ARTICLE_DETAILS]: '/articles/', // +id
-    [RouterConfig.ARTICLE_CREATE]: '/articles/create', // +id
-    [RouterConfig.ARTICLE_EDIT]: '/articles/:id/edit', // +id
-    [RouterConfig.ABOUT]: '/about',
-    [RouterConfig.ADMIN_PANEL]: '/admin',
-    [RouterConfig.FORBIDDEN]: '/forbidden',
-    [RouterConfig.NOT_FOUND]: '*',
-};
+
+export const getRouteMain = () => '/';
+export const getRouteProfile = (id: string) => `/profile/${id}`;
+export const getRouteArticles = () => '/articles';
+export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
+export const getRouteArticleCreate = () => '/articles/create';
+export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
+export const getRouteAbout = () => '/about';
+export const getRouteAdminPanel = () => '/admin';
+export const getRouteForbidden = () => '/forbidden';
+export const getRouteNotFound = () => '*';

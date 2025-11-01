@@ -7,7 +7,7 @@ import {
 } from '@/entities/User';
 import styles from './AvatarDropdown.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { RouterPaths } from '@/shared/const/paths';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/paths';
 
 export const AvatarDropdown = () => {
     const authData = useSelector(getUserAuthData);
@@ -34,11 +34,11 @@ export const AvatarDropdown = () => {
                 },
                 {
                     content: 'Профиль',
-                    href: RouterPaths.profile + authData.id,
+                    href: getRouteProfile(authData.id),
                 },
                 ...(isAdminPanelAvailable ? [{
                     content: 'Админка',
-                    href: RouterPaths.admin_panel,
+                    href: getRouteAdminPanel(),
                 }] : [])
             ]}
             trigger={

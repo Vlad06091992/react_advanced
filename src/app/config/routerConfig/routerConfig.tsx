@@ -9,7 +9,19 @@ import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPage } from '@/pages/AdminPage';
 import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { RouterConfig, RouterPaths } from '@/shared/const';
+import {
+    getRouteAbout,
+    getRouteAdminPanel,
+    getRouteArticleCreate,
+    getRouteArticleDetails,
+    getRouteArticleEdit,
+    getRouteArticles,
+    getRouteForbidden,
+    getRouteMain,
+    getRouteNotFound,
+    getRouteProfile
+} from '@/shared/const/paths';
+import { ArticleCreatePage } from '@/pages/ArticleCreatePage';
 
 type AppRoutesProps = RouteProps & {
     authOnly?:boolean
@@ -19,49 +31,49 @@ type AppRoutesProps = RouteProps & {
 export const routerConfig:AppRoutesProps[] = [
     {
         element: <AboutPage />,
-        path: RouterPaths[RouterConfig.ABOUT]
+        path: getRouteAbout()
     },
     {
         element: <ArticlesPage />,
-        path: `${RouterPaths[RouterConfig.ARTICLES]}`,
+        path: getRouteArticles(),
         authOnly: true
     },
     {
         element: <ArticleEditPage />,
-        path: `${RouterPaths[RouterConfig.ARTICLE_EDIT]}`,
+        path: getRouteArticleEdit(':id'),
         authOnly: true
     },
     {
-        element: <ArticleEditPage />,
-        path: `${RouterPaths[RouterConfig.ARTICLE_CREATE]}`,
+        element: <ArticleCreatePage />,
+        path: getRouteArticleCreate(),
         authOnly: true
     },
     {
         element: <AdminPage />,
-        path: `${RouterPaths[RouterConfig.ADMIN_PANEL]}`,
+        path: getRouteAdminPanel(),
         authOnly: true,
         roles: [UserRole.ADMIN, UserRole.MANAGER]
     },
     {
         element: <ArticleDetailsPage />,
-        path: `${RouterPaths[RouterConfig.ARTICLE_DETAILS]}:id`,
+        path: getRouteArticleDetails(':id'),
         authOnly: true
     },
     {
         element: <ProfilePage />,
-        path: `${RouterPaths[RouterConfig.PROFILE]}:id`,
+        path: getRouteProfile(':id'),
         authOnly: true
     },
     {
         element: <MainPage />,
-        path: RouterPaths[RouterConfig.MAIN]
+        path: getRouteMain(),
     },
     {
         element: <NotFoundPage />,
-        path: RouterPaths[RouterConfig.NOT_FOUND]
+        path: getRouteNotFound()
     },
     {
         element: <ForbiddenPage />,
-        path: RouterPaths[RouterConfig.FORBIDDEN]
+        path: getRouteForbidden()
     },
 ];
