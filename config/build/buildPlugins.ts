@@ -15,19 +15,9 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
             template: htmlPath,
         }),
         new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API_URL__: JSON.stringify(apiUrl),
-        }),
-
-        new CopyPlugin({
-            patterns: [
-                { from: paths.locales, to: paths.buildLocales }
-            ],
         }),
 
         new CircularDependencyPlugin({
@@ -54,6 +44,19 @@ export function buildPlugins(htmlPath: string, options:BuildOptions): webpack.We
             // автоматический запуск
             openAnalyzer: false,
         }));
+    } else {
+        plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css',
+            }),
+
+            new CopyPlugin({
+                patterns: [
+                    { from: paths.locales, to: paths.buildLocales }
+                ],
+            }),
+        );
     }
 
     // plugins.push(new BundleAnalyzerPlugin({

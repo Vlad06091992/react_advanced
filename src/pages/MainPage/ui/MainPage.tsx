@@ -7,6 +7,7 @@ const MainPage = () => {
     return (
         <Page>
             <div>{t('Главная страница')}</div>
+            fsdfsdfs
         </Page>
     );
 };

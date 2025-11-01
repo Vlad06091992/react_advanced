@@ -26,7 +26,7 @@ export default (env:ENV): ConfigurationAndDevServer => {
     const { paths: { build, entry, html }, isDev = true } = options;
 
     return {
-        devtool: isDev && 'inline-source-map',
+        devtool: isDev && 'eval-cheap-module-source-map',
         mode: env.mode,
         entry,
         module: {
