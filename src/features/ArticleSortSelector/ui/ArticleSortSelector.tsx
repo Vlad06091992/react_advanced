@@ -4,7 +4,7 @@ import { classnames } from '@/shared/lib/classnames';
 import { Select, SelectOption } from '@/shared/ui/Select';
 import cls from './ArticleSortSelector.module.scss';
 
-import { ArticleSortFields, SortOrder } from '../../model/types/Article';
+import { ArticleSortFields, SortOrder } from '../../../entities/Article/model/types/Article';
 // импорт ниже образует кольцевую зависимость
 // import { ArticleSortFields, SortOrder } from 'entities/Article';
 

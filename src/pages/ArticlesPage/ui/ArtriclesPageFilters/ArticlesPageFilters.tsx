@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { classnames } from '@/shared/lib/classnames';
 import {
-    ArticleSortFields, ArticlesViewMode, ArticleType, ArticleViewSelector, SortOrder,
-    ArticleSortSelector, ArticleTypeTabs
+    ArticleSortFields, ArticlesViewMode, ArticleType, SortOrder,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
@@ -22,6 +21,9 @@ import {
 } from '../../model/selectors/articlePageSelectors';
 import { articlesPageActions } from '../../model/slices/articlePageSlice';
 import cls from './ArtriclesPageFilters.module.scss';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleViewSelector } from '@/features/ArticleViewSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 
 export const ArticlesPageFilters = () => {
     const { t } = useTranslation('about');

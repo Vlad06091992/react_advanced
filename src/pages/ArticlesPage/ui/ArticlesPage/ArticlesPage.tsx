@@ -24,7 +24,6 @@ const ArticlesPage = () => {
 
     useEffect(() => {
         dispatch(initArticlePage(searchParams));
-        // eslint-disable-next-line
     }, []);
 
     return (
