@@ -27,7 +27,7 @@
     "storybook:build": "build-storybook -c ./config/storybook",
     "generate:slice": "node ./scripts/createSlice/index.js",
     "prepare": "husky",
-    "postinstall": "rmdir /s /q .\\node_modules\\.cahce"
+    "postinstall": "node ./scripts/clear-cache.js"
   },
   "keywords": [],
   "author": "",
