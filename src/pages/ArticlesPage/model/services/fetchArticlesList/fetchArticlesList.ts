@@ -44,7 +44,6 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlelistPro
             });
             return response.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue(i18n.t('error'));
         }
     },

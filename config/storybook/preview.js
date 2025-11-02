@@ -1,5 +1,5 @@
 import { addDecorator } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
+import { Theme } from '@/shared/const/theme';
 import 'loki/configure-react';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/StoreDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';

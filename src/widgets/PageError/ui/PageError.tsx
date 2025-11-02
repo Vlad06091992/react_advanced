@@ -1,7 +1,7 @@
 import React from 'react';
-import { classnames } from '@/shared/lib/classnames';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/Button/Button';
+import { classnames } from '@/shared/lib/classnames';
+import { Button } from '@/shared/ui/Button';
 import styles from './PageError.module.scss';
 
 interface NavbarProps {

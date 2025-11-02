@@ -1,18 +1,18 @@
 import { memo, useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { classnames } from '@/shared/lib/classnames';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchArticleById } from '@/entities/Article/model/services/fetchArticleById';
-import { useSelector } from 'react-redux';
+import { fetchArticleById } from '../../model/services/fetchArticleById';
 import {
     Text, TextAlign, TextSize, TextTheme
-} from '@/shared/ui/Text/Text';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+} from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
-import { ArticleBlock, ArticleBlockType } from '@/entities/Article/model/types/Article';
+import { Icon } from '@/shared/ui/Icon';
+import { ArticleBlock, ArticleBlockType } from '../../model/types/Article';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -42,10 +42,32 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case ArticleBlockType.TEXT: return <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />;
-        case ArticleBlockType.CODE: return <ArticleCodeBlockComponent key={block.id} block={block} className={cls.block} />;
-        case ArticleBlockType.IMAGE: return <ArticleImageBlockComponent key={block.id} block={block} className={cls.block} />;
-        default: return null;
+        case ArticleBlockType.TEXT:
+            return (
+                <ArticleTextBlockComponent
+                    key={block.id}
+                    className={cls.block}
+                    block={block}
+                />
+            );
+        case ArticleBlockType.CODE:
+            return (
+                <ArticleCodeBlockComponent
+                    key={block.id}
+                    block={block}
+                    className={cls.block}
+                />
+            );
+        case ArticleBlockType.IMAGE:
+            return (
+                <ArticleImageBlockComponent
+                    key={block.id}
+                    block={block}
+                    className={cls.block}
+                />
+            );
+        default:
+            return null;
         }
     }, []);
 

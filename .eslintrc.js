@@ -4,7 +4,13 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+    extends: [
+        'plugin:react/recommended',
+        'airbnb', 'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
+        'eslint:recommended',
+        'plugin:import/recommended'
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -19,6 +25,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'vlad_vs-path-checker-plugin',
+        'unused-imports'
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -33,9 +40,19 @@ module.exports = {
             'error',
             { argsIgnorePattern: '^_' }
         ],
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+            'warn',
+            {
+                vars: 'all',
+                varsIgnorePattern: '^_',
+                args: 'after-used',
+                argsIgnorePattern: '^_',
+            },
+        ],
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-props-no-spreading': 'warn',
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
         'import/extensions': 'off',
@@ -49,8 +66,26 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'comma-dangle': 'off',
         'i18next/no-literal-string': [
-            'warn',
-            { markupOnly: true },
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttribute: [
+                    'dropDownDirection',
+                    'fallback',
+                    'title',
+                    'theme',
+                    'as',
+                    'role',
+                    'data-testid',
+                    'to',
+                    'target',
+                    'justify',
+                    'align',
+                    'border',
+                    'direction',
+                    'gap',
+                ],
+            },
         ],
         'max-len': [
             'warn',
@@ -58,11 +93,32 @@ module.exports = {
         ],
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-        'vlad_vs-path-checker-plugin/path-checker': 'error', // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/path-checker': ['error', {
+            alias: '@'
+        }], // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            }], // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/public-api-imports': ['error', {
+            alias: '@',
+            testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
+        }], // Checks effect dependencies
         'linebreak-style': 'off',
     },
     globals: {
         __IS_DEV__: true,
         __API_URL__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+                'max-len': 'off',
+            },
+        },
+    ],
 };

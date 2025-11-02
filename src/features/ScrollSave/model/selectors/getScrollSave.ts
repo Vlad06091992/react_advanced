@@ -1,8 +1,7 @@
-import { StateSchema } from '@/app/providers/StoreProvider';
 import { createSelector } from 'reselect';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getUIScroll = (state:StateSchema) => state.scrollSave.scroll;
-// export const getUIScrollByPath = (state:StateSchema, path:string) => state.scrollSave.scroll[path];
 export const getUIScrollByPath = createSelector(
     getUIScroll,
     (state:StateSchema, path:string) => path,

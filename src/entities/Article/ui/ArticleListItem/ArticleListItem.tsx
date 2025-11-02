@@ -1,19 +1,18 @@
 import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { classnames } from '@/shared/lib/classnames';
-import { Text } from '@/shared/ui/Text/Text';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Text } from '@/shared/ui/Text';
+import { Icon } from '@/shared/ui/Icon';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
-import { Card } from '@/shared/ui/Card/Card';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { ArticleTextBlockComponent } from '@/entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { HTMLAttributeAnchorTarget, useCallback } from 'react';
+import { Card } from '@/shared/ui/Card';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Button, ThemeButton } from '@/shared/ui/Button';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import { RouterPaths } from '@/shared/config/routerConfig/routerConfig';
-import { useNavigate } from 'react-router';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticlesViewMode, ArticleTextBlock } from '../../model/types/Article';
+import { getRouteArticleDetails } from '@/shared/const/paths';
 
 interface ArticleListItemProps {
     className?: string
@@ -27,7 +26,6 @@ export const ArticleListItem = ({
     className, article, viewMode = ArticlesViewMode.SMALL, target
 }: ArticleListItemProps) => {
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (
@@ -53,9 +51,9 @@ export const ArticleListItem = ({
                     <img src={article.img} className={cls.img} alt={article.title} />
                     {textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} /> }
                     <div className={cls.footer}>
-                        <AppLink target={target} to={RouterPaths.article_details + article.id}>
+                        <AppLink target={target} to={getRouteArticleDetails(article.id)}>
                             <Button theme={ThemeButton.OUTLINE}>
-                                {t(' Читать далее...')}
+                                {t('Читать далее...')}
                             </Button>
                         </AppLink>
                         {views}
@@ -67,7 +65,7 @@ export const ArticleListItem = ({
     }
 
     return (
-        <AppLink target={target} to={RouterPaths.article_details + article.id}>
+        <AppLink target={target} to={getRouteArticleDetails(article.id)}>
             <div className={classnames(className, [cls[viewMode]], {})}>
 
                 <Card className={cls.card}>

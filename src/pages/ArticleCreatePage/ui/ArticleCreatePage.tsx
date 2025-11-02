@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
 const ArticleCreatePage = () => {
-    const { t, i18n } = useTranslation('about');
-    return (<Page>ArticleCreatePage</Page>);
+    const { t } = useTranslation('about');
+    return (<Page>{t('ArticleCreatePage')}</Page>);
 };
 
 export default ArticleCreatePage;

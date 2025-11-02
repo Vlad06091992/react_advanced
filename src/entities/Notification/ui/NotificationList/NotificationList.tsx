@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { classnames } from '@/shared/lib/classnames';
 import { VStack } from '@/shared/ui/Stack';
-import { NotificationItem } from '@/entities/Notification/ui/NotificationItem/NotificationItem';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { NotificationItem } from '../NotificationItem/NotificationItem';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { useGetNotificationsListQuery } from '../../api/notificationApi';
 
 interface NotificationListProps {
@@ -33,7 +33,6 @@ export const NotificationList = memo(({ className }: NotificationListProps) => {
             gap="16"
             max
         >
-            fsdl;kf;sdlkfsd
             {notifications.map((n) => <NotificationItem key={n.id} item={n} />)}
         </VStack>
     );

@@ -1,1 +1,3 @@
-export { ArticlesPageLazy as ArticlesPage } from '@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.lazy';
+export { ArticlesPageLazy as ArticlesPage } from './ui/ArticlesPage/ArticlesPage.lazy';
+export { fetchArticlesList } from './model/services/fetchArticlesList/fetchArticlesList';
+export type { ArticlesPageSchema } from './model/types/articlesPageSchema';

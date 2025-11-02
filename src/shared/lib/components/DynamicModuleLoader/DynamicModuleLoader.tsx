@@ -1,13 +1,11 @@
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
-import { StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ReduxStoreWithManager, StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider';
+import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
 
-// export type ReducerList = Partial<Record<StateSchemaKey, Reducer>>
 export type ReducerList = {
-    [name in StateSchemaKey]?: Reducer;
+    [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;
 }
 
 export interface DynamicModuleLoaderProps {
@@ -42,6 +40,7 @@ export const DynamicModuleLoader = ({
                 }
             };
         },
+        // eslint-disable-next-line
         []
     );
 

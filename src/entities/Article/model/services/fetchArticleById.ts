@@ -14,6 +14,7 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
             });
             return response.data;
         } catch (e) {
+            // eslint-disable-next-line
             console.log(e);
             return rejectWithValue(i18n.t('error'));
         }

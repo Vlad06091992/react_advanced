@@ -96,6 +96,7 @@ ColumnAlignEnd.args = {
     align: 'end',
     children: (
         <>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <div>first</div>
             <div>first</div>
             <div>first</div>

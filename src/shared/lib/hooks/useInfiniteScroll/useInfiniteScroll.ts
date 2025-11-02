@@ -8,6 +8,7 @@ interface UseInfiniteScrollOptions {
 }
 
 export const useInfiniteScroll = ({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) => {
+    // eslint-disable-next-line consistent-return
     useEffect(() => {
         if (callback) {
             const options = {

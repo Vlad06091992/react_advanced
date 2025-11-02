@@ -1,22 +1,32 @@
 import { Story } from '@storybook/react';
-import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { loginReducer } from '@/features/AuthByUsername/model/slice/loginSlice';
-import { profileReducer } from '@/features/EditableProfileCard/model/slice/profileSlice';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+// TODO разобраться почему не работает исключение для линтера -> ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+// eslint-disable-next-line
+import {loginReducer} from '@/features/AuthByUsername';
+// eslint-disable-next-line
+import {profileReducer} from '@/features/EditableProfileCard';
 import { ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsReducer } from '@/entities/Article/model/slice/ArticleDetailsSlice';
-import { addCommentFormReducer } from '@/features/AddCommentForm/model/slices/addCommentFormSlice';
+// eslint-disable-next-line
+import {articleDetailsReducer} from '@/entities/Article';
+// eslint-disable-next-line
+import {addCommentFormReducer} from '@/features/AddCommentForm';
+// eslint-disable-next-line
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 
-const defaultAsyncReducers:ReducerList = {
+const defaultAsyncReducers: Partial<ReducerList> = {
     loginData: loginReducer,
     profileData: profileReducer,
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
-    articleDetailsPage: articleDetailsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 // eslint-disable-next-line no-undef
-export const StoreDecorator = (state: DeepPartial<StateSchema>, asyncReducers?:DeepPartial<ReducersMapObject<StateSchema>>) => (StoryComponent: Story) => (
+export const StoreDecorator = (
+    state: DeepPartial<StateSchema>,
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+) => (StoryComponent: Story) => (
     <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
         <StoryComponent />
     </StoreProvider>

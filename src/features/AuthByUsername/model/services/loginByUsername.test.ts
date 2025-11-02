@@ -6,6 +6,7 @@ import { loginByUsername } from './loginByUsername';
 jest.mock('axios');
 
 // для глубокого мокирования(модуль и поля)
+// eslint-disable-next-line
 const mockedAxios = jest.mocked(axios, { shallow: false });
 
 describe('loginByUsername.test', () => {

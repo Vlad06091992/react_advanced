@@ -8,7 +8,7 @@ import { lazy } from 'react';
 //     }, 500);
 // }));
 
-export const ProfilePageLazy = lazy(() => new Promise((res, rej) => {
+export const ProfilePageLazy = lazy(() => new Promise((res) => {
     setTimeout(() => {
         // @ts-ignore
 

@@ -1,8 +1,8 @@
 import { memo, useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Page } from '@/widgets/Page/Page';
-import { useSearchParams } from 'react-router-dom';
+import { Page } from '@/widgets/Page';
 import { articlesPageReducer } from '../../model/slices/articlePageSlice';
 import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { ArticlesPageFilters } from '../../ui/ArtriclesPageFilters/ArticlesPageFilters';

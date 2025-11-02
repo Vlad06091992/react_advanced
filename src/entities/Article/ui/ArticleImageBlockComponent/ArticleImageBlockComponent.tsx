@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classnames } from '@/shared/lib/classnames';
-import { Text, TextAlign } from '@/shared/ui/Text/Text';
+import { Text, TextAlign } from '@/shared/ui/Text';
 import { ArticleImageBlock } from '../../model/types/Article';
 import cls from './ArticleImageBlockComponent.module.scss';
 
@@ -10,9 +10,7 @@ export interface ArticleImageBlockComponentProps {
 }
 
 export const ArticleImageBlockComponent = memo(({ className, block }: ArticleImageBlockComponentProps) => {
-    const {
-        title, src, type, id
-    } = block;
+    const { title, src } = block;
 
     return (
         <div className={classnames(className)}>

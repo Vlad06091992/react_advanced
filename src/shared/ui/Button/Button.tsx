@@ -1,5 +1,5 @@
-import React, { ButtonHTMLAttributes, memo } from 'react';
-import { classnames } from '@/shared/lib/classnames';
+import React, {ButtonHTMLAttributes, memo, ReactNode} from 'react';
+import {classnames} from '@/shared/lib/classnames';
 import styles from './Button.module.scss';
 
 export enum ThemeButton {
@@ -12,17 +12,36 @@ export enum ThemeButton {
 }
 
 export enum ButtonSize {
-    M= 'size_m',
-    L= 'size_l',
-    XL= 'size_xl'
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    /**
+     * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+     */
     theme?: ThemeButton
+    /**
+     * Флаг, делающий кнопку квадратной
+     */
     square?: boolean
+    /**
+     * Увеличивает кнопку на всю свободную ширину
+     */
     fullWidth?: boolean
+    /**
+     * Размер кнопки в соответствии с дизайн системой
+     */
     size?: ButtonSize
+    /**
+     * Флаг, отвечающий за работу кнопки
+     */
     disabled?: boolean
+    /**
+     * Содержимое кнопки
+     */
+    children?: ReactNode;
 }
 
 type Mods = Record<string, boolean | undefined>;
@@ -36,7 +55,7 @@ export const Button = memo((props: ButtonProps) => {
         children,
         theme = ThemeButton.OUTLINE, fullWidth, disabled = false, ...restProps
     } = props;
-    const mods:Mods = {
+    const mods: Mods = {
         [styles.square]: square,
         [styles[size]]: true,
         [styles.disabled]: disabled,
