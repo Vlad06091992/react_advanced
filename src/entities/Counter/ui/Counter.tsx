@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classnames } from '@/shared/lib/classnames';
-import { getCounterValue } from '../model/selectors/getCounterValue';
-import { counterActions } from '../model/slice/CounterSlice';
+import { useCounterValue } from '../model/selectors/getCounterValue';
+import { useCounterActions } from '../model/slice/CounterSlice';
 
 export interface CounterProps {
     className?:string
@@ -11,13 +10,18 @@ export interface CounterProps {
 
 export const Counter:FC<CounterProps> = ({ className }) => {
     const dispatch = useAppDispatch();
-    const value = useSelector(getCounterValue);
+    const value = useCounterValue();
+    const { increment, decrement, add } = useCounterActions();
 
     const inc = () => {
-        dispatch(counterActions.increment());
+        increment();
     };
     const dec = () => {
-        dispatch(counterActions.decrement());
+        decrement();
+    };
+
+    const addFive = () => {
+        add(5);
     };
 
     return (
@@ -27,6 +31,7 @@ export const Counter:FC<CounterProps> = ({ className }) => {
             <button data-testid="increment-btn" onClick={inc}>inc</button>
             {/* eslint-disable-next-line i18next/no-literal-string */}
             <button data-testid="decrement-btn" onClick={dec}>dec</button>
+            <button data-testid="decrement-btn" onClick={addFive}>add 5</button>
         </div>
     );
 };
