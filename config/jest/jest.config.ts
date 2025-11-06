@@ -29,7 +29,10 @@ const config: Config = {
     ],
     rootDir: '../../',
 
-    testMatch: ['<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)'],
+    testMatch: [
+        // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
+        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
+    ],
     modulePaths: [
         '<rootDir>/src',
     ],

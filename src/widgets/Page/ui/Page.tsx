@@ -11,20 +11,23 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 import { PAGE_ID } from '@/shared/const';
+import { TestProps } from '@/shared/types';
 
-interface PageProps {
-    className?:string
-    children:ReactNode
+interface PageProps extends TestProps {
+    className?: string
+    children: ReactNode
     onScrollEnd?: () => void
 
 }
 
-export const Page = ({ className, children, onScrollEnd }:PageProps) => {
+export const Page = (props: PageProps) => {
+    const { className, children, onScrollEnd, } = props;
+
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
-    const scrollPosition = useSelector((state:StateSchema) => getUIScrollByPath(state, pathname));
+    const scrollPosition = useSelector((state: StateSchema) => getUIScrollByPath(state, pathname));
 
     useInfiniteScroll({
         triggerRef,
@@ -43,9 +46,15 @@ export const Page = ({ className, children, onScrollEnd }:PageProps) => {
     const throttledOnScroll = useThrottle(onScroll, 500);
 
     return (
-        <main id={PAGE_ID} ref={wrapperRef} className={classnames(className, [cls.page])} onScroll={throttledOnScroll}>
+        <main
+            data-testid={props['data-testid'] ?? 'Page'}
+            id={PAGE_ID}
+            ref={wrapperRef}
+            className={classnames(className, [cls.page])}
+            onScroll={throttledOnScroll}
+        >
             {children}
-            { onScrollEnd && <div className={cls.scrollTrigger} ref={triggerRef} />}
+            {onScrollEnd && <div className={cls.scrollTrigger} ref={triggerRef} />}
         </main>
     );
 };

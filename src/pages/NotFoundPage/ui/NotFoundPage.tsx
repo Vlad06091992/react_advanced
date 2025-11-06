@@ -6,7 +6,7 @@ export const NotFoundPage = () => {
     const { t } = useTranslation();
     return (
         <Page>
-            <div className={styles.NotFoundPage}>{t('Страница не найдена')}</div>
+            <div data-testid="NotFoundPage" className={styles.NotFoundPage}>{t('Страница не найдена')}</div>
         </Page>
     );
 };

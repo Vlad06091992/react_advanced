@@ -3,7 +3,7 @@ import { Page } from '@/widgets/Page';
 
 const ArticleCreatePage = () => {
     const { t } = useTranslation('about');
-    return (<Page>{t('ArticleCreatePage')}</Page>);
+    return (<Page data-testid="ArticleCreatePage">{t('ArticleCreatePage')}</Page>);
 };
 
 export default ArticleCreatePage;
