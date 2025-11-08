@@ -21,7 +21,9 @@ interface PageProps extends TestProps {
 }
 
 export const Page = (props: PageProps) => {
-    const { className, children, onScrollEnd, } = props;
+    const {
+        className, children, onScrollEnd, 'data-testid': dataTestId
+    } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -47,7 +49,7 @@ export const Page = (props: PageProps) => {
 
     return (
         <main
-            data-testid={props['data-testid'] ?? 'Page'}
+            data-testid={dataTestId ?? 'Page'}
             id={PAGE_ID}
             ref={wrapperRef}
             className={classnames(className, [cls.page])}

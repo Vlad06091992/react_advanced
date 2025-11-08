@@ -24,7 +24,7 @@ const ArticlesPage = () => {
 
     useEffect(() => {
         dispatch(initArticlePage(searchParams));
-    }, []);
+    }, [dispatch, searchParams]);
 
     return (
         <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount={false}>

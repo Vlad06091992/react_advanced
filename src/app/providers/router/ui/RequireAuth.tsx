@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import React, { useMemo } from 'react';
 import { getUserAuthData, UserRole } from '@/entities/User';
-import {getRouteForbidden, getRouteMain } from '@/shared/const/paths';
+import { getRouteForbidden, getRouteMain } from '@/shared/const/paths';
 
 export const RequireAuth = ({ children, roles }: { children: React.ReactNode, roles?:UserRole[] }) => {
     const authData = useSelector(getUserAuthData);
