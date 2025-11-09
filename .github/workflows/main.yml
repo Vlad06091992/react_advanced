@@ -3,13 +3,13 @@ on:
    push:
      branches: [fourteen]
    pull_request:
-     branches: [four]
+     branches: [fourteen]
 jobs:
-  pipeline:
+  building:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-       node-version: [20.19.0]
+        node-version: [ 20.19.0 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +21,20 @@ jobs:
         run: npm install
       - name: build production project
         run: npm run build:prod
+
+
+  checks:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+       node-version: [20.19.0]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: linting typescript
         if: always()
         run: npm run lint:ts
