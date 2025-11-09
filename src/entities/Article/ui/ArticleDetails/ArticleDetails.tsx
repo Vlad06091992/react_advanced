@@ -15,7 +15,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/Article';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+// import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import {
     getArticleDetailsData,
@@ -24,6 +24,7 @@ import {
 } from '../../model/selectors/getArticleDetails';
 import { articleDetailsReducer } from '../../model/slice/ArticleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 export interface ArticleDetailsProps {
     className?: string
