@@ -1,2 +1,2 @@
-export type { TestProps } from './test';
+export type { TestProps } from './testTypes';
 export type { DropDownDirections } from './sort';

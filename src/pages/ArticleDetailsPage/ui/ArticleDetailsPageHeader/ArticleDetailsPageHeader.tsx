@@ -2,13 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
-import { classnames } from '@/shared/lib/classnames';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/paths';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle';
 import { getArticleDetailsData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
-import cls from './ArticleDetailsPageHeader.module.scss';
 
 export const ArticleDetailsPageHeader = memo(() => {
     const { t } = useTranslation('about');
@@ -27,7 +25,7 @@ export const ArticleDetailsPageHeader = memo(() => {
     }, [article, navigate]);
 
     return (
-        <HStack max justify="between" className={classnames(cls.ArticleDetailsPageHeader)}>
+        <HStack max justify="between">
             <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
                 {t('Назад к списку')}
             </Button>

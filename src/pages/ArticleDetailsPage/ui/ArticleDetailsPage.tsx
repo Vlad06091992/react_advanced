@@ -10,7 +10,6 @@ import { ArticleDetailsComments } from './ArticleDetailsComments/ArticleDetailsC
 import { VStack } from '@/shared/ui/Stack';
 import { articleDetailsPageReducer } from '../model/slice/index';
 import { ArticleDetailsPageHeader } from '../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import cls from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
@@ -37,7 +36,7 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <Page data-testid="ArticleDetailsPage" className={classnames(cls.articleDetailsPage, [classname])}>
+            <Page data-testid="ArticleDetailsPage" className={classnames(classname)}>
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails articleId={id} />
