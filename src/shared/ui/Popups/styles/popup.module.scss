@@ -1,8 +1,8 @@
-.popup{
+.popup {
   position: relative;
 }
 
-.trigger{
+.trigger {
   background: none;
   border: none;
   outline: none;
@@ -12,23 +12,22 @@
 
 .upRight {
   bottom: 100%;
-  left:0%
+  left: 0%;
 }
 
 .upLeft {
   bottom: 100%;
-  right:0%
+  right: 0%;
 }
-
 
 .downRight {
   top: 100%;
-  left:0%
+  left: 0%;
 }
 
 .downLeft {
   top: 100%;
-  right:0%
+  right: 0%;
 }
 
 .active {
