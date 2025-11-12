@@ -23,6 +23,7 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "test:e2e": "cypress open",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
     "generate:slice": "node ./scripts/createSlice/index.js",
@@ -109,7 +110,8 @@
     "webpack": "^5.99.5",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "cypress": "^11.0.0"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
