@@ -19,15 +19,15 @@ export default (env:ENV): ConfigurationAndDevServer => {
             locales: path.resolve(__dirname, 'public', 'locales'),
             buildLocales: path.resolve(__dirname, 'build', 'locales'),
         },
-        isDev: env.mode === 'development',
-        apiUrl: env.apiUrl || 'http://localhost:8001',
+        isDev: env?.mode === 'development',
+        apiUrl: env?.apiUrl || 'http://localhost:8001',
     };
 
     const { paths: { build, entry, html }, isDev = true } = options;
 
     return {
         devtool: isDev && 'eval-cheap-module-source-map',
-        mode: env.mode,
+        mode: env?.mode,
         entry,
         module: {
             rules: buildLoaders(options),
