@@ -9,21 +9,24 @@ import popupStyles from '../styles/popup.module.scss';
 
 interface DropdownItem {
     content: string;
-    href?:string
-    disabled?:boolean
-    onClick?:() => void
+    href?: string;
+    disabled?: boolean;
+    onClick?: () => void;
 }
 
 interface DropdownProps {
-    dropDownDirection?:DropDownDirections
+    dropDownDirection?: DropDownDirections;
     className?: string;
     items: DropdownItem[];
-    trigger:ReactNode;
+    trigger: ReactNode;
 }
 
 export function Dropdown(props: DropdownProps) {
     const {
-        className, trigger, items, dropDownDirection = 'down-right'
+        className,
+        trigger,
+        items,
+        dropDownDirection = 'down-right',
     } = props;
 
     const modes = popupPositions(dropDownDirection);
@@ -33,10 +36,12 @@ export function Dropdown(props: DropdownProps) {
             <Menu.Button className={popupStyles.trigger}>{trigger}</Menu.Button>
             <Menu.Items className={classnames(styles.menu, [], modes)}>
                 {items.map((item, index) => {
-                    const content = ({ active }:{active:boolean}) => (
+                    const content = ({ active }: { active: boolean }) => (
                         <button
                             onClick={item.onClick}
-                            className={classnames(styles.item, [], { [popupStyles.active]: active })}
+                            className={classnames(styles.item, [], {
+                                [popupStyles.active]: active,
+                            })}
                         >
                             {item.content}
                         </button>
@@ -45,7 +50,12 @@ export function Dropdown(props: DropdownProps) {
                     if (item.href) {
                         return (
                             // eslint-disable-next-line react/no-array-index-key
-                            <Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
+                            <Menu.Item
+                                key={index}
+                                as={AppLink}
+                                to={item.href}
+                                disabled={item.disabled}
+                            >
                                 {content}
                             </Menu.Item>
                         );
@@ -53,12 +63,15 @@ export function Dropdown(props: DropdownProps) {
 
                     return (
                         // eslint-disable-next-line react/no-array-index-key
-                        <Menu.Item key={index} as={Fragment} disabled={item.disabled}>
+                        <Menu.Item
+                            key={index}
+                            as={Fragment}
+                            disabled={item.disabled}
+                        >
                             {content}
                         </Menu.Item>
                     );
                 })}
-
             </Menu.Items>
         </Menu>
     );

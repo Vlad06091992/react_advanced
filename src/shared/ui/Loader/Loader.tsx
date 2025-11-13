@@ -3,10 +3,10 @@ import './Loader.scss';
 import { classnames } from '@/shared/lib/classnames';
 
 interface LoaderProps {
-    className?:string
+    className?: string;
 }
 
-export const Loader = ({ className }:LoaderProps) => (
+export const Loader = ({ className }: LoaderProps) => (
     <div className={classnames('lds-ring', [className], {})}>
         <div />
         <div />

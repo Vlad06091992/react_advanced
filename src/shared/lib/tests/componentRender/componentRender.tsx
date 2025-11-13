@@ -14,28 +14,26 @@ import '@/app/styles/index.scss';
 export interface ComponentRenderOptions {
     route?: string;
     initialState?: DeepPartial<StateSchema>;
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
     theme?: Theme;
 }
 
-export interface Test extends ComponentRenderOptions{
-    children?:ReactNode;
+export interface Test extends ComponentRenderOptions {
+    children?: ReactNode;
 }
 
 export function TestProvider(props: Test) {
-    const {
-        route = '/', asyncReducers, children, initialState, theme
-    } = props;
+    const { route = '/', asyncReducers, children, initialState, theme } = props;
 
     return (
         <MemoryRouter initialEntries={[route]}>
-            <StoreProvider asyncReducers={asyncReducers} initialState={initialState}>
-
+            <StoreProvider
+                asyncReducers={asyncReducers}
+                initialState={initialState}
+            >
                 <I18nextProvider i18n={i18nForTests}>
                     <ThemeProvider initialTheme={theme}>
-                        <div className={`app ${theme}`}>
-                            {children}
-                        </div>
+                        <div className={`app ${theme}`}>{children}</div>
                     </ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
@@ -43,14 +41,17 @@ export function TestProvider(props: Test) {
     );
 }
 
-export function componentRender(component: ReactNode, options: ComponentRenderOptions) {
-    const {
-        route = '/',
-        initialState,
-        asyncReducers,
-    } = options;
+export function componentRender(
+    component: ReactNode,
+    options: ComponentRenderOptions,
+) {
+    const { route = '/', initialState, asyncReducers } = options;
 
     return render(
-        <TestProvider initialState={initialState} route={route} asyncReducers={asyncReducers} />
+        <TestProvider
+            initialState={initialState}
+            route={route}
+            asyncReducers={asyncReducers}
+        />,
     );
 }

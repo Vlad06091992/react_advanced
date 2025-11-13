@@ -4,7 +4,7 @@ import { User, UserSchema } from '../types/user';
 
 const initialState = {
     authData: null,
-    isInit: false
+    isInit: false,
 } as UserSchema;
 
 export const userSlice = createSlice({

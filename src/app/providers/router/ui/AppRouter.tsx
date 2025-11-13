@@ -9,15 +9,19 @@ export const AppRouter = memo(() => {
         <Route
             key={r.path}
             path={r.path}
-            element={r.authOnly ? <RequireAuth roles={r.roles}>{r.element}</RequireAuth> : r.element}
+            element={
+                r.authOnly ? (
+                    <RequireAuth roles={r.roles}>{r.element}</RequireAuth>
+                ) : (
+                    r.element
+                )
+            }
         />
     ));
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <Routes>
-                {routes}
-            </Routes>
+            <Routes>{routes}</Routes>
         </Suspense>
     );
 });

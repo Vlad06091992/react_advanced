@@ -7,39 +7,41 @@ import { ArticlesViewMode } from '../../../entities/Article/model/types/Article'
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
-    className?: string
-    viewMode: ArticlesViewMode
-    onViewClick: (viewMode: ArticlesViewMode) => void
+    className?: string;
+    viewMode: ArticlesViewMode;
+    onViewClick: (viewMode: ArticlesViewMode) => void;
 }
 
 const viewModesTypes = [
     {
         viewMode: ArticlesViewMode.SMALL,
-        icon: TiledIcon
+        icon: TiledIcon,
     },
     {
         viewMode: ArticlesViewMode.BIG,
-        icon: ListIcon
-    }
+        icon: ListIcon,
+    },
 ];
 
-export const ArticleViewSelector = ({ className, onViewClick, viewMode }: ArticleViewSelectorProps) => (
+export const ArticleViewSelector = ({
+    className,
+    onViewClick,
+    viewMode,
+}: ArticleViewSelectorProps) => (
     <div className={classnames(cls.ArticlesViewSelector, [className])}>
-        {
-            viewModesTypes.map((v) => (
-                <Button
-                    theme={ThemeButton.CLEAR}
-                    onClick={() => onViewClick(v.viewMode)}
-                >
-                    <Icon
-                        className={classnames(undefined, undefined, {
-                            [cls.notSelected]: v.viewMode !== viewMode
-                        })}
-                        Svg={v.icon}
-                    />
-                </Button>
-            ))
-        }
+        {viewModesTypes.map((v) => (
+            <Button
+                theme={ThemeButton.CLEAR}
+                onClick={() => onViewClick(v.viewMode)}
+            >
+                <Icon
+                    className={classnames(undefined, undefined, {
+                        [cls.notSelected]: v.viewMode !== viewMode,
+                    })}
+                    Svg={v.icon}
+                />
+            </Button>
+        ))}
     </div>
 );
 

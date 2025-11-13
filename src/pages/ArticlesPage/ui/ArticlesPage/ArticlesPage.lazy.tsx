@@ -8,4 +8,6 @@ import { lazy } from 'react';
 //     }, 500);
 // }));
 
-export const ArticlesPageLazy = lazy(() => import('../ArticlesPage/ArticlesPage'));
+export const ArticlesPageLazy = lazy(
+    () => import('../ArticlesPage/ArticlesPage'),
+);

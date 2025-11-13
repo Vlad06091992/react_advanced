@@ -3,11 +3,11 @@ import { User } from '@/entities/User';
 export enum ArticleBlockType {
     IMAGE = 'IMAGE',
     TEXT = 'TEXT',
-    CODE = 'CODE'
+    CODE = 'CODE',
 }
 export enum ArticlesViewMode {
     SMALL = 'SMALL',
-    BIG = 'BIG'
+    BIG = 'BIG',
 }
 
 export interface ArticleBlocksBase {
@@ -32,13 +32,16 @@ export interface ArticleTextBlock extends ArticleBlocksBase {
     paragraphs: string[];
 }
 
-export type ArticleBlock = ArticleTextBlock | ArticleImageBlock | ArticleCodeBlock;
+export type ArticleBlock =
+    | ArticleTextBlock
+    | ArticleImageBlock
+    | ArticleCodeBlock;
 
 export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS',
-    ALL = 'ALL'
+    ALL = 'ALL',
 }
 
 // export interface Article {
@@ -54,7 +57,7 @@ export enum ArticleType {
 // }
 
 export interface Article {
-    user:User,
+    user: User;
     id: string;
     title: string;
     subtitle: string;
@@ -71,4 +74,4 @@ export enum ArticleSortFields {
     CREATED = 'createdAt',
 }
 
-export type SortOrder = 'asc' | 'desc'
+export type SortOrder = 'asc' | 'desc';

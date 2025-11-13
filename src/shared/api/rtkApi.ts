@@ -15,7 +15,7 @@ export const rtkApi = createApi({
             }
 
             return headers;
-        }
+        },
     }),
     endpoints: (builder) => ({
         getPokemonByName: builder.query<any, string>({

@@ -11,7 +11,7 @@ import { initArticlePage } from '../../model/services/initArticlePage/initArticl
 import cls from './ArtriclesPage.module.scss';
 
 const initialReducer = {
-    articlesPage: articlesPageReducer
+    articlesPage: articlesPageReducer,
 };
 
 const ArticlesPage = () => {
@@ -27,7 +27,10 @@ const ArticlesPage = () => {
     }, [dispatch, searchParams]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount={false}>
+        <DynamicModuleLoader
+            reducers={initialReducer}
+            removeAfterUnmount={false}
+        >
             <Page data-testid="ArticlesPage" onScrollEnd={onLoadNextPart}>
                 <ArticlesPageFilters />
                 <ArticleInfiniteList className={cls.list} />

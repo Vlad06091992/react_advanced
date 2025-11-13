@@ -10,12 +10,8 @@ const config: Config = {
     clearMocks: true,
     collectCoverage: true,
     testEnvironment: 'jsdom',
-    coveragePathIgnorePatterns: [
-        '/node_modules/',
-    ],
-    moduleDirectories: [
-        'node_modules',
-    ],
+    coveragePathIgnorePatterns: ['/node_modules/'],
+    moduleDirectories: ['node_modules'],
     coverageDirectory: 'coverage',
     moduleFileExtensions: [
         'js',
@@ -33,9 +29,7 @@ const config: Config = {
         // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
-    modulePaths: [
-        '<rootDir>/src',
-    ],
+    modulePaths: ['<rootDir>/src'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
@@ -50,13 +44,16 @@ const config: Config = {
 
     reporters: [
         'default',
-        ['jest-html-reporters', {
-            publicPath: '<rootDir>/reports/unit',
-            filename: 'report.html',
-            openReport: true,
-            inlineSource: true
-        }]
-    ]
+        [
+            'jest-html-reporters',
+            {
+                publicPath: '<rootDir>/reports/unit',
+                filename: 'report.html',
+                openReport: true,
+                inlineSource: true,
+            },
+        ],
+    ],
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,

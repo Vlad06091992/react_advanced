@@ -19,50 +19,50 @@ import {
     getRouteForbidden,
     getRouteMain,
     getRouteNotFound,
-    getRouteProfile
+    getRouteProfile,
 } from '@/shared/const/paths';
 import { ArticleCreatePage } from '@/pages/ArticleCreatePage';
 
 type AppRoutesProps = RouteProps & {
-    authOnly?:boolean
-    roles?:UserRole[]
-}
+    authOnly?: boolean;
+    roles?: UserRole[];
+};
 
-export const routerConfig:AppRoutesProps[] = [
+export const routerConfig: AppRoutesProps[] = [
     {
         element: <AboutPage />,
-        path: getRouteAbout()
+        path: getRouteAbout(),
     },
     {
         element: <ArticlesPage />,
         path: getRouteArticles(),
-        authOnly: true
+        authOnly: true,
     },
     {
         element: <ArticleEditPage />,
         path: getRouteArticleEdit(':id'),
-        authOnly: true
+        authOnly: true,
     },
     {
         element: <ArticleCreatePage />,
         path: getRouteArticleCreate(),
-        authOnly: true
+        authOnly: true,
     },
     {
         element: <AdminPage />,
         path: getRouteAdminPanel(),
         authOnly: true,
-        roles: [UserRole.ADMIN, UserRole.MANAGER]
+        roles: [UserRole.ADMIN, UserRole.MANAGER],
     },
     {
         element: <ArticleDetailsPage />,
         path: getRouteArticleDetails(':id'),
-        authOnly: true
+        authOnly: true,
     },
     {
         element: <ProfilePage />,
         path: getRouteProfile(':id'),
-        authOnly: true
+        authOnly: true,
     },
     {
         element: <MainPage />,
@@ -70,10 +70,10 @@ export const routerConfig:AppRoutesProps[] = [
     },
     {
         element: <NotFoundPage />,
-        path: getRouteNotFound()
+        path: getRouteNotFound(),
     },
     {
         element: <ForbiddenPage />,
-        path: getRouteForbidden()
+        path: getRouteForbidden(),
     },
 ];

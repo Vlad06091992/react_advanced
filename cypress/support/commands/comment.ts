@@ -1,10 +1,10 @@
 import { USER_LOCALSTORAGE_KEY } from '../../../src/shared/const/localstorage';
-import {User} from "@/entities/User";
-import {selectByTestId} from "../../helpers/selectByTestId";
+import { User } from '@/entities/User';
+import { selectByTestId } from '../../helpers/selectByTestId';
 
 const addComment = (text: string) => {
-  cy.getByTestId('AddCommentForm.input').clear().type(text)
-  cy.getByTestId('AddCommentForm.button').click()
+    cy.getByTestId('AddCommentForm.input').clear().type(text);
+    cy.getByTestId('AddCommentForm.button').click();
 };
 
 declare global {
@@ -15,5 +15,4 @@ declare global {
     }
 }
 
-export {addComment};
-
+export { addComment };

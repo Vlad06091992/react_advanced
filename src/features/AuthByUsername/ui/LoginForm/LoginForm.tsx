@@ -9,15 +9,18 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducerList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './loginForm.module.scss';
 import { loginByUsername } from '../../model/services/loginByUsername';
 
 export interface LoginFormProps {
-    className?: string
-    onSuccess?: () => void
+    className?: string;
+    onSuccess?: () => void;
 }
 
 // вынос за пределы компонента чтобы ссылка на объект была постоянной
@@ -34,13 +37,19 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
 
-    const onChangeUsername = useCallback((val: string) => {
-        dispatch(loginActions.setUsername(val));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (val: string) => {
+            dispatch(loginActions.setUsername(val));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((val: string) => {
-        dispatch(loginActions.setPassword(val));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (val: string) => {
+            dispatch(loginActions.setPassword(val));
+        },
+        [dispatch],
+    );
 
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
@@ -51,7 +60,11 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     }, [dispatch, username, password, onSuccess]);
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classnames(classnames(className, [styles.loginForm]))}>
+            <div
+                className={classnames(
+                    classnames(className, [styles.loginForm]),
+                )}
+            >
                 <Text title="Форма авторизации" />
                 {error && <Text theme={TextTheme.ERROR} text={error} />}
                 <Input

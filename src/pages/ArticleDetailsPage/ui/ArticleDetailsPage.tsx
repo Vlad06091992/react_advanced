@@ -3,7 +3,10 @@ import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { classnames } from '@/shared/lib/classnames';
-import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducerList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from './ArticleDetailsComments/ArticleDetailsComments';
@@ -13,11 +16,11 @@ import { ArticleDetailsPageHeader } from '../ui/ArticleDetailsPageHeader/Article
 import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
-    classname?: string
+    classname?: string;
 }
 
 const initialReducers: ReducerList = {
-    articleDetailsPage: articleDetailsPageReducer
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
@@ -36,7 +39,10 @@ const ArticleDetailsPage = ({ classname }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <Page data-testid="ArticleDetailsPage" className={classnames(classname)}>
+            <Page
+                data-testid="ArticleDetailsPage"
+                className={classnames(classname)}
+            >
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails articleId={id} />

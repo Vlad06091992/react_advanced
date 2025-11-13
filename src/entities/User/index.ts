@@ -4,7 +4,10 @@ import { userReducer, userActions } from './model/slice/userSlice';
 import { getUserAuthData } from './model/selectors/getUserAuthData';
 import { getIsInitUser } from './model/selectors/getIsInitUser';
 import {
-    getUserRole, isUserManager, isUserAdmin, isUserStandard
+    getUserRole,
+    isUserManager,
+    isUserAdmin,
+    isUserStandard,
 } from './model/selectors/getUserRoles';
 
 export {
@@ -16,10 +19,7 @@ export {
     userReducer,
     userActions,
     getUserAuthData,
-    getIsInitUser
+    getIsInitUser,
 };
 
-export type {
-    UserSchema,
-    User,
-};
+export type { UserSchema, User };

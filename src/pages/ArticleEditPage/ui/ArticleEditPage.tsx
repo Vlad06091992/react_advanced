@@ -7,7 +7,7 @@ const ArticleEditPage = () => {
 
     return (
         <Page data-testid="ArticleEditPage">
-            {isEdit ? 'Редактирование статьи' : 'Создание статьи' }
+            {isEdit ? 'Редактирование статьи' : 'Создание статьи'}
         </Page>
     );
 };

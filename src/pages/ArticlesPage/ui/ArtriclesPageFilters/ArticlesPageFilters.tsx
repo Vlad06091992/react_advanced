@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { classnames } from '@/shared/lib/classnames';
 import {
-    ArticleSortFields, ArticlesViewMode, ArticleType, SortOrder,
+    ArticleSortFields,
+    ArticlesViewMode,
+    ArticleType,
+    SortOrder,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
@@ -16,8 +19,9 @@ import { TabItem } from '@/shared/ui/Tabs';
 import {
     getArticlesPageSearchSubstr,
     getArticlesPageSortBy,
-    getArticlesPageSortOrder, getArticlesPageType,
-    getArticlesPageViewMode
+    getArticlesPageSortOrder,
+    getArticlesPageType,
+    getArticlesPageViewMode,
 } from '../../model/selectors/articlePageSelectors';
 import { articlesPageActions } from '../../model/slices/articlePageSlice';
 import cls from './ArtriclesPageFilters.module.scss';
@@ -39,35 +43,52 @@ export const ArticlesPageFilters = () => {
         dispatch(fetchArticlesList({ replace: true }));
     }, 500);
 
-    const onViewClick = useCallback((viewMode: ArticlesViewMode) => {
-        dispatch(articlesPageActions.setViewMode(viewMode));
-        dispatch(articlesPageActions.setPage(1));
-        fetchdata();
-    }, [dispatch, fetchdata]);
+    const onViewClick = useCallback(
+        (viewMode: ArticlesViewMode) => {
+            dispatch(articlesPageActions.setViewMode(viewMode));
+            dispatch(articlesPageActions.setPage(1));
+            fetchdata();
+        },
+        [dispatch, fetchdata],
+    );
 
-    const onChangeSortOrder = useCallback((sortOrder: SortOrder) => {
-        dispatch(articlesPageActions.setOrder(sortOrder));
-        dispatch(articlesPageActions.setPage(1));
-        fetchdata();
-    }, [dispatch, fetchdata]);
+    const onChangeSortOrder = useCallback(
+        (sortOrder: SortOrder) => {
+            dispatch(articlesPageActions.setOrder(sortOrder));
+            dispatch(articlesPageActions.setPage(1));
+            fetchdata();
+        },
+        [dispatch, fetchdata],
+    );
 
-    const onChangeSortBy = useCallback((sortField: ArticleSortFields) => {
-        dispatch(articlesPageActions.setSortBy(sortField));
-        dispatch(articlesPageActions.setPage(1));
-        fetchdata();
-    }, [dispatch, fetchdata]);
+    const onChangeSortBy = useCallback(
+        (sortField: ArticleSortFields) => {
+            dispatch(articlesPageActions.setSortBy(sortField));
+            dispatch(articlesPageActions.setPage(1));
+            fetchdata();
+        },
+        [dispatch, fetchdata],
+    );
 
-    const onChangeSearchSubString = useCallback((value: string) => {
-        dispatch(articlesPageActions.setSearchSubString(value));
-        dispatch(articlesPageActions.setPage(1));
-        fetchdata();
-    }, [dispatch, fetchdata]);
+    const onChangeSearchSubString = useCallback(
+        (value: string) => {
+            dispatch(articlesPageActions.setSearchSubString(value));
+            dispatch(articlesPageActions.setPage(1));
+            fetchdata();
+        },
+        [dispatch, fetchdata],
+    );
 
-    const onChangeArticleType = useCallback((tab: TabItem) => {
-        dispatch(articlesPageActions.setArticlesType(tab.value as ArticleType));
-        dispatch(articlesPageActions.setPage(1));
-        fetchdata();
-    }, [dispatch, fetchdata]);
+    const onChangeArticleType = useCallback(
+        (tab: TabItem) => {
+            dispatch(
+                articlesPageActions.setArticlesType(tab.value as ArticleType),
+            );
+            dispatch(articlesPageActions.setPage(1));
+            fetchdata();
+        },
+        [dispatch, fetchdata],
+    );
 
     return (
         <div className={classnames(cls.articlePageFilters)}>
@@ -78,11 +99,17 @@ export const ArticlesPageFilters = () => {
                     onChangeSortOrder={onChangeSortOrder}
                     onChangeSortBy={onChangeSortBy}
                 />
-                <ArticleViewSelector viewMode={viewMode} onViewClick={onViewClick} />
-
+                <ArticleViewSelector
+                    viewMode={viewMode}
+                    onViewClick={onViewClick}
+                />
             </div>
             <Card className={cls.search}>
-                <Input value={searchSubstr} onChange={onChangeSearchSubString} placeholder={t('Поиск')} />
+                <Input
+                    value={searchSubstr}
+                    onChange={onChangeSearchSubString}
+                    placeholder={t('Поиск')}
+                />
             </Card>
             <ArticleTypeTabs
                 value={articleType}

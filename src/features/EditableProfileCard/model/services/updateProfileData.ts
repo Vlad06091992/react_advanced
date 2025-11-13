@@ -6,10 +6,14 @@ import { getProfileFormData } from '../selectors/getProfileFormData/getProfileFo
 import { ValidateProfileError } from '../consts/consts';
 
 export interface LoginByUsernameProps {
- data:Profile
+    data: Profile;
 }
 
-export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileError[]>>(
+export const updateProfileData = createAsyncThunk<
+    Profile,
+    void,
+    ThunkConfig<ValidateProfileError[]>
+>(
     'profile/updateProfileData',
     async (_, { extra, rejectWithValue, getState }) => {
         try {
@@ -22,7 +26,10 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
 
             const profileId = formData?.id;
 
-            const response = await extra.api.put<Profile>(`/profile/${profileId}`, formData);
+            const response = await extra.api.put<Profile>(
+                `/profile/${profileId}`,
+                formData,
+            );
             return response.data;
         } catch (e) {
             return rejectWithValue([ValidateProfileError.SERVER_ERROR]);

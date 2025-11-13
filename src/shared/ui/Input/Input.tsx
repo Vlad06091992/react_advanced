@@ -1,24 +1,39 @@
 import React, {
-    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
+    ChangeEvent,
+    InputHTMLAttributes,
+    memo,
+    useEffect,
+    useRef,
+    useState,
 } from 'react';
 import { classnames } from '@/shared/lib/classnames';
 import styles from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
+type HTMLInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'onChange' | 'readOnly'
+>;
 
-export interface InputProps extends HTMLInputProps{
-    className?:string
-    autofocus?:boolean
-    value?:string | number
-    readonly ?:boolean
-    type? :string
-    placeholder?:string
-    onChange?:(value:string)=>void
+export interface InputProps extends HTMLInputProps {
+    className?: string;
+    autofocus?: boolean;
+    value?: string | number;
+    readonly?: boolean;
+    type?: string;
+    placeholder?: string;
+    onChange?: (value: string) => void;
 }
 
-export const Input = memo((props:InputProps) => {
+export const Input = memo((props: InputProps) => {
     const {
-        className, onChange, placeholder, value, type = 'text', autofocus, readonly = false, ...restProps
+        className,
+        onChange,
+        placeholder,
+        value,
+        type = 'text',
+        autofocus,
+        readonly = false,
+        ...restProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
@@ -49,14 +64,16 @@ export const Input = memo((props:InputProps) => {
     };
 
     const mods = {
-        [styles.readonly]: readonly
+        [styles.readonly]: readonly,
     };
 
     const isCaretVisible = isFocused && !readonly;
 
     return (
         <div className={classnames(styles.inputWrapper, [className])}>
-            {placeholder && <div className={styles.placeholder}>{`${placeholder}>`}</div>}
+            {placeholder && (
+                <div className={styles.placeholder}>{`${placeholder}>`}</div>
+            )}
 
             <div className={styles.caretWrapper}>
                 <input
@@ -72,10 +89,13 @@ export const Input = memo((props:InputProps) => {
                     {...restProps}
                     className={classnames(styles.input, [], mods)}
                 />
-                {isCaretVisible && <span style={{ left: `${caretPosition * 7.5}px` }} className={styles.caret} />}
+                {isCaretVisible && (
+                    <span
+                        style={{ left: `${caretPosition * 7.5}px` }}
+                        className={styles.caret}
+                    />
+                )}
             </div>
-
         </div>
-
     );
 });

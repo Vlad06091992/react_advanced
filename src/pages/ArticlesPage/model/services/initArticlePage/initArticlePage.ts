@@ -5,7 +5,11 @@ import { articlesPageActions } from '../../slices/articlePageSlice';
 import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
 import { getArticlesPageIsInited } from '../../selectors/articlePageSelectors';
 
-export const initArticlePage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
+export const initArticlePage = createAsyncThunk<
+    void,
+    URLSearchParams,
+    ThunkConfig<string>
+>(
     'articlesPage/initArticlePage',
     async (searchParams, { getState, dispatch }) => {
         const isInited = getArticlesPageIsInited(getState());

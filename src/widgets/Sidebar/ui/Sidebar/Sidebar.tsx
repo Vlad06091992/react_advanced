@@ -11,10 +11,10 @@ import { getSidebarItemsList } from '../../model/selector/getSidebarItems';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
-export const Sidebar = memo(({ className }:SidebarProps) => {
+export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const isAuth = useSelector(getUserAuthData);
     const sidebarItemsList = useSelector(getSidebarItemsList);
@@ -22,7 +22,9 @@ export const Sidebar = memo(({ className }:SidebarProps) => {
     return (
         <aside
             data-testid="sidebar"
-            className={classnames(styles.Sidebar, [className], { [styles.collapsed]: collapsed })}
+            className={classnames(styles.Sidebar, [className], {
+                [styles.collapsed]: collapsed,
+            })}
         >
             <Button
                 size={ButtonSize.L}
@@ -35,15 +37,30 @@ export const Sidebar = memo(({ className }:SidebarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <VStack role="navigation" gap="8" className={classnames(styles.links, [className])}>
-                {sidebarItemsList.filter((s) => {
-                    if (s.authOnly && !isAuth) return false;
-                    return true;
-                }).map((item) => (<SidebarItem key={item.text} collapsed={collapsed} item={item} />))}
+            <VStack
+                role="navigation"
+                gap="8"
+                className={classnames(styles.links, [className])}
+            >
+                {sidebarItemsList
+                    .filter((s) => {
+                        if (s.authOnly && !isAuth) return false;
+                        return true;
+                    })
+                    .map((item) => (
+                        <SidebarItem
+                            key={item.text}
+                            collapsed={collapsed}
+                            item={item}
+                        />
+                    ))}
             </VStack>
             <div className={styles.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher short={collapsed} className={styles.langSwitcher} />
+                <LangSwitcher
+                    short={collapsed}
+                    className={styles.langSwitcher}
+                />
             </div>
         </aside>
     );

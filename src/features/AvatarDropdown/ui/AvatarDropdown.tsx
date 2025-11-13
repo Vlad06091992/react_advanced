@@ -3,7 +3,10 @@ import { useCallback } from 'react';
 import { Dropdown } from '@/shared/ui/Popups';
 import { Avatar } from '@/shared/ui/Avatar';
 import {
-    getUserAuthData, isUserAdmin, isUserManager, userActions
+    getUserAuthData,
+    isUserAdmin,
+    isUserManager,
+    userActions,
 } from '@/entities/User';
 import styles from './AvatarDropdown.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -30,19 +33,28 @@ export const AvatarDropdown = () => {
             items={[
                 {
                     content: 'Выйти',
-                    onClick: onLogout
+                    onClick: onLogout,
                 },
                 {
                     content: 'Профиль',
                     href: getRouteProfile(authData.id),
                 },
-                ...(isAdminPanelAvailable ? [{
-                    content: 'Админка',
-                    href: getRouteAdminPanel(),
-                }] : [])
+                ...(isAdminPanelAvailable
+                    ? [
+                          {
+                              content: 'Админка',
+                              href: getRouteAdminPanel(),
+                          },
+                      ]
+                    : []),
             ]}
             trigger={
-                <Avatar fallbackInverted size={30} className={styles.avatar} src={authData?.avatar} />
+                <Avatar
+                    fallbackInverted
+                    size={30}
+                    className={styles.avatar}
+                    src={authData?.avatar}
+                />
             }
         />
     );

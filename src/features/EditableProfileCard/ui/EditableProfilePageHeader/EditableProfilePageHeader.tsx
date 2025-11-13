@@ -11,12 +11,14 @@ import { getProfileData } from '../../model/selectors/getProfileData/getProfileD
 import { updateProfileData } from '../../model/services/updateProfileData';
 
 interface EditableProfilePageHeaderProps {
-    className?:string
-    readonly?:boolean
-
+    className?: string;
+    readonly?: boolean;
 }
 
-export const EditableProfilePageHeader = ({ className, readonly }:EditableProfilePageHeaderProps) => {
+export const EditableProfilePageHeader = ({
+    className,
+    readonly,
+}: EditableProfilePageHeaderProps) => {
     const { t } = useTranslation('about');
     const dispatch = useAppDispatch();
 
@@ -66,7 +68,6 @@ export const EditableProfilePageHeader = ({ className, readonly }:EditableProfil
                                 {t('Сохранить')}
                             </Button>
                         </HStack>
-
                     )}
                 </div>
             )}

@@ -11,21 +11,27 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ArticleListItem.module.scss';
-import { Article, ArticlesViewMode, ArticleTextBlock } from '../../model/types/Article';
+import {
+    Article,
+    ArticlesViewMode,
+    ArticleTextBlock,
+} from '../../model/types/Article';
 import { getRouteArticleDetails } from '@/shared/const/paths';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
-    className?: string
-    article: Article
-    viewMode?: ArticlesViewMode
-    target?: HTMLAttributeAnchorTarget
-
+    className?: string;
+    article: Article;
+    viewMode?: ArticlesViewMode;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = ({
-    className, article, viewMode = ArticlesViewMode.SMALL, target
+    className,
+    article,
+    viewMode = ArticlesViewMode.SMALL,
+    target,
 }: ArticleListItemProps) => {
     const { t } = useTranslation();
 
@@ -38,16 +44,22 @@ export const ArticleListItem = ({
     );
 
     if (viewMode === ArticlesViewMode.BIG) {
-        const textBlock = article.blocks.find((b) => b.type === 'TEXT') as ArticleTextBlock;
+        const textBlock = article.blocks.find(
+            (b) => b.type === 'TEXT',
+        ) as ArticleTextBlock;
 
         return (
             <div
                 data-testid="ArticleListItem"
-                className={classnames(className, [cls[viewMode]], {})}>
+                className={classnames(className, [cls[viewMode]], {})}
+            >
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <Avatar src={article.user.avatar} size={30} />
-                        <Text text={article.user.username} className={cls.username} />
+                        <Text
+                            text={article.user.username}
+                            className={cls.username}
+                        />
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <Text title={article.title} className={cls.title} />
@@ -58,15 +70,22 @@ export const ArticleListItem = ({
                         className={cls.img}
                         alt={article.title}
                     />
-                    {textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />}
+                    {textBlock && (
+                        <ArticleTextBlockComponent
+                            block={textBlock}
+                            className={cls.textBlock}
+                        />
+                    )}
                     <div className={cls.footer}>
-                        <AppLink target={target} to={getRouteArticleDetails(article.id)}>
+                        <AppLink
+                            target={target}
+                            to={getRouteArticleDetails(article.id)}
+                        >
                             <Button theme={ThemeButton.OUTLINE}>
                                 {t('Читать далее...')}
                             </Button>
                         </AppLink>
                         {views}
-
                     </div>
                 </Card>
             </div>
@@ -76,9 +95,10 @@ export const ArticleListItem = ({
     return (
         <AppLink
             data-testid="ArticleListItem"
-            target={target} to={getRouteArticleDetails(article.id)}>
+            target={target}
+            to={getRouteArticleDetails(article.id)}
+        >
             <div className={classnames(className, [cls[viewMode]], {})}>
-
                 <Card className={cls.card}>
                     <div className={cls.imageWrapper}>
                         <AppImage

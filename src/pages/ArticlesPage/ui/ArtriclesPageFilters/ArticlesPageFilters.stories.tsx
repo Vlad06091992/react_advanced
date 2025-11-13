@@ -12,7 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticlesPageFilters>;
 
-const Template: ComponentStory<typeof ArticlesPageFilters> = () => <ArticlesPageFilters />;
+const Template: ComponentStory<typeof ArticlesPageFilters> = () => (
+    <ArticlesPageFilters />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

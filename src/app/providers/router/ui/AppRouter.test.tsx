@@ -3,7 +3,11 @@ import { componentRender } from '@/shared/lib/tests/componentRender/componentRen
 import { AppRouter } from './AppRouter';
 // import { getRouteAbout, getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 import { UserRole } from '@/entities/User';
-import { getRouteAbout, getRouteProfile, getRouteAdminPanel } from '@/shared/const/paths';
+import {
+    getRouteAbout,
+    getRouteProfile,
+    getRouteAdminPanel,
+} from '@/shared/const/paths';
 
 describe('app/router/AppRouter', () => {
     test('Страница должна отрендериться', async () => {

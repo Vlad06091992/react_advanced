@@ -8,19 +8,24 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 
 interface ArticleListProps {
-    className?: string
-    articles: Article[]
-    isLoading?: boolean
-    virtualized?: boolean
-    viewMode?: ArticlesViewMode
-    target?: HTMLAttributeAnchorTarget
+    className?: string;
+    articles: Article[];
+    isLoading?: boolean;
+    virtualized?: boolean;
+    viewMode?: ArticlesViewMode;
+    target?: HTMLAttributeAnchorTarget;
 }
 
-const getSkeletons = (view: ArticlesViewMode) => new Array(view === ArticlesViewMode.SMALL ? 9 : 3)
-    .fill(0)
-    .map((item, index) => (
-        <ArticleListItemSkeleton className={cls.card} key={index} viewMode={view} />
-    ));
+const getSkeletons = (view: ArticlesViewMode) =>
+    new Array(view === ArticlesViewMode.SMALL ? 9 : 3)
+        .fill(0)
+        .map((item, index) => (
+            <ArticleListItemSkeleton
+                className={cls.card}
+                key={index}
+                viewMode={view}
+            />
+        ));
 
 export const ArticleList = ({
     className,
@@ -28,7 +33,7 @@ export const ArticleList = ({
     articles,
     target,
     viewMode = ArticlesViewMode.SMALL,
-// eslint-disable-next-line consistent-return
+    // eslint-disable-next-line consistent-return
 }: ArticleListProps) => {
     const { t } = useTranslation('about');
 
@@ -56,6 +61,5 @@ export const ArticleList = ({
             ))}
             {isLoading && getSkeletons(viewMode)}
         </div>
-
     );
 };

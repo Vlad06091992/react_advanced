@@ -29,12 +29,11 @@ export const ArticleDetailsPageHeader = memo(() => {
             <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
                 {t('Назад к списку')}
             </Button>
-            {canEdit
-                && (
-                    <Button onClick={onEditArticle} theme={ThemeButton.OUTLINE}>
-                        {t('Редактировать')}
-                    </Button>
-                )}
+            {canEdit && (
+                <Button onClick={onEditArticle} theme={ThemeButton.OUTLINE}>
+                    {t('Редактировать')}
+                </Button>
+            )}
         </HStack>
     );
 });

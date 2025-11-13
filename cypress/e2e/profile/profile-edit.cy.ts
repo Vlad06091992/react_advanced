@@ -12,7 +12,10 @@ describe('Заходим на странницу профиля', () => {
 
     it('профиль успешно загружается', () => {
         cy.getByTestId('ProfilePage').should('exist');
-        cy.getByTestId('ProfileCard.firstname').should('have.value', 'Владислав');
+        cy.getByTestId('ProfileCard.firstname').should(
+            'have.value',
+            'Владислав',
+        );
         cy.getByTestId('ProfileCard.lastname').should('have.value', 'Суетин');
     });
 

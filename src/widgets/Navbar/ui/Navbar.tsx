@@ -14,7 +14,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
-    classname?: string
+    classname?: string;
 }
 
 export const Navbar = memo(({ classname }: NavbarProps) => {
@@ -29,21 +29,22 @@ export const Navbar = memo(({ classname }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classnames(styles.navbar, [classname])}>
-                <Text theme={TextTheme.INVERTED} className={classnames(styles.appName)} title="react project" />
+                <Text
+                    theme={TextTheme.INVERTED}
+                    className={classnames(styles.appName)}
+                    title="react project"
+                />
                 <AppLink
                     className={styles.createBtn}
                     theme={AppLinkTheme.SECONDARY}
                     to={getRouteArticleCreate()}
                 >
                     {t('Создать статью')}
-
                 </AppLink>
                 <HStack className={styles.actions}>
-
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>
-
             </header>
         );
     }

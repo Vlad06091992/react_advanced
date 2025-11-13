@@ -5,7 +5,7 @@ import styles from './Text.module.scss';
 export enum TextTheme {
     PRIMARY = 'primary',
     INVERTED = 'inverted',
-    ERROR = 'error'
+    ERROR = 'error',
 }
 
 export enum TextSize {
@@ -16,37 +16,52 @@ export enum TextSize {
 }
 
 export enum TextAlign {
-    LEFT='left',
-    RIGHT='right',
-    CENTER='center',
+    LEFT = 'left',
+    RIGHT = 'right',
+    CENTER = 'center',
 }
 
 export interface TextProps {
-    className?: string
-    title?: string
-    text?: string
+    className?: string;
+    title?: string;
+    text?: string;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
 }
-type HeaderTags = 'h1' | 'h2' | 'h3'
+type HeaderTags = 'h1' | 'h2' | 'h3';
 
-const titleTags:Record<TextSize, HeaderTags> = {
+const titleTags: Record<TextSize, HeaderTags> = {
     [TextSize.S]: 'h3',
     [TextSize.M]: 'h2',
     [TextSize.L]: 'h1',
-    [TextSize.XL]: 'h1'
+    [TextSize.XL]: 'h1',
 };
 
-export const Text = memo(({
-    className, size = TextSize.M, title, text, theme = TextTheme.PRIMARY, align = TextAlign.LEFT
-}: TextProps) => {
-    const HeaderTag = titleTags[size];
+export const Text = memo(
+    ({
+        className,
+        size = TextSize.M,
+        title,
+        text,
+        theme = TextTheme.PRIMARY,
+        align = TextAlign.LEFT,
+    }: TextProps) => {
+        const HeaderTag = titleTags[size];
 
-    return (
-        <div className={(classnames(className, [styles[theme], styles[align], styles[size]]))}>
-            {title && <HeaderTag className={styles.title}>{title}</HeaderTag>}
-            <p className={styles.text}>{text}</p>
-        </div>
-    );
-});
+        return (
+            <div
+                className={classnames(className, [
+                    styles[theme],
+                    styles[align],
+                    styles[size],
+                ])}
+            >
+                {title && (
+                    <HeaderTag className={styles.title}>{title}</HeaderTag>
+                )}
+                <p className={styles.text}>{text}</p>
+            </div>
+        );
+    },
+);

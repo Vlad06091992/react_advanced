@@ -9,38 +9,39 @@ import popupStyles from '../styles/popup.module.scss';
 import { popupPositions } from '../styles/utils';
 
 interface ListBoxItem {
-    value:string
-    content:string
-    disabled?:boolean
+    value: string;
+    content: string;
+    disabled?: boolean;
 }
 
 interface ListBoxProps {
-    items:ListBoxItem[]
-    className?:string
-    label?:string
-    value:string
-    defaultValue:string
-    disabled?:boolean
-    onChange:(value:string) => void
-    dropDownDirection?:DropDownDirections
-
+    items: ListBoxItem[];
+    className?: string;
+    label?: string;
+    value: string;
+    defaultValue: string;
+    disabled?: boolean;
+    onChange: (value: string) => void;
+    dropDownDirection?: DropDownDirections;
 }
 
 export function ListBox(props: ListBoxProps) {
     const {
-        items, className, onChange, value, defaultValue, disabled, dropDownDirection = 'down-right', label
+        items,
+        className,
+        onChange,
+        value,
+        defaultValue,
+        disabled,
+        dropDownDirection = 'down-right',
+        label,
     } = props;
 
     const modes = popupPositions(dropDownDirection);
 
     return (
         <HStack gap="4">
-            {label && (
-                <span>
-                    {`${label} >`}
-                    {' '}
-                </span>
-            )}
+            {label && <span>{`${label} >`} </span>}
             <HListbox
                 disabled={disabled}
                 as="div"
@@ -51,7 +52,9 @@ export function ListBox(props: ListBoxProps) {
                 <HListbox.Button as={Fragment}>
                     <Button disabled={disabled}>{value ?? defaultValue}</Button>
                 </HListbox.Button>
-                <HListbox.Options className={classnames(styles.options, [], modes)}>
+                <HListbox.Options
+                    className={classnames(styles.options, [], modes)}
+                >
                     {items.map((item) => (
                         <HListbox.Option
                             key={item.value}
@@ -63,7 +66,7 @@ export function ListBox(props: ListBoxProps) {
                                 <li
                                     className={classnames(styles.item, [], {
                                         [popupStyles.active]: active,
-                                        [popupStyles.disabled]: item.disabled
+                                        [popupStyles.disabled]: item.disabled,
                                     })}
                                     key={item.value}
                                 >
@@ -76,6 +79,5 @@ export function ListBox(props: ListBoxProps) {
                 </HListbox.Options>
             </HListbox>
         </HStack>
-
     );
 }
