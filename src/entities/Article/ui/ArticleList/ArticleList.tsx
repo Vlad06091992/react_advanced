@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget } from 'react';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { classnames } from '@/shared/lib/classnames';
-import {Article, ArticlesViewMode} from '../../model/types/Article';
+import { Article, ArticlesViewMode } from '../../model/types/Article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
@@ -42,6 +42,7 @@ export const ArticleList = ({
 
     return (
         <div
+            data-testid="ArticleList"
             className={classnames(cls.ArticleList, [className, cls[viewMode]])}
         >
             {articles.map((item) => (

@@ -93,7 +93,7 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
             <Text align={TextAlign.CENTER} theme={TextTheme.ERROR} title="Произошла ошибка при загрузке статьи" />);
     } else {
         content = (
-            <>
+            <div data-testid="ArticleDetails.info">
                 <HStack align="center" max>
                     <Avatar size={200} className={cls.avatar} src={article?.img} />
                 </HStack>
@@ -109,7 +109,7 @@ export const ArticleDetails = memo(({ className, articleId }: ArticleDetailsProp
 
                 {article?.blocks.map(renderBlock)}
 
-            </>
+            </div>
         );
     }
 

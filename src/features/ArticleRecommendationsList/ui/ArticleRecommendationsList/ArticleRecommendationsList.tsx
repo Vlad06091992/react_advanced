@@ -20,7 +20,7 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     const { data: articles = [], isLoading } = useGetArticleRecommendationsListQuery(4);
 
     return (
-        <VStack gap="8" className={classnames('', [className], {})}>
+        <VStack data-testid="ArticleRecommendationsList" gap="8" className={classnames('', [className], {})}>
             <Text size={TextSize.L} className="" title={t('Рекоммендации')} />
             <ArticleList
                 target="_blank"

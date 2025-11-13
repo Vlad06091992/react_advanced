@@ -43,7 +43,7 @@ export interface FlexProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 
 export const Flex = (props: FlexProps) => {
     const {
-        justify = 'start', direction = 'row', align = 'center', children, className, gap, max
+        justify = 'start', direction = 'row', align = 'center', children, className, gap, max, ...rest
     } = props;
 
     const mods = {
@@ -58,5 +58,5 @@ export const Flex = (props: FlexProps) => {
         gap && gapClasses[gap],
     ];
 
-    return (<div className={classnames(cls.flex, [className, ...classes], mods)}>{children}</div>);
+    return (<div {...rest} className={classnames(cls.flex, [className, ...classes], mods)}>{children}</div>);
 };
