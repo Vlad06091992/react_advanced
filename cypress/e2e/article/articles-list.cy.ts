@@ -6,11 +6,11 @@ describe('Пользователь заходит на страницу со с�
         });
     });
 
-    // afterEach(() => {
-    //     cy.resetProfile();
-    // });
+    it.skip('Пример заскипанного теста', () => {
+        cy.getByTestId('fk;lsdfk;sf;s').should('exist');
+    });
 
-    it('и статьи успешно подгружаются', () => {
+    it('Видит список статей', () => {
         cy.getByTestId('ArticleList').should('exist');
         cy.getByTestId('ArticleListItem').should('have.length.greaterThan', 3);
     });
