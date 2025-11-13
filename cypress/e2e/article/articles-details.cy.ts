@@ -30,9 +30,19 @@ describe('Пользователь заходит на страницу со с�
     });
 
     it('И ставит оценку', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
         cy.getByTestId('ArticleDetails.info').should('exist');
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(4, 'FeedBack');
         cy.get('[data-selected=true]').should('have.length', 4);
     });
+
+    it('И ставит оценку (пример с стабом на фикстурах)', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+        cy.getByTestId('ArticleDetails.info').should('exist');
+        cy.getByTestId('RatingCard').scrollIntoView();
+        cy.setRate(4, 'FeedBack');
+        cy.get('[data-selected=true]').should('have.length', 4);
+    });
+
 });
