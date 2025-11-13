@@ -22,7 +22,7 @@ export const profileSlice = createSlice({
             state.readonly = action.payload;
         },
         updateProfile: (state, action:PayloadAction<Profile>) => {
-            state.formData = { ...state.data, ...action.payload };
+            state.formData = { ...state.formData, ...action.payload };
         },
         cancelEdit: (state) => {
             state.readonly = true;

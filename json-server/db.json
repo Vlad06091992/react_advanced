@@ -1155,8 +1155,8 @@
   "profile": [
     {
       "id": "1",
-      "first": "Влади",
-      "lastname": "Смирнов",
+      "first": "Владиfsdfs",
+      "lastname": "Смирноfsdfsв",
       "age": 32,
       "currency": "RUB",
       "country": "Russia",
@@ -1166,14 +1166,16 @@
     },
     {
       "id": "2",
-      "first": "Владислав",
-      "lastname": "Суетин",
-      "age": 33,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Gelendzhik",
-      "username": "sueta",
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+      "title": "Ruby news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://res.cloudinary.com/practicaldev/image/fetch/s--oqV3akcU--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/pgnw91fs7tpxn0wyeqh2.jpg",
+      "views": 100,
+      "createdAt": "21.02.2022",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": []
     }
   ],
   "article-ratings": [
