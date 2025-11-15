@@ -1,40 +1,37 @@
-.flex{
+.flex {
   display: flex;
 }
 
-.justifyStart{
+.justifyStart {
   justify-content: start;
 }
 
-.justifyCenter{
+.justifyCenter {
   justify-content: center;
 }
 
-.justifyEnd{
+.justifyEnd {
   justify-content: end;
 }
 
-.justifyBetween{
+.justifyBetween {
   justify-content: space-between;
 }
 
-.alignStart{
-  //align-items: ;
-}
-
-.alignCenter{
+.alignCenter {
   align-items: center;
 }
 
-.alignEnd{
+.alignEnd {
   align-items: end;
 }
 
-.directionRow{
-flex-direction:row ;
+.directionRow {
+  flex-direction: row;
 }
-.directionColumn{
-flex-direction: column;
+
+.directionColumn {
+  flex-direction: column;
 }
 
 .gap4 {

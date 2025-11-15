@@ -3,10 +3,7 @@ export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export { ArticleList } from './ui/ArticleList/ArticleList';
 export { ArticleTextBlockComponent } from './ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-export type {
-    Article,
-    SortOrder
-} from './model/types/Article';
+export type { Article, SortOrder } from './model/types/Article';
 
 export {
     ArticleBlockType,

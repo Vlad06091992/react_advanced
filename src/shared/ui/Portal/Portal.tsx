@@ -7,9 +7,7 @@ interface PortalProps {
 }
 
 export const Portal = (props: PortalProps) => {
-    const {
-        children,
-    } = props;
+    const { children } = props;
 
     const [container, setContainer] = useState<Element | null>(null);
 

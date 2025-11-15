@@ -1,1 +1,2 @@
-export type DropDownDirections = 'down-left' | 'down-right' | 'up-left' | 'up-right';
+export type { TestProps } from './testTypes';
+export type { DropDownDirections } from './sort';

@@ -7,6 +7,6 @@ export interface User {
     avatar?: string;
 }
 export interface UserSchema {
-    authData:User | null
-    isInit:boolean
+    authData: User | null;
+    isInit: boolean;
 }

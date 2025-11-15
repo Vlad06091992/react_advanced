@@ -10,15 +10,15 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { updateProfileData } from '../../model/services/updateProfileData';
 
-import cls from './EditableProfilePageHeader.module.scss';
-
 interface EditableProfilePageHeaderProps {
-    className?:string
-    readonly?:boolean
-
+    className?: string;
+    readonly?: boolean;
 }
 
-export const EditableProfilePageHeader = ({ className, readonly }:EditableProfilePageHeaderProps) => {
+export const EditableProfilePageHeader = ({
+    className,
+    readonly,
+}: EditableProfilePageHeaderProps) => {
     const { t } = useTranslation('about');
     const dispatch = useAppDispatch();
 
@@ -45,7 +45,6 @@ export const EditableProfilePageHeader = ({ className, readonly }:EditableProfil
                 <div>
                     {readonly ? (
                         <Button
-                            className={cls.editBtn}
                             theme={ThemeButton.OUTLINE}
                             onClick={onEdit}
                             data-testid="EditableProfileCardHeader.EditButton"
@@ -69,7 +68,6 @@ export const EditableProfilePageHeader = ({ className, readonly }:EditableProfil
                                 {t('Сохранить')}
                             </Button>
                         </HStack>
-
                     )}
                 </div>
             )}

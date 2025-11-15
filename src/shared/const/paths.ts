@@ -8,7 +8,7 @@ export const RouterConfig = {
     PROFILE: 'profile',
     ABOUT: 'about',
     NOT_FOUND: 'not_found',
-    FORBIDDEN: 'forbidden'
+    FORBIDDEN: 'forbidden',
 };
 
 export const getRouteMain = () => '/';

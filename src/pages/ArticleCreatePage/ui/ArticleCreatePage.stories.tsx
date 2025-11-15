@@ -12,7 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleCreatePage>;
 
-const Template: ComponentStory<typeof ArticleCreatePage> = () => <ArticleCreatePage />;
+const Template: ComponentStory<typeof ArticleCreatePage> = () => (
+    <ArticleCreatePage />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

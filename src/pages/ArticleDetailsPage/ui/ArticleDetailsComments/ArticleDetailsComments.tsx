@@ -14,10 +14,13 @@ import { VStack } from '@/shared/ui/Stack';
 
 interface PropsArticleDetailsComments {
     id: string;
-    className?:string
+    className?: string;
 }
 
-export const ArticleDetailsComments = ({ id, className }:PropsArticleDetailsComments) => {
+export const ArticleDetailsComments = ({
+    id,
+    className,
+}: PropsArticleDetailsComments) => {
     const { t } = useTranslation('articles-details');
     const dispatch = useAppDispatch();
 
@@ -30,9 +33,12 @@ export const ArticleDetailsComments = ({ id, className }:PropsArticleDetailsComm
     // надо будет запрос на создание комментариев сделать через rtk query и сделать инвалидацию запроса
     // const { data: comments = [], isLoading: commentsIsLoading } = useGetCommentsByArticleIdQuery(id);
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
     return (
         <VStack gap="16" className={classnames(className)}>
@@ -40,11 +46,7 @@ export const ArticleDetailsComments = ({ id, className }:PropsArticleDetailsComm
             <Suspense fallback="Идет загрузка...">
                 <AddCommentForm onSendComment={onSendComment} />
             </Suspense>
-            <CommentsList
-                comments={comments}
-                isLoading={commentsIsLoading}
-            />
+            <CommentsList comments={comments} isLoading={commentsIsLoading} />
         </VStack>
-
     );
 };

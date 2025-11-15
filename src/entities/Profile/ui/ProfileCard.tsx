@@ -12,28 +12,34 @@ import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
-    data?:Profile| null
-    isLoading?:boolean|null
-    readonly?:boolean
-    error?:string|null
-    onChangeFirstname?:(v:string)=> void
-    onChangeLastname?:(v:string)=> void
-    onChangeAge?:(v:string)=> void
-    onChangeCity?:(v:string)=> void
-    onChangeAvatar?:(v:string)=> void
-    onChangeUsername?:(v:string)=> void
-    onChangeCurrency?:(v:Currency)=> void
-    onChangeCountry?:(v:Country)=> void
+    data?: Profile | null;
+    isLoading?: boolean | null;
+    readonly?: boolean;
+    error?: string | null;
+    onChangeFirstname?: (v: string) => void;
+    onChangeLastname?: (v: string) => void;
+    onChangeAge?: (v: string) => void;
+    onChangeCity?: (v: string) => void;
+    onChangeAvatar?: (v: string) => void;
+    onChangeUsername?: (v: string) => void;
+    onChangeCurrency?: (v: Currency) => void;
+    onChangeCountry?: (v: Country) => void;
 }
 
 export const ProfileCard = ({
     className,
-    data, isLoading,
-    error, readonly,
-    onChangeLastname, onChangeFirstname,
-    onChangeCity, onChangeAge,
-    onChangeUsername, onChangeAvatar,
-    onChangeCountry, onChangeCurrency
+    data,
+    isLoading,
+    error,
+    readonly,
+    onChangeLastname,
+    onChangeFirstname,
+    onChangeCity,
+    onChangeAge,
+    onChangeUsername,
+    onChangeAvatar,
+    onChangeCountry,
+    onChangeCurrency,
 }: ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
@@ -47,7 +53,13 @@ export const ProfileCard = ({
 
     if (error) {
         return (
-            <HStack className={classnames(cls.ProfileCard, [className, cls.error], {})}>
+            <HStack
+                className={classnames(
+                    cls.ProfileCard,
+                    [className, cls.error],
+                    {},
+                )}
+            >
                 <Text
                     theme={TextTheme.ERROR}
                     text={t('Попробуйте обновить страницу')}
@@ -57,12 +69,16 @@ export const ProfileCard = ({
         );
     }
 
-    const mods:Mods = {
-        [cls.editing]: !readonly
+    const mods: Mods = {
+        [cls.editing]: !readonly,
     };
 
     return (
-        <VStack gap="16" max className={classnames(cls.ProfileCard, [className], mods)}>
+        <VStack
+            gap="16"
+            max
+            className={classnames(cls.ProfileCard, [className], mods)}
+        >
             {data?.avatar && (
                 <div className={cls.avatarWrapper}>
                     <Avatar src={data?.avatar} />

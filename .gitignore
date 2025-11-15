@@ -1,7 +1,7 @@
 /node_modules
 /build
 /coverage
-/reports
+/reports/unit
 /storybook-static
 .idea
 *storybook.log

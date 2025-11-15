@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    Svg: EyeIcon
+    Svg: EyeIcon,
 };

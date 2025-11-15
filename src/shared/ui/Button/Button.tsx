@@ -1,5 +1,5 @@
-import React, {ButtonHTMLAttributes, memo, ReactNode} from 'react';
-import {classnames} from '@/shared/lib/classnames';
+import React, { ButtonHTMLAttributes, memo, ReactNode } from 'react';
+import { classnames } from '@/shared/lib/classnames';
 import styles from './Button.module.scss';
 
 export enum ThemeButton {
@@ -14,30 +14,30 @@ export enum ThemeButton {
 export enum ButtonSize {
     M = 'size_m',
     L = 'size_l',
-    XL = 'size_xl'
+    XL = 'size_xl',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     /**
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
      */
-    theme?: ThemeButton
+    theme?: ThemeButton;
     /**
      * Флаг, делающий кнопку квадратной
      */
-    square?: boolean
+    square?: boolean;
     /**
      * Увеличивает кнопку на всю свободную ширину
      */
-    fullWidth?: boolean
+    fullWidth?: boolean;
     /**
      * Размер кнопки в соответствии с дизайн системой
      */
-    size?: ButtonSize
+    size?: ButtonSize;
     /**
      * Флаг, отвечающий за работу кнопки
      */
-    disabled?: boolean
+    disabled?: boolean;
     /**
      * Содержимое кнопки
      */
@@ -53,7 +53,10 @@ export const Button = memo((props: ButtonProps) => {
         size = ButtonSize.M,
         square,
         children,
-        theme = ThemeButton.OUTLINE, fullWidth, disabled = false, ...restProps
+        theme = ThemeButton.OUTLINE,
+        fullWidth,
+        disabled = false,
+        ...restProps
     } = props;
     const mods: Mods = {
         [styles.square]: square,
@@ -66,7 +69,11 @@ export const Button = memo((props: ButtonProps) => {
         <button
             type="button"
             disabled={disabled}
-            className={classnames(className, [styles.Button, styles[theme]], mods)}
+            className={classnames(
+                className,
+                [styles.Button, styles[theme]],
+                mods,
+            )}
             {...restProps}
         >
             {children}

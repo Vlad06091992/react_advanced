@@ -1,3 +1,4 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-export const getProfileFormData = (state: StateSchema) => state.profileData?.formData;
+export const getProfileFormData = (state: StateSchema) =>
+    state.profileData?.formData;

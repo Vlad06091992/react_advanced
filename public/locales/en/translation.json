@@ -1,11 +1,11 @@
 {
-  "Тестовый перевод": "Test example",
-  "Перевод": "Translate",
-  "Главная страница" : "Main page",
-  "Язык" : "English",
-  "Короткий язык" : "En",
-  "Страница не найдена" : "Page not found",
-  "Произошла непредвиденная ошибка" : "Something went wrong",
-  "Перезагрузить страницу" : "Reload page",
-  "Вы ввели неправильынй логин или пароль": "incorrect login or password"
+    "Тестовый перевод": "Test example",
+    "Перевод": "Translate",
+    "Главная страница": "Main page",
+    "Язык": "English",
+    "Короткий язык": "En",
+    "Страница не найдена": "Page not found",
+    "Произошла непредвиденная ошибка": "Something went wrong",
+    "Перезагрузить страницу": "Reload page",
+    "Вы ввели неправильынй логин или пароль": "incorrect login or password"
 }

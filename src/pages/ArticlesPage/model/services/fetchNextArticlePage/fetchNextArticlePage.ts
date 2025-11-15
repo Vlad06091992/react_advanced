@@ -5,18 +5,19 @@ import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticle
 import {
     getArticlesPageHasMore,
     getArticlesPageIsLoading,
-    getArticlesPageNumber
+    getArticlesPageNumber,
 } from '../../selectors/articlePageSelectors';
 
-export const fetchNextArticlePage = createAsyncThunk<void, void, ThunkConfig<string>>(
-    'articlesPage/fetchNextArticlePage',
-    async (_, { getState, dispatch }) => {
-        const hasMore = getArticlesPageHasMore(getState());
-        const pageNumber = getArticlesPageNumber(getState());
-        const isLoading = getArticlesPageIsLoading(getState());
-        if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(pageNumber + 1));
-            dispatch(fetchArticlesList({ replace: false }));
-        }
-    },
-);
+export const fetchNextArticlePage = createAsyncThunk<
+    void,
+    void,
+    ThunkConfig<string>
+>('articlesPage/fetchNextArticlePage', async (_, { getState, dispatch }) => {
+    const hasMore = getArticlesPageHasMore(getState());
+    const pageNumber = getArticlesPageNumber(getState());
+    const isLoading = getArticlesPageIsLoading(getState());
+    if (hasMore && !isLoading) {
+        dispatch(articlesPageActions.setPage(pageNumber + 1));
+        dispatch(fetchArticlesList({ replace: false }));
+    }
+});

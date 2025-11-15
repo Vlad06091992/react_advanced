@@ -7,7 +7,10 @@ import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import { ProfileCard } from '@/entities/Profile';
-import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducerList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from '@/shared/ui/Stack';
 import { EditableProfilePageHeader } from '../../ui/EditableProfilePageHeader/EditableProfilePageHeader';
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
@@ -42,7 +45,8 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         [ValidateProfileError.NO_DATA]: 'Нет данных',
         [ValidateProfileError.INCORRECT_COUNTRY]: 'Некорректная страна',
         [ValidateProfileError.SERVER_ERROR]: 'Ошибка сервера',
-        [ValidateProfileError.INCORRECT_USER_DATA]: 'Некорректные данные пользователя',
+        [ValidateProfileError.INCORRECT_USER_DATA]:
+            'Некорректные данные пользователя',
     };
 
     useEffect(() => {
@@ -50,36 +54,36 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         // eslint-disable-next-line
     }, []);
 
-    const onChangeFirstname = (value:string) => {
+    const onChangeFirstname = (value: string) => {
         dispatch(profileActions.updateProfile({ first: value }));
     };
-    const onChangeLastname = (value:string) => {
+    const onChangeLastname = (value: string) => {
         dispatch(profileActions.updateProfile({ lastname: value }));
     };
 
-    const onChangeAge = (value:string) => {
-        if (!(Number.isNaN(+value))) {
+    const onChangeAge = (value: string) => {
+        if (!Number.isNaN(+value)) {
             dispatch(profileActions.updateProfile({ age: +value.trim() }));
         }
     };
 
-    const onChangeUsername = (value:string) => {
+    const onChangeUsername = (value: string) => {
         dispatch(profileActions.updateProfile({ username: value }));
     };
 
-    const onChangeAvatar = (value:string) => {
+    const onChangeAvatar = (value: string) => {
         dispatch(profileActions.updateProfile({ avatar: value }));
     };
 
-    const onChangeCurrency = (value:Currency) => {
+    const onChangeCurrency = (value: Currency) => {
         dispatch(profileActions.updateProfile({ currency: value }));
     };
 
-    const onChangeCountry = (value:Country) => {
+    const onChangeCountry = (value: Country) => {
         dispatch(profileActions.updateProfile({ country: value }));
     };
 
-    const onChangeCity = (value:string) => {
+    const onChangeCity = (value: string) => {
         dispatch(profileActions.updateProfile({ city: value }));
     };
 
@@ -87,13 +91,14 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <VStack gap="8" max className={classnames('', [className], {})}>
                 <EditableProfilePageHeader readonly={readonly} />
-                {validateErrors.length > 0 && validateErrors.map((error) => (
-                    <Text
-                        key={error}
-                        title={validationTranslates[error]}
-                        theme={TextTheme.ERROR}
-                    />
-                ))}
+                {validateErrors.length > 0 &&
+                    validateErrors.map((error) => (
+                        <Text
+                            key={error}
+                            title={validationTranslates[error]}
+                            theme={TextTheme.ERROR}
+                        />
+                    ))}
                 <ProfileCard
                     onChangeCountry={onChangeCountry}
                     onChangeCurrency={onChangeCurrency}
@@ -110,6 +115,5 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 />
             </VStack>
         </DynamicModuleLoader>
-
     );
 });

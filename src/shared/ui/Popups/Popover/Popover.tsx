@@ -7,24 +7,31 @@ import styles from './Popover.module.scss';
 import popupStyles from '../styles/popup.module.scss';
 
 interface PopoverProps {
-    className?: string
-    trigger:ReactNode;
-    children:ReactNode;
-    dropDownDirection?:DropDownDirections
+    className?: string;
+    trigger: ReactNode;
+    children: ReactNode;
+    dropDownDirection?: DropDownDirections;
 }
 
-export function Popover(props:PopoverProps) {
+export function Popover(props: PopoverProps) {
     const {
-        className, dropDownDirection = 'down-right', trigger, children
+        className,
+        dropDownDirection = 'down-right',
+        trigger,
+        children,
     } = props;
 
     const modes = popupPositions(dropDownDirection);
 
     return (
         <HPopover className={classnames(popupStyles.popup, [className])}>
-            <HPopover.Button as="div" className={popupStyles.trigger}>{trigger}</HPopover.Button>
+            <HPopover.Button as="div" className={popupStyles.trigger}>
+                {trigger}
+            </HPopover.Button>
 
-            <HPopover.Panel className={classnames(styles.panel, [], modes)}>{children}</HPopover.Panel>
+            <HPopover.Panel className={classnames(styles.panel, [], modes)}>
+                {children}
+            </HPopover.Panel>
         </HPopover>
     );
 }

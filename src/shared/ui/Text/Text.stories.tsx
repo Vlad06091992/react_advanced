@@ -60,7 +60,7 @@ export const SizeL = Template.bind({});
 SizeL.args = {
     title: 'some title',
     text: 'Description Description Description Description',
-    size: TextSize.L
+    size: TextSize.L,
 };
 SizeL.decorators = [ThemeDecorator(Theme.DARK)];
 
@@ -68,6 +68,6 @@ export const SizeM = Template.bind({});
 SizeM.args = {
     title: 'some title',
     text: 'Description Description Description Description',
-    size: TextSize.M
+    size: TextSize.M,
 };
 SizeM.decorators = [ThemeDecorator(Theme.DARK)];

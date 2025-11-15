@@ -6,8 +6,8 @@ const ArticleEditPage = () => {
     const isEdit = pathname.includes('edit');
 
     return (
-        <Page>
-            {isEdit ? 'Редактирование статьи' : 'Создание статьи' }
+        <Page data-testid="ArticleEditPage">
+            {isEdit ? 'Редактирование статьи' : 'Создание статьи'}
         </Page>
     );
 };

@@ -9,7 +9,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: []
+    decorators: [],
 } as ComponentMeta<typeof ArticleRecommendationsList>;
 
 const article: Article = {
@@ -24,12 +24,12 @@ const article: Article = {
     subtitle: 'asfsa',
 };
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList {...args} />;
+const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
+    <ArticleRecommendationsList {...args} />
+);
 
 export const Normal = Template.bind({});
-Normal.args = {
-
-};
+Normal.args = {};
 
 Normal.parameters = {
     mockData: [

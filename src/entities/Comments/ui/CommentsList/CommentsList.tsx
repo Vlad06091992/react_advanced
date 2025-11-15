@@ -7,33 +7,35 @@ import { Comment } from '../../model/types/Comment';
 import { VStack } from '@/shared/ui/Stack';
 
 export interface CommentsListProps {
-    className?:string
-    isLoading?:boolean | null;
-    comments:Comment[]
+    className?: string;
+    isLoading?: boolean | null;
+    comments: Comment[];
 }
 
-export const CommentsList = memo(({ className, comments, isLoading } : CommentsListProps) => {
-    const { t } = useTranslation();
+export const CommentsList = memo(
+    ({ className, comments, isLoading }: CommentsListProps) => {
+        const { t } = useTranslation();
 
-    if (isLoading) {
+        if (isLoading) {
+            return (
+                <VStack gap="16" className={classnames(className)}>
+                    <CommentCard isLoading />
+                    <CommentCard isLoading />
+                    <CommentCard isLoading />
+                </VStack>
+            );
+        }
+
         return (
             <VStack gap="16" className={classnames(className)}>
-                <CommentCard isLoading />
-                <CommentCard isLoading />
-                <CommentCard isLoading />
+                {comments?.length ? (
+                    comments.map((comment) => (
+                        <CommentCard isLoading={isLoading} comment={comment} />
+                    ))
+                ) : (
+                    <Text text={t('Комментарии отсутствуют')} />
+                )}
             </VStack>
         );
-    }
-
-    return (
-        <VStack gap="16" className={classnames(className)}>
-            {comments?.length ? comments.map((comment) => (
-                <CommentCard
-                    isLoading={isLoading}
-                    comment={comment}
-                />
-            ))
-                : <Text text={t('Комментарии отсутствуют')} />}
-        </VStack>
-    );
-});
+    },
+);

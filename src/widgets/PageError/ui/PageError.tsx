@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/Button';
 import styles from './PageError.module.scss';
 
 interface NavbarProps {
-    classname?: string
+    classname?: string;
 }
 
 export const PageError = ({ classname }: NavbarProps) => {

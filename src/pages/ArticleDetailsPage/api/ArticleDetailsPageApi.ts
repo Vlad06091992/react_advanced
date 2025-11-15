@@ -7,8 +7,8 @@ const commentsApi = rtkApi.injectEndpoints({
                 url: '/comments',
                 params: {
                     articleId,
-                    _expand: 'user'
-                }
+                    _expand: 'user',
+                },
             }),
         }),
     }),

@@ -5,16 +5,10 @@ import { getArticleDetailsData } from '@/entities/Article';
 import { addCommentFormActions } from '../../model/slices/addCommentFormSlice';
 import { getAddCommentFormText } from '../selectors/addCommentFormSelectors';
 
-export const sendComment = createAsyncThunk<
-    Comment,
-    void,
-    ThunkConfig<string>
->(
+export const sendComment = createAsyncThunk<Comment, void, ThunkConfig<string>>(
     'addCommentForm/sendComment',
     async (_, thunkApi) => {
-        const {
-            extra, dispatch, rejectWithValue, getState
-        } = thunkApi;
+        const { extra, dispatch, rejectWithValue, getState } = thunkApi;
 
         try {
             const userAuthData = getUserAuthData(getState());

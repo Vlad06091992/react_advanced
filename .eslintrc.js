@@ -1,3 +1,6 @@
+const typescriptEslint = require('@typescript-eslint/eslint-plugin');
+const eslintConfigPrettier = require('eslint-config-prettier/flat');
+
 module.exports = {
     env: {
         browser: true,
@@ -6,10 +9,12 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'airbnb', 'plugin:i18next/recommended',
+        'airbnb',
+        'plugin:i18next/recommended',
         'plugin:storybook/recommended',
         'eslint:recommended',
-        'plugin:import/recommended'
+        'plugin:import/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -25,20 +30,20 @@ module.exports = {
         'i18next',
         'react-hooks',
         'vlad_vs-path-checker-plugin',
-        'unused-imports'
+        'unused-imports',
     ],
     rules: {
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        indent: [2, 4],
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+        'react/jsx-filename-extension': [
+            2,
+            { extensions: ['.js', '.jsx', '.tsx'] },
+        ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
         'no-undef': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
-            { argsIgnorePattern: '^_' }
+            { argsIgnorePattern: '^_' },
         ],
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [
@@ -87,26 +92,35 @@ module.exports = {
                 ],
             },
         ],
-        'max-len': [
-            'warn',
-            { ignoreComments: true, code: 120 },
-        ],
+        'max-len': ['warn', { ignoreComments: true, code: 120 }],
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-        'vlad_vs-path-checker-plugin/path-checker': ['error', {
-            alias: '@'
-        }], // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/path-checker': [
+            'error',
+            {
+                alias: '@',
+            },
+        ], // Checks effect dependencies
         'vlad_vs-path-checker-plugin/layer-imports': [
             'error',
             {
                 alias: '@',
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
-            }], // Checks effect dependencies
-        'vlad_vs-path-checker-plugin/public-api-imports': ['error', {
-            alias: '@',
-            testFiles: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
-        }], // Checks effect dependencies
+            },
+        ], // Checks effect dependencies
+        'vlad_vs-path-checker-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFiles: [
+                    '**/*.test.ts',
+                    '**/*.story.*',
+                    '**/StoreDecorator.tsx',
+                ],
+            },
+        ], // Checks effect dependencies
         'linebreak-style': 'off',
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
     },
     globals: {
         __IS_DEV__: true,
@@ -121,4 +135,5 @@ module.exports = {
             },
         },
     ],
+    eslintConfigPrettier,
 };

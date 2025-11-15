@@ -1,15 +1,13 @@
 import { FC } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classnames } from '@/shared/lib/classnames';
 import { useCounterValue } from '../model/selectors/getCounterValue';
 import { useCounterActions } from '../model/slice/CounterSlice';
 
 export interface CounterProps {
-    className?:string
+    className?: string;
 }
 
-export const Counter:FC<CounterProps> = ({ className }) => {
-    const dispatch = useAppDispatch();
+export const Counter: FC<CounterProps> = ({ className }) => {
     const value = useCounterValue();
     const { increment, decrement, add } = useCounterActions();
 
@@ -28,10 +26,17 @@ export const Counter:FC<CounterProps> = ({ className }) => {
         <div className={classnames(className)}>
             <h1 data-testid="value-title">{value}</h1>
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <button data-testid="increment-btn" onClick={inc}>inc</button>
+            <button data-testid="increment-btn" onClick={inc}>
+                inc
+            </button>
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <button data-testid="decrement-btn" onClick={dec}>dec</button>
-            <button data-testid="decrement-btn" onClick={addFive}>add 5</button>
+            <button data-testid="decrement-btn" onClick={dec}>
+                dec
+            </button>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
+            <button data-testid="decrement-btn" onClick={addFive}>
+                add 5
+            </button>
         </div>
     );
 };

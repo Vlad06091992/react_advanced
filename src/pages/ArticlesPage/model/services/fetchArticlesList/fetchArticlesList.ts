@@ -8,14 +8,19 @@ import {
     getArticlesPageSearchSubstr,
     getArticlesPageSize,
     getArticlesPageSortBy,
-    getArticlesPageSortOrder, getArticlesPageType
+    getArticlesPageSortOrder,
+    getArticlesPageType,
 } from '../../selectors/articlePageSelectors';
 
 interface FetchArticlelistProps {
-    replace?:boolean
+    replace?: boolean;
 }
 
-export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlelistProps, ThunkConfig<string>>(
+export const fetchArticlesList = createAsyncThunk<
+    Article[],
+    FetchArticlelistProps,
+    ThunkConfig<string>
+>(
     'articlesPage/fetchArticlesList',
     async (_, { extra, rejectWithValue, getState }) => {
         const pageSize = getArticlesPageSize(getState());
@@ -28,7 +33,10 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlelistPro
 
         try {
             addQueryParams({
-                sort: sortBy, order: sortOrder, search: searchSubstr, type: articleType
+                sort: sortBy,
+                order: sortOrder,
+                search: searchSubstr,
+                type: articleType,
             });
             const response = await extra.api.get<Article[]>('/articles', {
                 params: {
@@ -38,9 +46,11 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlelistPro
                     _sort: sortBy,
                     _order: sortOrder,
                     q: searchSubstr,
-                    type: articleType === ArticleType.ALL ? undefined : articleType,
-
-                }
+                    type:
+                        articleType === ArticleType.ALL
+                            ? undefined
+                            : articleType,
+                },
             });
             return response.data;
         } catch (e) {

@@ -8,7 +8,10 @@ import { api } from '@/shared/api/api';
 import { scrollSaveReducer } from '@/features/ScrollSave';
 import { rtkApi } from '@/shared/api/rtkApi';
 
-export function createReduxStore(initialState:StateSchema, asyncReducers:ReducersMapObject<StateSchema>) {
+export function createReduxStore(
+    initialState: StateSchema,
+    asyncReducers: ReducersMapObject<StateSchema>,
+) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
@@ -27,11 +30,12 @@ export function createReduxStore(initialState:StateSchema, asyncReducers:Reducer
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>, // для управления асинхронными редьюсерами
         preloadedState: initialState,
         devTools: __IS_DEV__,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-            thunk: {
-                extraArgument: ExtraArg,
-            },
-        }).concat(rtkApi.middleware),
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: ExtraArg,
+                },
+            }).concat(rtkApi.middleware),
     });
 
     // @ts-ignore
