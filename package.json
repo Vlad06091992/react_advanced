@@ -9,7 +9,7 @@
         "start:vite": "vite",
         "start": "webpack serve --env port=3001 mode=development",
         "start:dev:server": "node ./json-server/index.js",
-        "build:prod": "webpack build --env mode=production",
+        "build:prod": "webpack build --env mode=production apiUrl=https://react-advanced-mock-backend.vercel.app",
         "build:dev": "webpack build --env mode=development",
         "lint:ts": "eslint \"**/*.{ts,tsx}\"",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
