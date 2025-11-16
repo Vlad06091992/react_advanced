@@ -8,12 +8,10 @@ const options = {
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
 };
-https
-    .createServer(options, (req, res) => {
-        res.writeHead(200);
-        res.end('Hello, world!');
-    })
-    .listen(443);
+https.createServer(options, (req, res) => {
+    res.writeHead(200);
+    res.end('Hello, world!');
+});
 
 const server = jsonServer.create();
 
