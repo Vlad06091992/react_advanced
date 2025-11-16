@@ -9,6 +9,7 @@ const MainPage = () => {
         <Page data-testid="MainPage">
             <div>{t('Главная страница')}</div>
             <Counter />
+            upd
         </Page>
     );
 };
